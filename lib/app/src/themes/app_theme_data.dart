@@ -17,7 +17,7 @@ class AppThemeData {
     canvasColor: AppTheme.kGreenBackground,
     textTheme: GoogleFonts.quicksandTextTheme(),
     unselectedWidgetColor: AppTheme.kPrimaryColor,
-    toggleableActiveColor:  AppTheme.kPrimaryColor,
+    toggleableActiveColor: AppTheme.kPrimaryColor,
     primaryColor: AppTheme.kPrimaryColor,
     backgroundColor: AppTheme.kPrimaryColor,
     primarySwatch: Colors.blue,
