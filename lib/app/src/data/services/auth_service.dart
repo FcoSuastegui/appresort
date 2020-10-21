@@ -13,11 +13,10 @@ class AuthService {
       status: false,
       message: '',
     );
-
     try {
       final Response response = await Network.inst.post(
         route: 'login',
-        data: {username: username, password: password},
+        data: {"username": username, "password": password},
       );
       if (response.statusCode == 200) {
         final ResponseModel body = ResponseModel.fromJson(response.data);
