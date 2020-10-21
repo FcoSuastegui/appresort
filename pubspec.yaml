@@ -35,6 +35,8 @@ dependencies:
   get_storage: ^1.3.1
   google_fonts: ^1.1.0
   flutter_form_bloc: ^0.13.0
+  simple_animations: ^1.3.3
+  badges: ^1.1.1
 
 dev_dependencies:
   flutter_test:
@@ -52,8 +54,16 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+  - assets/onboarding/onboarding0.png
+  - assets/onboarding/onboarding1.png
+  - assets/onboarding/onboarding2.png
+  - assets/images/apleeks_01.png
+  - assets/images/imagen_no_disponible.png
+  - assets/images/oxxopay_brand.png
+  - assets/images/resort_banner.png
+  - assets/images/resort_logo.png
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
