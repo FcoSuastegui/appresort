@@ -1,3 +1,4 @@
+import 'package:appresort/app/src/themes/size_config.dart';
 import 'package:appresort/app/src/views/onboarding/components/onboarding_body.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +8,7 @@ class OnBoardingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: OnBoardingBody(),
     );

@@ -24,21 +24,19 @@ class OnBoardingController extends GetxController {
 
   List<OnBoardingContent> onboarding = [
     OnBoardingContent(
-      title: "Conoce",
-      subtitle: "El estado de tu propiedad.",
-      image: Image.asset("assets/onboarding/onboarding0.png"),
+      title: "Todas las comodidades",
+      image: "assets/slides/slide_1.png",
+      isTop: false,
     ),
     OnBoardingContent(
-      title: "Consulta.",
-      subtitle:
-          "Tus estados de cuenta, abonos, adeudos desde donde te encuentres.",
-      image: Image.asset("assets/onboarding/onboarding1.png"),
+      title: "Que imaginas.",
+      image: "assets/slides/slide_2.png",
+      isTop: true,
     ),
     OnBoardingContent(
-      title: "Revisa.",
-      subtitle:
-          "Las publicaciones que se hacen por desarrollo dentro de la plataforma.",
-      image: Image.asset("assets/onboarding/onboarding2.png"),
+      title: "En un solo lugar.",
+      image: "assets/slides/slide_3.png",
+      isTop: true,
     )
   ];
 
