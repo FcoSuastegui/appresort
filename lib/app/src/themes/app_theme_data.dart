@@ -6,13 +6,18 @@ class AppThemeData {
   static final ThemeData themeData = ThemeData(
     scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
-      color: Colors.white,
+      color: AppTheme.kPrimaryColor,
       elevation: 0.0,
       brightness: Brightness.light,
+      centerTitle: false,
       iconTheme: IconThemeData(
-        color: Colors.white,
+        color: AppTheme.kIconColor,
       ),
-      textTheme: GoogleFonts.quicksandTextTheme(),
+      textTheme: GoogleFonts.quicksandTextTheme(
+        TextTheme(
+          bodyText1: TextStyle(color: Colors.white),
+        ),
+      ),
     ),
     canvasColor: AppTheme.kGreenBackground,
     textTheme: GoogleFonts.quicksandTextTheme(),
