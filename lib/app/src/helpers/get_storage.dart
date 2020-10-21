@@ -13,34 +13,49 @@ class GetStorages {
   // Setter y getters de datos
 
   set server(String valor) => _storage.write('server', valor);
-  String get server => _storage.read('server') ?? 'https://qa.timeshareapp.com';
+  String get server => _storage.read('server') ?? 'https://qa.midesarrollo.com.mx';
 
-  set api(String value) => _storage.write('api', value);
-  String get api => _storage.read('api') ?? "$server/api/app";
+  set api(String valor) => _storage.write('api', valor);
+  String get api => _storage.read('api') ?? server + '/server/api';
 
-  // Token de la aplicación de laravel
-  set token(String value) => _storage.write('token', value);
+  set token(String valor) => _storage.write('token', valor);
   String get token => _storage.read('token') ?? '';
 
-  set page(String value) => _storage.write('page', value);
+  set tokenFireBase(String valor) => _storage.write('tokenFireBase', valor);
+  String get tokenFireBase => _storage.read('tokenFireBase') ?? '';
+
+  set page(String valor) => _storage.write('page', valor);
   String get page => _storage.read('page') ?? '/';
 
-  set sistema(int value) => _storage.write('sistema', value);
-  int get sistema => _storage.read('sistema') ?? 0;
+  set onboarding(bool valor) => _storage.write('onboarding', valor);
+  bool get onboarding => _storage.read('onboarding') ?? true;
 
-  set idusuario(int value) => _storage.write('idusuario', value);
+  set sistema(int valor) => _storage.write('sistema', valor);
+  int get sistema => _storage.read('sistema') ?? 1;
+
+  set idusuario(int valor) => _storage.write('idusuario', valor);
   int get idusuario => _storage.read('idusuario') ?? 0;
 
-  set idsocio(int value) => _storage.write('idsocio', value);
-  int get idsocio => _storage.read('idsocio') ?? 0;
+  set usuario(String valor) => _storage.write('usuario', valor);
+  String get usuario => _storage.read('usuario') ?? '';
 
-  set avatar(String value) => _storage.write('avatar', "$server/$value");
+  set nombre(String valor) => _storage.write('nombre', valor);
+  String get nombre => _storage.read('nombre');
+
+  set idpropietario(int valor) => _storage.write('idpropietario', valor);
+  int get idpropietario => _storage.read('idpropietario') ?? 1;
+
+  set avatar(String valor) => _storage.write('avatar', server + '/' + valor);
   String get avatar =>
-      _storage.read('avatar') ?? "$server/images/avatar-masculino.png";
+      _storage.read('avatar') ??
+      server + '/../site_media/assets/images/profile-image.png';
 
-  set nombre(String value) => _storage.write('nombre', value);
-  String get nombre => _storage.read('nombre') ?? '';
+  set nombreCompleto(String valor) => _storage.write('nombreCompleto', valor);
+  String get nombreCompleto => _storage.read('nombreCompleto') ?? '';
 
-  set email(String value) => _storage.write('email', value);
-  String get email => _storage.read('email') ?? '';
+  set correo(String valor) => _storage.write('correo', valor);
+  String get correo => _storage.read('correo') ?? '';
+
+  set tipoUsuario(String valor) => _storage.write('tipoUsuario', valor);
+  String get tipoUsuario => _storage.read('tipoUsuario') ?? 'Propietario';
 }
