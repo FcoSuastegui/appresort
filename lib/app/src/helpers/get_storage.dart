@@ -1,4 +1,5 @@
 import 'package:get_storage/get_storage.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 class GetStorages {
   GetStorages._internal();
@@ -8,6 +9,7 @@ class GetStorages {
   GetStorage _storage = GetStorage();
 
   Future<void> init() async => await GetStorage.init();
+  String validarToken () => !JwtDecoder.isExpired(token) ? page : '/';
   Future<void> clear() async => await _storage.erase();
 
   // Setter y getters de datos

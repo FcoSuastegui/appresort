@@ -1,3 +1,4 @@
+import 'package:appresort/app/src/helpers/get_storage.dart';
 import 'package:appresort/app/src/themes/app_theme.dart';
 import 'package:appresort/app/src/themes/size_config.dart';
 import 'package:appresort/app/src/views/navigation_bar/controller/navigation_bar_controller.dart';
@@ -10,6 +11,7 @@ class NavigationBarView extends GetView<NavigationBarController> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    GetStorages.inst.page = routeName;
     return Obx(
       () => Scaffold(
         body: controller.page[controller.index],

@@ -11,7 +11,7 @@ class AppThemeData {
       brightness: Brightness.light,
       centerTitle: false,
       iconTheme: IconThemeData(
-        color: AppTheme.kIconColor,
+        color: Colors.white,
       ),
       textTheme: GoogleFonts.quicksandTextTheme(
         TextTheme(
@@ -19,7 +19,7 @@ class AppThemeData {
         ),
       ),
     ),
-    canvasColor: AppTheme.kGreenBackground,
+    canvasColor: Colors.white,
     textTheme: GoogleFonts.quicksandTextTheme(),
     unselectedWidgetColor: AppTheme.kPrimaryColor,
     toggleableActiveColor: AppTheme.kPrimaryColor,

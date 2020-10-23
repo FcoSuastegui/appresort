@@ -10,7 +10,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<HomeController>(
-      init: HomeController(),
+      init: HomeController.instance,
       builder: (controller) => Scaffold(
         backgroundColor: Colors.white,
         body: SingleChildScrollView(

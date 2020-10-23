@@ -4,22 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
+  HomeController._internal();
+  static HomeController _instance = HomeController._internal();
+  static HomeController get instance => _instance;
+
   List<CardDefault> accesoRapido = [
     CardDefault(
       text: 'Reglamentos',
       icon: Icons.info,
-      onPress: () => Get.toNamed('reglamento'),
+      onPress: () => Get.toNamed('/reglamento'),
       left: 0.0,
     ),
     CardDefault(
       text: 'Asambleas',
       icon: Icons.gavel,
-      onPress: () => Get.toNamed('asablea'),
+      onPress:() => Get.offAllNamed('/navigation-bar'),
     ),
     CardDefault(
       text: 'Saldos',
       icon: Icons.attach_money,
-      onPress: () => Get.toNamed('saldo'),
+      onPress: () => Get.toNamed('/saldo'),
       right: 0.0,
     ),
   ];

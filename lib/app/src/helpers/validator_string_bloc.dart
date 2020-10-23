@@ -18,7 +18,7 @@ class ValidatorStringBloc {
           ? null
           : 'Número de celular no válido';
 
-  static String staticonlyNumber(String textField) =>
+  static String onlyNumber(String textField) =>
       RegExp(r'^[0-9]+$').hasMatch(textField) ? null : 'Sólo número';
 
   static String validateText(String textField) =>
@@ -57,7 +57,7 @@ class ValidatorStringBloc {
   static String validateCardCvv(String textField) =>
       (textField.length == 3) ? null : 'CVV incorrecto';
 
-  static validateCardValidThru(String textField) =>
+  static String validateCardValidThru(String textField) =>
       RegExp(r'^(0[1-9]|1[0-2])\/([2-9][0-9])$').hasMatch(textField)
           ? null
           : 'ValidThru incorrecto';

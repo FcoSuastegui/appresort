@@ -14,6 +14,12 @@ class NavigationBarController extends GetxController {
 
   void selectIndex(int index) => _index.value = index;
 
+  @override
+  void onInit() {
+    _index.value = 0; 
+    super.onInit();
+  }
+
   List<Widget> page = [
     HomeView(),
     HomeView(),

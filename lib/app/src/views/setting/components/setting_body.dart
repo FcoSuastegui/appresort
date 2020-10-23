@@ -1,5 +1,6 @@
 import 'package:appresort/app/src/helpers/get_storage.dart';
 import 'package:appresort/app/src/themes/app_theme.dart';
+import 'package:appresort/app/src/widgets/Alerts/alert_actions.dart';
 import 'package:appresort/app/src/widgets/Linner/linner_container.dart';
 import 'package:appresort/app/src/widgets/ListTile/list_tile_default.dart';
 import 'package:flutter/material.dart';
@@ -105,7 +106,9 @@ class SettingBody extends StatelessWidget {
                   ListTileDefault(
                     text: 'Cerrar sesión',
                     trailing: Icons.exit_to_app,
-                    onPress: () => {},
+                    onPress: () async {
+                      await logout();
+                    },
                   )
                 ],
               ),
@@ -113,6 +116,19 @@ class SettingBody extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+
+  Future<void> logout() async {
+    await Get.dialog(
+      AlertAction(
+        title: "¿Deseas salir de la aplicación?",
+        onPress: () async {
+          await GetStorages.inst.clear();
+          GetStorages.inst.onboarding = true;
+          Get.offAllNamed('/');
+        },
+      ),
     );
   }
 }

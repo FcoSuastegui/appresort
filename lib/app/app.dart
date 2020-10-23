@@ -1,3 +1,4 @@
+import 'package:appresort/app/src/helpers/get_storage.dart';
 import 'package:appresort/app/src/routes/routes.dart';
 import 'package:appresort/app/src/themes/app_theme_data.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ class App extends StatelessWidget {
     return GetMaterialApp(
       title: "App Resort",
       debugShowCheckedModeBanner: false,
-      initialRoute: '/onboarding',
+      initialRoute: GetStorages.inst.validarToken(),
       defaultTransition: Transition.cupertino,
       getPages: Routes.inst.routes,
       theme: AppThemeData.themeData,

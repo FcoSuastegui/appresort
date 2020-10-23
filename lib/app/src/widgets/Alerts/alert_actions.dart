@@ -1,3 +1,4 @@
+import 'package:appresort/app/src/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class AlertAction extends StatelessWidget {
@@ -38,7 +39,7 @@ class AlertAction extends StatelessWidget {
                           padding: EdgeInsets.all(10),
                           margin: EdgeInsets.only( left: 0, right: 5, top: 20, bottom: 0),
                           decoration: BoxDecoration(
-                            color: Colors.teal[800], 
+                            color: AppTheme.kPrimaryColor, 
                             borderRadius:BorderRadius.all(Radius.circular(100))
                           ),
                           child: Text(

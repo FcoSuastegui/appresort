@@ -41,7 +41,7 @@ class LoginBloc extends FormBloc<String, String> {
       GetStorages.inst.correo = user.correo;
       GetStorages.inst.idpropietario = user.idpropietario;
       GetStorages.inst.sistema = user.sistema;
-      GetStorages.inst.page = GetStorages.inst.onboarding ? '/onboarding' : '/home';
+      GetStorages.inst.page = GetStorages.inst.onboarding ? '/onboarding' : '/navigation-bar';
       emitSuccess();
     } else {
       emitFailure(failureResponse: response.message);
