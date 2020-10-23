@@ -8,6 +8,8 @@ import 'package:appresort/app/src/views/navigation_bar/bindings/navigation_bar_b
 import 'package:appresort/app/src/views/navigation_bar/navigation_bar_view.dart';
 import 'package:appresort/app/src/views/onboarding/bindings/onboarding_binding.dart';
 import 'package:appresort/app/src/views/onboarding/onboarding_view.dart';
+import 'package:appresort/app/src/views/profile/binding/profile_binding.dart';
+import 'package:appresort/app/src/views/profile/profile_view.dart';
 import 'package:appresort/app/src/views/reglamento/bindings/reglamento_binding.dart';
 import 'package:appresort/app/src/views/reglamento/reglamento_view.dart';
 import 'package:appresort/app/src/views/saldos/bindings/saldos_binding.dart';
@@ -57,6 +59,11 @@ class Routes {
       name: PaymentView.routeName,
       page: () => PaymentView(),
     ),
+    GetPage(
+      name: ProfileView.routeName,
+      page: () => ProfileView(),
+      binding: ProfileBinding()
+    ),
   ];
 
   void goToPage(String page) {
@@ -69,6 +76,7 @@ class Routes {
       ListarCargosView.routeName,
       OxxoPayView.routeName,
       PaymentView.routeName,
+      ProfileView.routeName,
     ];
 
     pages.contains(page)

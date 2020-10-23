@@ -1,4 +1,5 @@
 import 'package:appresort/app/src/helpers/get_storage.dart';
+import 'package:appresort/app/src/routes/routes.dart';
 import 'package:appresort/app/src/themes/app_theme.dart';
 import 'package:appresort/app/src/widgets/Alerts/alert_actions.dart';
 import 'package:appresort/app/src/widgets/Linner/linner_container.dart';
@@ -94,7 +95,7 @@ class SettingBody extends StatelessWidget {
                   ListTileDefault(
                     text: 'Mi perfil',
                     trailing: Icons.arrow_forward,
-                    onPress: () => {},
+                    onPress: () => Routes.inst.goToPage("/profile"),
                   ),
                   LinnerContainer(top: 5.0),
                   ListTileDefault(
@@ -106,9 +107,7 @@ class SettingBody extends StatelessWidget {
                   ListTileDefault(
                     text: 'Cerrar sesión',
                     trailing: Icons.exit_to_app,
-                    onPress: () async {
-                      await logout();
-                    },
+                    onPress: () async => await logout(),
                   )
                 ],
               ),

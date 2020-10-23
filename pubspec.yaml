@@ -3,7 +3,7 @@ description: App para los condominios y villas de resort apapulco.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -26,7 +26,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
@@ -42,6 +41,7 @@ dependencies:
   flutter_icons: ^1.1.0
   url_launcher: ^5.7.7
   device_info: ^0.4.2
+  cached_network_image: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -52,7 +52,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -60,22 +59,15 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-  - assets/slides/slide_1.png
-  - assets/slides/slide_2.png
-  - assets/slides/slide_3.png
-  - assets/images/apleeks_01.png
-  - assets/images/imagen_no_disponible.png
-  - assets/images/oxxopay_brand.png
-  - assets/images/resort_banner.png
-  - assets/images/resort_logo.png
+    - assets/slides/slide_1.png
+    - assets/slides/slide_2.png
+    - assets/slides/slide_3.png
+    - assets/images/apleeks_01.png
+    - assets/images/imagen_no_disponible.png
+    - assets/images/oxxopay_brand.png
+    - assets/images/resort_banner.png
+    - assets/images/resort_logo.png
 
-  #   - images/a_dot_ham.jpeg
-
-  # An image asset can refer to one or more resolution-specific "variants", see
-  # https://flutter.dev/assets-and-images/#resolution-aware.
-
-  # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
@@ -93,6 +85,4 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
+

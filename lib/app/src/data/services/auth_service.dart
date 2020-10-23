@@ -32,4 +32,29 @@ class AuthService {
     }
     return respuesta;
   }
+
+	Future<ResponseModel> profile({ int idusuario, String token }) async {
+    final ResponseModel request = ResponseModel(
+      status: false,
+      message: '',
+    );
+    try {
+      final Response response = await Network.inst.post(
+        route: 'datosgenerales',
+        data: { "idusuario": idusuario, "token": token }
+      );
+      if (response.statusCode == 200) {
+        final ResponseModel body = ResponseModel.fromJson(response.data);
+        if (body.status) {
+          request.status = body.status;
+          request.data = body.data;
+        } else {
+          request.message = body.message;
+        }
+      }
+    } on DioError catch (e) {
+      request.message = e.error.toString();
+    }
+    return request;
+  }
 }
