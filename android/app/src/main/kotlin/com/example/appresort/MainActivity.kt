@@ -1,4 +1,4 @@
-package com.example.appresort
+package apleeks.resort.app
 
 import io.flutter.embedding.android.FlutterActivity
 

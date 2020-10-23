@@ -15,6 +15,10 @@ import 'package:appresort/app/src/views/reglamento/bindings/reglamento_binding.d
 import 'package:appresort/app/src/views/reglamento/reglamento_view.dart';
 import 'package:appresort/app/src/views/saldos/bindings/saldos_binding.dart';
 import 'package:appresort/app/src/views/saldos/saldos_view.dart';
+import 'package:appresort/app/src/views/services/services_view.dart';
+import 'package:appresort/app/src/views/tickets/bindings/ticket_binding.dart';
+import 'package:appresort/app/src/views/tickets/ticket_add_view.dart';
+import 'package:appresort/app/src/views/tickets/ticket_view.dart';
 import 'package:get/get.dart';
 
 class Routes {
@@ -61,13 +65,25 @@ class Routes {
       page: () => PaymentView(),
     ),
     GetPage(
-      name: ProfileView.routeName,
-      page: () => ProfileView(),
-      binding: ProfileBinding()
-    ),
+        name: ProfileView.routeName,
+        page: () => ProfileView(),
+        binding: ProfileBinding()),
     GetPage(
       name: PassWordView.routeName,
       page: () => PassWordView(),
+    ),
+    GetPage(
+      name: ServicesView.routeName,
+      page: () => ServicesView(),
+    ),
+    GetPage(
+      name: TicketView.routeName,
+      page: () => TicketView(),
+      binding: TicketBinding(),
+    ),
+    GetPage(
+      name: TicketAddView.routeName,
+      page: () => TicketAddView(),
     ),
   ];
 
@@ -83,6 +99,9 @@ class Routes {
       PaymentView.routeName,
       ProfileView.routeName,
       PassWordView.routeName,
+      ServicesView.routeName,
+      TicketView.routeName,
+      TicketAddView.routeName,
     ];
 
     pages.contains(page)

@@ -1,4 +1,4 @@
-/* import 'package:midesarrollo/src/helpers/colors.dart';
+import 'package:appresort/app/src/themes/app_theme.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -28,12 +28,12 @@ class DropSearchField extends StatelessWidget {
         dropdownSearchDecoration: InputDecoration(
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: CustomColors.borderColor,
+              color: AppTheme.kSecondColor,
             ),
           ),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: CustomColors.borderColor,
+              color: AppTheme.kSecondColor,
             ),
           ),
           labelStyle: GoogleFonts.lato(
@@ -54,4 +54,3 @@ class DropSearchField extends StatelessWidget {
     );
   }
 }
- */

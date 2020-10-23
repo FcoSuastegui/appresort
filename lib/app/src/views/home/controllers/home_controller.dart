@@ -41,13 +41,13 @@ class HomeController extends GetxController {
       text: 'Servicios',
       bottom: 10.0,
       trailing: Icons.room_service,
-      onPress: () => Routes.inst.goToPage("servicio"),
+      onPress: () => Routes.inst.goToPage("/services"),
     ),
     ListTileDefault(
       text: 'Tickets',
       bottom: 10.0,
       trailing: Icons.headset_mic,
-      onPress: () => Routes.inst.goToPage("ticket"),
+      onPress: () => Routes.inst.goToPage("/ticket"),
     ),
     ListTileDefault(
       text: 'Encuesta',
