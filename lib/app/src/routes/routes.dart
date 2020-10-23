@@ -1,3 +1,4 @@
+import 'package:appresort/app/src/helpers/helpers.dart';
 import 'package:appresort/app/src/views/conekta/oxxo-pay/oxxo_pay_view.dart';
 import 'package:appresort/app/src/views/conekta/payment/payment_view.dart';
 import 'package:appresort/app/src/views/listar-cargos/bindings/listar_cargos_binding.dart';
@@ -57,4 +58,23 @@ class Routes {
       page: () => PaymentView(),
     ),
   ];
+
+  void goToPage(String page) {
+    List<String> pages = [
+      LoginView.routeName,
+      OnBoardingView.routeName,
+      NavigationBarView.routeName,
+      ReglamentoView.routeName,
+      SaldosView.routeName,
+      ListarCargosView.routeName,
+      OxxoPayView.routeName,
+      PaymentView.routeName,
+    ];
+
+    pages.contains(page)
+        ? Get.toNamed(page)
+        : Helpers.error(
+            message: "El módulo no esta disponible o no tienes acceso a ello.",
+          );
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:appresort/app/src/data/models/cargo_model.dart';
+import 'package:appresort/app/src/routes/routes.dart';
 import 'package:appresort/app/src/views/listar-cargos/components/listar_cargos.dart';
 import 'package:appresort/app/src/views/listar-cargos/controller/listar_cargos_controller.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,7 @@ class ListarCargosBody extends GetView<ListarCargosController> {
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
                       Get.back();
-                      Get.toNamed('/oxxo-pay');
+                      Routes.inst.goToPage("/oxxo-pay");
                     },
                     child: Container(
                       width: Get.width,
@@ -81,7 +82,7 @@ class ListarCargosBody extends GetView<ListarCargosController> {
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
                       Get.back();
-                      Get.toNamed('/payment');
+                      Routes.inst.goToPage('/payment');
                     },
                     child: Container(
                       width: Get.width,

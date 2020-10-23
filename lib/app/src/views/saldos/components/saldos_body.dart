@@ -1,4 +1,5 @@
 import 'package:appresort/app/src/helpers/helpers.dart';
+import 'package:appresort/app/src/routes/routes.dart';
 import 'package:appresort/app/src/views/saldos/controller/saldo_controller.dart';
 import 'package:appresort/app/src/widgets/ListTile/list_tile_default.dart';
 import 'package:flutter/material.dart';
@@ -33,9 +34,7 @@ class SaldosBody extends GetView<SaldoController> {
             text: 'Pago en línea',
             trailing: Icons.payment,
             bottom: 10.0,
-            onPress: () {
-              Get.toNamed('/listar-cargos');
-            },
+            onPress: () => Routes.inst.goToPage("/listar-cargos"),
           ),
           ListTileDefault(
             text: 'Estado de cuenta',
@@ -44,8 +43,8 @@ class SaldosBody extends GetView<SaldoController> {
             onPress: () async {
               final file = await controller.estadoCuenta();
               file.isNotEmpty
-                ? Helpers.launchInBrowser(file)
-                : Helpers.error(message: "Hubó un error al cargar el archivo");
+                  ? Helpers.launchInBrowser(file)
+                  : Helpers.error(message: "Hubó un error al cargar el archivo");
             },
           ),
           ListTileDefault(
@@ -53,7 +52,7 @@ class SaldosBody extends GetView<SaldoController> {
             trailing: Icons.work,
             color: Colors.grey,
             bottom: 10.0,
-            onPress:() => Get.offAllNamed('/navigation-bar'),
+            onPress: () => Routes.inst.goToPage("page"),
           ),
         ],
       ),
