@@ -101,7 +101,7 @@ class SettingBody extends StatelessWidget {
                   ListTileDefault(
                     text: 'Cambiar contraseña',
                     trailing: Icons.lock,
-                    onPress: () => {},
+                    onPress: () => Routes.inst.goToPage("/password"),
                   ),
                   LinnerContainer(top: 5.0),
                   ListTileDefault(

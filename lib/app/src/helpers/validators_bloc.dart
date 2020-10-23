@@ -1,8 +1,10 @@
-class ValidatorStringBloc {
-  static final ValidatorStringBloc _validatorStringBloc =
-      new ValidatorStringBloc._internal();
-  factory ValidatorStringBloc() => _validatorStringBloc;
-  ValidatorStringBloc._internal();
+import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+
+class ValidatorsBloc {
+  static final ValidatorsBloc _validatorsBloc =
+      new ValidatorsBloc._internal();
+  factory ValidatorsBloc() => _validatorsBloc;
+  ValidatorsBloc._internal();
 
   static String required(String textField) =>
       (textField == null || textField.isEmpty) ? 'El campo es requerido' : null;
@@ -61,4 +63,7 @@ class ValidatorStringBloc {
       RegExp(r'^(0[1-9]|1[0-2])\/([2-9][0-9])$').hasMatch(textField)
           ? null
           : 'ValidThru incorrecto';
+
+  static Validator<String> confirmPassword( TextFieldBloc password ) => 
+    ( String passwordConfirm ) => ( passwordConfirm != password.value ) ? "Debe ser igual a la contraseña" : null;
 }

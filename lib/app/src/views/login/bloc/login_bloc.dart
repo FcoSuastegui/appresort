@@ -2,15 +2,15 @@ import 'package:appresort/app/src/data/models/response_model.dart';
 import 'package:appresort/app/src/data/models/user_model.dart';
 import 'package:appresort/app/src/data/services/auth_service.dart';
 import 'package:appresort/app/src/helpers/get_storage.dart';
-import 'package:appresort/app/src/helpers/validator_string_bloc.dart';
+import 'package:appresort/app/src/helpers/validators_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class LoginBloc extends FormBloc<String, String> {
   final username = TextFieldBloc(validators: [
-    ValidatorStringBloc.required,
-    ValidatorStringBloc.numeroCelular
+    ValidatorsBloc.required,
+    ValidatorsBloc.numeroCelular
   ]);
-  final password = TextFieldBloc(validators: [ValidatorStringBloc.required]);
+  final password = TextFieldBloc(validators: [ValidatorsBloc.required]);
 
   LoginBloc() {
     addFieldBlocs(fieldBlocs: [username, password]);

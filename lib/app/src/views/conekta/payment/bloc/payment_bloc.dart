@@ -3,7 +3,7 @@ import 'package:appresort/app/src/data/conekta/conekta_model.dart';
 import 'package:appresort/app/src/data/conekta/payment_model.dart';
 import 'package:appresort/app/src/data/services/conekta_service.dart';
 import 'package:appresort/app/src/helpers/get_storage.dart';
-import 'package:appresort/app/src/helpers/validator_string_bloc.dart';
+import 'package:appresort/app/src/helpers/validators_bloc.dart';
 import 'package:appresort/app/src/views/listar-cargos/controller/listar_cargos_controller.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:get/get.dart';
@@ -14,28 +14,28 @@ class PaymentBloc extends FormBloc<String, String> {
 
   // Datos generales
   final nombreCompleto =
-      TextFieldBloc(validators: [ValidatorStringBloc.required]);
+      TextFieldBloc(validators: [ValidatorsBloc.required]);
   final correo = TextFieldBloc(validators: [
-    ValidatorStringBloc.required,
-    ValidatorStringBloc.emailFormat
+    ValidatorsBloc.required,
+    ValidatorsBloc.emailFormat
   ]);
   final celular = TextFieldBloc(validators: [
-    ValidatorStringBloc.required,
-    ValidatorStringBloc.numeroCelular,
+    ValidatorsBloc.required,
+    ValidatorsBloc.numeroCelular,
   ]);
 
   // Datos de tarjeta
   final cardNumber = TextFieldBloc(validators: [
-    ValidatorStringBloc.required,
-    ValidatorStringBloc.validateCardNumber
+    ValidatorsBloc.required,
+    ValidatorsBloc.validateCardNumber
   ]);
   final expired = TextFieldBloc(validators: [
-    ValidatorStringBloc.required,
-    ValidatorStringBloc.validateCardValidThru,
+    ValidatorsBloc.required,
+    ValidatorsBloc.validateCardValidThru,
   ]);
   final cvc = TextFieldBloc(validators: [
-    ValidatorStringBloc.onlyNumber,
-    ValidatorStringBloc.validateCardCvv
+    ValidatorsBloc.onlyNumber,
+    ValidatorsBloc.validateCardCvv
   ]);
 
   PaymentBloc() {

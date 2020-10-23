@@ -8,6 +8,7 @@ import 'package:appresort/app/src/views/navigation_bar/bindings/navigation_bar_b
 import 'package:appresort/app/src/views/navigation_bar/navigation_bar_view.dart';
 import 'package:appresort/app/src/views/onboarding/bindings/onboarding_binding.dart';
 import 'package:appresort/app/src/views/onboarding/onboarding_view.dart';
+import 'package:appresort/app/src/views/password/password_view.dart';
 import 'package:appresort/app/src/views/profile/binding/profile_binding.dart';
 import 'package:appresort/app/src/views/profile/profile_view.dart';
 import 'package:appresort/app/src/views/reglamento/bindings/reglamento_binding.dart';
@@ -64,6 +65,10 @@ class Routes {
       page: () => ProfileView(),
       binding: ProfileBinding()
     ),
+    GetPage(
+      name: PassWordView.routeName,
+      page: () => PassWordView(),
+    ),
   ];
 
   void goToPage(String page) {
@@ -77,6 +82,7 @@ class Routes {
       OxxoPayView.routeName,
       PaymentView.routeName,
       ProfileView.routeName,
+      PassWordView.routeName,
     ];
 
     pages.contains(page)

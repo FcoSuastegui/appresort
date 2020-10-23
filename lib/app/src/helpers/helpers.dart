@@ -26,11 +26,13 @@ class Helpers {
   static Future<void> success({
     String title: 'App Resort',
     @required String message,
+    int duration = 1500,
   }) async {
     if (!Get.isSnackbarOpen) {
       Get.snackbar(
         title,
         message,
+        duration: Duration(milliseconds: duration),
         backgroundColor: Colors.green.withOpacity(0.8),
         colorText: Colors.white,
       );
@@ -40,11 +42,13 @@ class Helpers {
   static Future<void> error({
     String title: 'App Resort',
     @required String message,
+    int duration = 1500,
   }) async {
     if (!Get.isSnackbarOpen) {
       Get.snackbar(
         title,
         message,
+        duration: Duration(milliseconds: duration),
         backgroundColor: Colors.red.withOpacity(0.8),
         colorText: Colors.white,
       );
@@ -54,11 +58,13 @@ class Helpers {
   static Future<void> warning({
     String title: 'App Resort',
     @required String message,
+    int duration = 1500,
   }) async {
     if (!Get.isSnackbarOpen) {
       Get.snackbar(
         title,
         message,
+        duration: Duration(milliseconds: duration),
         backgroundColor: Colors.yellow.withOpacity(0.8),
         colorText: Colors.white,
       );
