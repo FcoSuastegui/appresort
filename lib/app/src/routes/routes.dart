@@ -11,6 +11,8 @@ import 'package:appresort/app/src/views/onboarding/onboarding_view.dart';
 import 'package:appresort/app/src/views/password/password_view.dart';
 import 'package:appresort/app/src/views/profile/binding/profile_binding.dart';
 import 'package:appresort/app/src/views/profile/profile_view.dart';
+import 'package:appresort/app/src/views/publicacion/binding/publicacion_binding.dart';
+import 'package:appresort/app/src/views/publicacion/publicacion_view.dart';
 import 'package:appresort/app/src/views/reglamento/bindings/reglamento_binding.dart';
 import 'package:appresort/app/src/views/reglamento/reglamento_view.dart';
 import 'package:appresort/app/src/views/saldos/bindings/saldos_binding.dart';
@@ -85,6 +87,11 @@ class Routes {
       name: TicketAddView.routeName,
       page: () => TicketAddView(),
     ),
+    GetPage(
+      name: PublicacionView.routeName,
+      page: () => PublicacionView(),
+      binding: PublicacionBinding(),
+    ),
   ];
 
   void goToPage(String page) {
@@ -102,6 +109,7 @@ class Routes {
       ServicesView.routeName,
       TicketView.routeName,
       TicketAddView.routeName,
+      PublicacionView.routeName,
     ];
 
     pages.contains(page)

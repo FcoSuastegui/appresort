@@ -19,7 +19,7 @@ class HomeController extends GetxController {
     CardDefault(
       text: 'Asambleas',
       icon: Icons.gavel,
-      onPress:() => Routes.inst.goToPage('page'),
+      onPress:() => Routes.inst.goToPage(''),
     ),
     CardDefault(
       text: 'Saldos',
@@ -35,7 +35,7 @@ class HomeController extends GetxController {
       top: 10.0,
       bottom: 10.0,
       trailing: Icons.book,
-      onPress: () => Routes.inst.goToPage("publicacion"),
+      onPress: () => Routes.inst.goToPage("/publicacion"),
     ),
     ListTileDefault(
       text: 'Servicios',
@@ -53,7 +53,7 @@ class HomeController extends GetxController {
       text: 'Encuesta',
       bottom: 10.0,
       trailing: Icons.live_help,
-      onPress: () => Routes.inst.goToPage("ticket"),
+      onPress: () => Routes.inst.goToPage(""),
     ),
   ];
 }
