@@ -2,6 +2,7 @@ import 'package:appresort/app/src/helpers/get_storage.dart';
 import 'package:appresort/app/src/themes/app_theme.dart';
 import 'package:appresort/app/src/themes/size_config.dart';
 import 'package:appresort/app/src/views/navigation_bar/controller/navigation_bar_controller.dart';
+import 'package:appresort/app/src/views/notification/controller/notification_controller.dart';
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -26,9 +27,14 @@ class NavigationBarView extends GetView<NavigationBarController> {
             ),
             BottomNavigationBarItem(
               icon: Badge(
-                badgeContent: Text(
-                  "2",
-                  style: TextStyle(color: Colors.white, fontSize: 10.0),
+                badgeContent: GetBuilder<NotificationController>(
+                  init: NotificationController.instance,
+                  builder: (_) => Obx(
+                    () => Text(
+                      _.counter.value.toString(),
+                      style: TextStyle(fontSize: 10.0, color: Colors.white),
+                    ),
+                  ),
                 ),
                 child: Icon(
                   Icons.notifications,

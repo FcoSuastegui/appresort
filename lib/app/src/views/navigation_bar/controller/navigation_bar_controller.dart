@@ -1,4 +1,5 @@
 import 'package:appresort/app/src/views/home/home_view.dart';
+import 'package:appresort/app/src/views/notification/notification_view.dart';
 import 'package:appresort/app/src/views/setting/setting_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,7 +23,7 @@ class NavigationBarController extends GetxController {
 
   List<Widget> page = [
     HomeView(),
-    HomeView(),
+    NotificationView(),
     SettingView(),
   ];
 }

@@ -24,6 +24,7 @@ if (flutterVersionName == null) {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
@@ -38,7 +39,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "apleeks.resort.app"
+        applicationId "app.resort.apleeks.com"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
@@ -58,6 +59,26 @@ flutter {
     source '../..'
 }
 
+afterEvaluate {
+    mergeReleaseJniLibFolders.doLast {
+        def archTypes = ["arm-release", "arm64-release"]
+        archTypes.forEach { item ->
+            copy {
+                from zipTree("$flutterRoot/bin/cache/artifacts/engine/android-$item/flutter.jar")
+                include 'lib/*/libflutter.so'
+                into "$buildDir/intermediates/jniLibs/release/"
+                eachFile {
+                    it.path = it.path.replaceFirst("lib/", "")
+                }
+            }
+        }
+    }
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation platform('com.google.firebase:firebase-bom:25.12.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-messaging:20.3.0'
 }

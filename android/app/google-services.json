@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "117833750177",
+    "firebase_url": "https://resort-app-ece1d.firebaseio.com",
+    "project_id": "resort-app-ece1d",
+    "storage_bucket": "resort-app-ece1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117833750177:android:4f49e4e3555c578edb82e0",
+        "android_client_info": {
+          "package_name": "app.resort.apleeks.com"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "117833750177-rcqotdld6aufgbuq47k92khs0fh0u07e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.resort.apleeks.com",
+            "certificate_hash": "f69bca265b5e0fb60052f070d52937ff0615fdfd"
+          }
+        },
+        {
+          "client_id": "117833750177-q1td4sfn2mkkajqltropdh9s4jai8tkr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCa8BZjpPbGuZ4V2QUoVc1aWU3Xjikx990"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "117833750177-q1td4sfn2mkkajqltropdh9s4jai8tkr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "117833750177-8dbergid09m5fvu3h20s91653huif7q5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "app.resort.apleeks.com"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

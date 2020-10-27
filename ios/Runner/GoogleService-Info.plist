@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>117833750177-8dbergid09m5fvu3h20s91653huif7q5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.117833750177-8dbergid09m5fvu3h20s91653huif7q5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB09hEI2hTglsvQ0aznjA2azEQJbEqWR4I</string>
+	<key>GCM_SENDER_ID</key>
+	<string>117833750177</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>app.resort.apleeks.com</string>
+	<key>PROJECT_ID</key>
+	<string>resort-app-ece1d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>resort-app-ece1d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:117833750177:ios:b21a22e794c95180db82e0</string>
+	<key>DATABASE_URL</key>
+	<string>https://resort-app-ece1d.firebaseio.com</string>
+</dict>
+</plist>

@@ -42,7 +42,7 @@ class HomeBody extends StatelessWidget {
             LinnerContainer(
               width: 0.20,
               top: 10.0,
-              buttom: 30.0,
+              bottom: 30.0,
             ),
             Text(
               'Accesos directos:',
