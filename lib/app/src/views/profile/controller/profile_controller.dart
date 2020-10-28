@@ -29,7 +29,6 @@ class ProfileController extends GetxController {
     if (request.status) {
       _perfil = PerfilModel.fromJson(request.data);
     }
-    print(_loading.value);
     _loading(false);
   }
 }

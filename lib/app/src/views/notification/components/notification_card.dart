@@ -20,6 +20,7 @@ class NotificationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTileNotification(
       text: notificacion.descripcion,
+      onPress: onTap,
       leading: notificacion.status
           ? Icon(Icons.done, color: AppTheme.kIconColor)
           : Icon(Icons.done_all, color: AppTheme.kIconColor),

@@ -6,6 +6,7 @@ import 'package:appresort/app/src/views/listar-cargos/listar_cargos_view.dart';
 import 'package:appresort/app/src/views/login/login_view.dart';
 import 'package:appresort/app/src/views/navigation_bar/bindings/navigation_bar_binding.dart';
 import 'package:appresort/app/src/views/navigation_bar/navigation_bar_view.dart';
+import 'package:appresort/app/src/views/notification/notification_content_view.dart';
 import 'package:appresort/app/src/views/onboarding/bindings/onboarding_binding.dart';
 import 'package:appresort/app/src/views/onboarding/onboarding_view.dart';
 import 'package:appresort/app/src/views/password/password_view.dart';
@@ -67,9 +68,10 @@ class Routes {
       page: () => PaymentView(),
     ),
     GetPage(
-        name: ProfileView.routeName,
-        page: () => ProfileView(),
-        binding: ProfileBinding()),
+      name: ProfileView.routeName,
+      page: () => ProfileView(),
+      binding: ProfileBinding(),
+    ),
     GetPage(
       name: PassWordView.routeName,
       page: () => PassWordView(),
@@ -91,6 +93,15 @@ class Routes {
       name: PublicacionView.routeName,
       page: () => PublicacionView(),
       binding: PublicacionBinding(),
+    ),
+    GetPage(
+      name: PublicacionView.routeName,
+      page: () => PublicacionView(),
+      binding: PublicacionBinding(),
+    ),
+    GetPage(
+      name: NotificationContentView.routeName,
+      page: () => NotificationContentView(),
     ),
   ];
 

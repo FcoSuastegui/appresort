@@ -1,3 +1,5 @@
+import 'package:appresort/app/src/data/services/token_service.dart';
+import 'package:appresort/app/src/helpers/get_storage.dart';
 import 'package:appresort/app/src/views/notification/controller/notification_controller.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:device_info/device_info.dart';
@@ -33,7 +35,7 @@ class FireBaseController {
         sound: true,
         badge: true,
         alert: true,
-        provisional: true,
+        provisional: false,
       ),
     );
     _firebaseMessaging.onIosSettingsRegistered
@@ -55,8 +57,11 @@ class FireBaseController {
       device = iosInfo.utsname.machine;
       print('Running on ${iosInfo.utsname.machine}');
     }
-    //await TokenService().sendToken(device, token, GetStorages.inst.idusuario);
-    print(token);
+     await TokenService.inst.sendToken(
+      idusuario: GetStorages.inst.idusuario,
+      token: token,
+    );
+    print("$device \n $token ");
   }
 
   static Future<dynamic> backGroundMessage(Map<String, dynamic> message) async {
