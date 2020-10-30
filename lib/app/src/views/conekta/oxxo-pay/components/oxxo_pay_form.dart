@@ -1,6 +1,5 @@
 import 'package:appresort/app/src/widgets/Alerts/custom_alert.dart';
 import 'package:flutter/material.dart';
-import 'package:appresort/app/src/helpers/formatters.dart';
 import 'package:appresort/app/src/views/conekta/oxxo-pay/bloc/oxxo_bloc.dart';
 import 'package:appresort/app/src/widgets/Buttons/button_submit_align.dart';
 import 'package:appresort/app/src/widgets/Fields/input_text_field_bloc.dart';
@@ -60,13 +59,10 @@ class OxxoPayForm extends StatelessWidget {
                   textFieldBloc: oxxo.celular,
                   keyboardType: TextInputType.phone,
                   labelText: 'Número de celular',
-                  inputFormatters: [
-                    MaskedTextInputFormatter(
-                      mask: 'xxx xxxx xxx',
-                      separator: ' ',
-                    ),
-                  ],
                   hintText: "744 1234 567",
+                  maxLength: 10,
+                  maxLengthEnforced: true,
+                  counterText: "",
                 ),
                 Container(
                   margin: EdgeInsets.only(bottom: 10.0, top: 20.0),

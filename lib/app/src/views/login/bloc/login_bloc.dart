@@ -1,3 +1,4 @@
+import 'package:appresort/app/controller/firebase_controller.dart';
 import 'package:appresort/app/src/data/models/response_model.dart';
 import 'package:appresort/app/src/data/models/user_model.dart';
 import 'package:appresort/app/src/data/services/auth_service.dart';
@@ -26,7 +27,7 @@ class LoginBloc extends FormBloc<String, String> {
   @override
   void onSubmitting() async {
     final ResponseModel response = await AuthService.inst.login(
-      username: username.value.replaceAll(' ', ''),
+      username: username.value,
       password: password.value,
     );
 
@@ -42,6 +43,7 @@ class LoginBloc extends FormBloc<String, String> {
       GetStorages.inst.idpropietario = user.idpropietario;
       GetStorages.inst.sistema = user.sistema;
       GetStorages.inst.page = GetStorages.inst.onboarding ? '/onboarding' : '/navigation-bar';
+      await FireBaseController.inst.init();
       emitSuccess();
     } else {
       emitFailure(failureResponse: response.message);

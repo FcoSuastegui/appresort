@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:appresort/app/src/helpers/formatters.dart';
 import 'package:appresort/app/src/helpers/get_storage.dart';
 import 'package:appresort/app/src/themes/app_theme.dart';
 import 'package:appresort/app/src/views/login/bloc/login_bloc.dart';
@@ -60,13 +59,10 @@ class LoginForm extends StatelessWidget {
                           textFieldBloc: login.username,
                           keyboardType: TextInputType.phone,
                           labelText: 'Usuario',
-                          inputFormatters: [
-                            MaskedTextInputFormatter(
-                              mask: 'xxx xxxx xxx',
-                              separator: ' ',
-                            ),
-                          ],
                           hintText: "744 1234 567",
+                          maxLength: 10,
+                          maxLengthEnforced: true,
+                          counterText: "",
                         ),
                         InputTextFieldBloc(
                           suffixButton: SuffixButton.obscureText,

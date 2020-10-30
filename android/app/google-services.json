@@ -8,17 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:117833750177:android:4f49e4e3555c578edb82e0",
+        "mobilesdk_app_id": "1:117833750177:android:5e73ce6e1d7f8e80db82e0",
         "android_client_info": {
-          "package_name": "app.resort.apleeks.com"
+          "package_name": "com.apleeks.resort.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "117833750177-rcqotdld6aufgbuq47k92khs0fh0u07e.apps.googleusercontent.com",
+          "client_id": "117833750177-3qoqmia7vfo7o4lcmmlk5t55157e4hue.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "app.resort.apleeks.com",
+            "package_name": "com.apleeks.resort.app",
             "certificate_hash": "f69bca265b5e0fb60052f070d52937ff0615fdfd"
           }
         },

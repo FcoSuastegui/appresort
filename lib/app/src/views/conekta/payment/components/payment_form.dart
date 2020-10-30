@@ -1,4 +1,3 @@
-import 'package:appresort/app/src/helpers/formatters.dart';
 import 'package:appresort/app/src/views/conekta/payment/bloc/payment_bloc.dart';
 import 'package:appresort/app/src/widgets/Alerts/custom_alert.dart';
 import 'package:appresort/app/src/widgets/Fields/input_text_field_bloc.dart';
@@ -78,13 +77,10 @@ class PaymentForm extends StatelessWidget {
               textFieldBloc: bloc.celular,
               labelText: "Número de celular",
               hintText: '741 2345 678',
+              maxLength: 10,
+              counterText: '',
+              maxLengthEnforced: true,
               keyboardType: TextInputType.phone,
-              inputFormatters: [
-                MaskedTextInputFormatter(
-                  mask: 'xxx xxxx xxx',
-                  separator: ' ',
-                ),
-              ],
             ),
           ],
         ),
@@ -102,17 +98,11 @@ class PaymentForm extends StatelessWidget {
             InputTextFieldBloc(
               textFieldBloc: bloc.cardNumber,
               labelText: "Número de tarjeta",
-              hintText: 'xxxx xxxx xxxx xxxx',
+              hintText: 'xxxx-xxxx-xxxx-xxxx',
               keyboardType: TextInputType.phone,
-              maxLength: 19,
+              maxLength: 16,
               counterText: '',
               maxLengthEnforced: true,
-              inputFormatters: [
-                MaskedTextInputFormatter(
-                  mask: 'xxxx xxxx xxxx xxxx',
-                  separator: ' ',
-                ),
-              ],
             ),
             Container(
               margin: EdgeInsets.only(
@@ -127,17 +117,24 @@ class PaymentForm extends StatelessWidget {
                     child: Container(
                       margin: EdgeInsets.only(right: 10.0),
                       child: InputTextFieldBloc(
-                        textFieldBloc: bloc.expired,
-                        maxLength: 5,
+                        textFieldBloc: bloc.mes,
+                        maxLength: 2,
                         maxLengthEnforced: true,
-                        labelText: "Fecha expiración",
-                        hintText: "10/20",
-                        inputFormatters: [
-                          MaskedTextInputFormatter(
-                            mask: 'xx/xx',
-                            separator: '/',
-                          ),
-                        ],
+                        labelText: "Mes",
+                        counterText: "",
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Container(
+                      margin: EdgeInsets.only(right: 10.0),
+                      child: InputTextFieldBloc(
+                        textFieldBloc: bloc.anio,
+                        maxLength: 2,
+                        maxLengthEnforced: true,
+                        labelText: "Año",
+                        counterText: "",
                       ),
                     ),
                   ),
@@ -148,6 +145,7 @@ class PaymentForm extends StatelessWidget {
                       maxLength: 3,
                       maxLengthEnforced: true,
                       labelText: "CVV",
+                      counterText: "",
                     ),
                   )
                 ],

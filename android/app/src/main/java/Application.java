@@ -1,4 +1,4 @@
-package app.resort.apleeks.com;
+package com.apleeks.resort.app;
 
 import io.flutter.app.FlutterApplication;
 import io.flutter.plugin.common.PluginRegistry;

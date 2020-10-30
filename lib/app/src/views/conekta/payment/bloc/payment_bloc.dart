@@ -13,30 +13,47 @@ class PaymentBloc extends FormBloc<String, String> {
   final ListarCargosController controller = Get.find<ListarCargosController>();
 
   // Datos generales
-  final nombreCompleto =
-      TextFieldBloc(validators: [ValidatorsBloc.required]);
-  final correo = TextFieldBloc(validators: [
-    ValidatorsBloc.required,
-    ValidatorsBloc.emailFormat
-  ]);
+  final nombreCompleto = TextFieldBloc(
+    validators: [ValidatorsBloc.required],
+  );
+  final correo = TextFieldBloc(
+    validators: [
+      ValidatorsBloc.required,
+      ValidatorsBloc.emailFormat,
+    ],
+  );
   final celular = TextFieldBloc(validators: [
     ValidatorsBloc.required,
     ValidatorsBloc.numeroCelular,
   ]);
 
   // Datos de tarjeta
-  final cardNumber = TextFieldBloc(validators: [
-    ValidatorsBloc.required,
-    ValidatorsBloc.validateCardNumber
-  ]);
-  final expired = TextFieldBloc(validators: [
-    ValidatorsBloc.required,
-    ValidatorsBloc.validateCardValidThru,
-  ]);
-  final cvc = TextFieldBloc(validators: [
-    ValidatorsBloc.onlyNumber,
-    ValidatorsBloc.validateCardCvv
-  ]);
+  final cardNumber = TextFieldBloc(
+    validators: [
+      ValidatorsBloc.required,
+      ValidatorsBloc.validateCardNumber,
+    ],
+  );
+
+  final mes = TextFieldBloc(
+    validators: [
+      ValidatorsBloc.required,
+      ValidatorsBloc.monthFormate,
+    ],
+  );
+  final anio = TextFieldBloc(
+    validators: [
+      ValidatorsBloc.required,
+      ValidatorsBloc.yearFormate,
+    ],
+  );
+
+  final cvc = TextFieldBloc(
+    validators: [
+      ValidatorsBloc.onlyNumber,
+      ValidatorsBloc.validateCardCvv,
+    ],
+  );
 
   PaymentBloc() {
     addFieldBlocs(
@@ -45,7 +62,7 @@ class PaymentBloc extends FormBloc<String, String> {
     );
     addFieldBlocs(
       step: 1,
-      fieldBlocs: [cardNumber, expired, cvc],
+      fieldBlocs: [cardNumber, mes, anio,  cvc],
     );
   }
 
@@ -55,7 +72,8 @@ class PaymentBloc extends FormBloc<String, String> {
     correo?.close();
     celular?.close();
     cardNumber?.close();
-    expired?.close();
+    mes?.close();
+    anio?.close();
     cvc?.close();
     return super.close();
   }
@@ -65,15 +83,15 @@ class PaymentBloc extends FormBloc<String, String> {
     if (state.currentStep == 0) {
       emitSuccess();
     } else {
-      final expire = expired.value.split('/');
+      
 
       final ConektaModel token =
           await ConektaFlutterTokenizer().tokenizePaymentMethod(
         PaymentMethod(
           name: nombreCompleto.value,
           number: cardNumber.value,
-          expirationMonth: expire[0],
-          expirationYear: expire[1],
+          expirationMonth: mes.value,
+          expirationYear: anio.value,
           cvc: cvc.value,
         ),
       );
