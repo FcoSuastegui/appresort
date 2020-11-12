@@ -46,6 +46,7 @@ dependencies:
   dropdown_search: ^0.4.3
   esys_flutter_share: ^1.0.2
   firebase_messaging: ^7.0.3
+  flutter_multi_formatter: ^1.1.8
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,7 @@ flutter:
     - assets/images/oxxopay_brand.png
     - assets/images/resort_banner.png
     - assets/images/resort_logo.png
+    - assets/images/no_informacion.png
 
 
   # To add custom fonts to your application, add a fonts section here,

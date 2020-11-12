@@ -9,7 +9,8 @@ class LinnerContainer extends StatelessWidget {
     this.bottom = 10.0,
     this.left = 10.0,
     this.right = 10.0,
-    this.child, this.width,
+    this.child,
+    this.width = 0.40,
   });
 
   @override
@@ -17,7 +18,7 @@ class LinnerContainer extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.only(
-        bottom: bottom
+        bottom: bottom,
       ),
       margin: EdgeInsets.only(
         top: top,
@@ -28,7 +29,7 @@ class LinnerContainer extends StatelessWidget {
         color: Colors.white,
         border: Border(
           bottom: BorderSide(
-            width: 0.40,
+            width: width,
             color: Colors.black38,
           ),
         ),

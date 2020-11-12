@@ -7,11 +7,15 @@ import 'package:appresort/app/src/helpers/validators_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class LoginBloc extends FormBloc<String, String> {
-  final username = TextFieldBloc(validators: [
-    ValidatorsBloc.required,
-    ValidatorsBloc.numeroCelular
-  ]);
-  final password = TextFieldBloc(validators: [ValidatorsBloc.required]);
+  final username = TextFieldBloc(
+    validators: [
+      ValidatorsBloc.required,
+      ValidatorsBloc.numberFormate,
+    ],
+  );
+  final password = TextFieldBloc(
+    validators: [ValidatorsBloc.required],
+  );
 
   LoginBloc() {
     addFieldBlocs(fieldBlocs: [username, password]);
@@ -27,7 +31,7 @@ class LoginBloc extends FormBloc<String, String> {
   @override
   void onSubmitting() async {
     final ResponseModel response = await AuthService.inst.login(
-      username: username.value,
+      username: username.value.replaceAll(' ', ''),
       password: password.value,
     );
 
@@ -42,7 +46,8 @@ class LoginBloc extends FormBloc<String, String> {
       GetStorages.inst.correo = user.correo;
       GetStorages.inst.idpropietario = user.idpropietario;
       GetStorages.inst.sistema = user.sistema;
-      GetStorages.inst.page = GetStorages.inst.onboarding ? '/onboarding' : '/navigation-bar';
+      GetStorages.inst.page =
+          GetStorages.inst.onboarding ? '/onboarding' : '/navigation-bar';
       await FireBaseController.inst.init();
       emitSuccess();
     } else {

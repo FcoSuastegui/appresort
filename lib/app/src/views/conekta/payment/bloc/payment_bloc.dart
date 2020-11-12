@@ -24,29 +24,21 @@ class PaymentBloc extends FormBloc<String, String> {
   );
   final celular = TextFieldBloc(validators: [
     ValidatorsBloc.required,
-    ValidatorsBloc.numeroCelular,
+    ValidatorsBloc.numberFormate,
   ]);
 
   // Datos de tarjeta
   final cardNumber = TextFieldBloc(
     validators: [
       ValidatorsBloc.required,
-      ValidatorsBloc.validateCardNumber,
+      ValidatorsBloc.cardNumberFormate,
     ],
   );
 
-  final mes = TextFieldBloc(
-    validators: [
-      ValidatorsBloc.required,
-      ValidatorsBloc.monthFormate,
-    ],
-  );
-  final anio = TextFieldBloc(
-    validators: [
-      ValidatorsBloc.required,
-      ValidatorsBloc.yearFormate,
-    ],
-  );
+final expired = TextFieldBloc(validators: [
+    ValidatorsBloc.required,
+    ValidatorsBloc.fechaExpiracion,
+  ]);
 
   final cvc = TextFieldBloc(
     validators: [
@@ -62,7 +54,7 @@ class PaymentBloc extends FormBloc<String, String> {
     );
     addFieldBlocs(
       step: 1,
-      fieldBlocs: [cardNumber, mes, anio,  cvc],
+      fieldBlocs: [cardNumber, expired,  cvc],
     );
   }
 
@@ -72,8 +64,7 @@ class PaymentBloc extends FormBloc<String, String> {
     correo?.close();
     celular?.close();
     cardNumber?.close();
-    mes?.close();
-    anio?.close();
+    expired?.close();
     cvc?.close();
     return super.close();
   }
@@ -84,14 +75,15 @@ class PaymentBloc extends FormBloc<String, String> {
       emitSuccess();
     } else {
       
+       final expire = expired.value.split('/');
 
       final ConektaModel token =
           await ConektaFlutterTokenizer().tokenizePaymentMethod(
         PaymentMethod(
           name: nombreCompleto.value,
           number: cardNumber.value,
-          expirationMonth: mes.value,
-          expirationYear: anio.value,
+          expirationMonth: expire[0],
+          expirationYear: expire[1],
           cvc: cvc.value,
         ),
       );

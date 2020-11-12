@@ -21,7 +21,7 @@ class OxxoBloc extends FormBloc<String, String> {
   final celular = TextFieldBloc(
     validators: [
       ValidatorsBloc.required,
-      ValidatorsBloc.numeroCelular
+      ValidatorsBloc.numberFormate
     ],
   );
 
@@ -45,7 +45,7 @@ class OxxoBloc extends FormBloc<String, String> {
     final response = await ConektaService.inst.oxxoPago({
       "nombreCompleto": nombreCompleto.value,
       "correo": correo.value,
-      "celular": celular.value,
+      "celular": celular.value.replaceAll(' ', ''),
       "idcargo": controller.cargoSeleccionado.idcargo,
       "idpropietario": GetStorages.inst.idpropietario,
       "total": controller.total,

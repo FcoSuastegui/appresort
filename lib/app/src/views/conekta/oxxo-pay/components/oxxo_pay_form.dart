@@ -5,15 +5,14 @@ import 'package:appresort/app/src/widgets/Buttons/button_submit_align.dart';
 import 'package:appresort/app/src/widgets/Fields/input_text_field_bloc.dart';
 import 'package:appresort/app/src/widgets/Loading/loading.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 class OxxoPayForm extends StatelessWidget {
   const OxxoPayForm({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    NumberFormat moneda = NumberFormat.simpleCurrency();
     return BlocProvider(
       create: (context) => OxxoBloc(),
       child: Builder(
@@ -60,16 +59,18 @@ class OxxoPayForm extends StatelessWidget {
                   keyboardType: TextInputType.phone,
                   labelText: 'Número de celular',
                   hintText: "744 1234 567",
-                  maxLength: 10,
-                  maxLengthEnforced: true,
-                  counterText: "",
+                  inputFormatters: [
+                    MaskedInputFormater('### #### ###'),
+                  ],
                 ),
                 Container(
                   margin: EdgeInsets.only(bottom: 10.0, top: 20.0),
                   child: Align(
                     alignment: Alignment.bottomRight,
                     child: Text(
-                      "Total a pagar ${moneda.format(oxxo.controller.total)}",
+                      "Total a pagar ${oxxo.controller.total.toCurrencyString(
+                        leadingSymbol: MoneyInputFormatter.DOLLAR_SIGN,
+                      )}",
                     ),
                   ),
                 ),

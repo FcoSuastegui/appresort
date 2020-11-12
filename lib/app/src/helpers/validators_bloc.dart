@@ -70,7 +70,7 @@ class ValidatorsBloc {
       (textField.length == 3) ? null : 'CVV incorrecto';
 
   static String fechaExpiracion(String textField) =>
-      RegExp(r'^(0[1-9]|1[0-2])([2-9][0-9])$').hasMatch(textField)
+      RegExp(r'^(0[1-9]|1[0-2])\/([2-9][0-9])$').hasMatch(textField)
           ? null
           : 'Fecha incorrecto';
 

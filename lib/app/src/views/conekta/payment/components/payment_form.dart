@@ -4,8 +4,8 @@ import 'package:appresort/app/src/widgets/Fields/input_text_field_bloc.dart';
 import 'package:appresort/app/src/widgets/Loading/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
+import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 class PaymentForm extends StatelessWidget {
   const PaymentForm({Key key}) : super(key: key);
@@ -77,10 +77,8 @@ class PaymentForm extends StatelessWidget {
               textFieldBloc: bloc.celular,
               labelText: "Número de celular",
               hintText: '741 2345 678',
-              maxLength: 10,
-              counterText: '',
-              maxLengthEnforced: true,
               keyboardType: TextInputType.phone,
+              inputFormatters: [MaskedInputFormater('### #### ###')],
             ),
           ],
         ),
@@ -89,7 +87,6 @@ class PaymentForm extends StatelessWidget {
   }
 
   FormBlocStep _tarjetaStep(PaymentBloc bloc) {
-    NumberFormat moneda = NumberFormat.simpleCurrency();
     return FormBlocStep(
       title: Text('Pagar'),
       content: SingleChildScrollView(
@@ -98,11 +95,11 @@ class PaymentForm extends StatelessWidget {
             InputTextFieldBloc(
               textFieldBloc: bloc.cardNumber,
               labelText: "Número de tarjeta",
-              hintText: 'xxxx-xxxx-xxxx-xxxx',
+              hintText: 'xxxx xxxx xxxx xxxx',
               keyboardType: TextInputType.phone,
-              maxLength: 16,
-              counterText: '',
-              maxLengthEnforced: true,
+              inputFormatters: [
+                MaskedInputFormater('#### #### #### ####'),
+              ],
             ),
             Container(
               margin: EdgeInsets.only(
@@ -117,24 +114,12 @@ class PaymentForm extends StatelessWidget {
                     child: Container(
                       margin: EdgeInsets.only(right: 10.0),
                       child: InputTextFieldBloc(
-                        textFieldBloc: bloc.mes,
-                        maxLength: 2,
-                        maxLengthEnforced: true,
-                        labelText: "Mes",
-                        counterText: "",
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Container(
-                      margin: EdgeInsets.only(right: 10.0),
-                      child: InputTextFieldBloc(
-                        textFieldBloc: bloc.anio,
-                        maxLength: 2,
-                        maxLengthEnforced: true,
-                        labelText: "Año",
-                        counterText: "",
+                        textFieldBloc: bloc.expired,
+                        labelText: "Fecha expiración",
+                        hintText: "10/20",
+                        inputFormatters: [
+                          MaskedInputFormater('##/##'),
+                        ],
                       ),
                     ),
                   ),
@@ -142,10 +127,10 @@ class PaymentForm extends StatelessWidget {
                     child: InputTextFieldBloc(
                       textFieldBloc: bloc.cvc,
                       keyboardType: TextInputType.phone,
-                      maxLength: 3,
-                      maxLengthEnforced: true,
                       labelText: "CVV",
-                      counterText: "",
+                      inputFormatters: [
+                        MaskedInputFormater('###'),
+                      ],
                     ),
                   )
                 ],
@@ -156,7 +141,9 @@ class PaymentForm extends StatelessWidget {
               child: Align(
                 alignment: Alignment.bottomRight,
                 child: Text(
-                  "Total a pagar ${moneda.format(bloc.controller.total)}",
+                  "Total a pagar ${bloc.controller.total.toCurrencyString(
+                    leadingSymbol: MoneyInputFormatter.DOLLAR_SIGN,
+                  )}",
                   style: TextStyle(
                     color: Colors.black54,
                     fontSize: 16.0,

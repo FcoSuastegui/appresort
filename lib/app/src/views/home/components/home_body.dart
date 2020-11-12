@@ -40,9 +40,9 @@ class HomeBody extends StatelessWidget {
               ),
             ),
             LinnerContainer(
-              width: 0.20,
-              top: 10.0,
-              bottom: 30.0,
+              left: 0.0,
+              right: 0.0,
+              width: 0.30,
             ),
             Text(
               'Accesos directos:',
@@ -52,7 +52,9 @@ class HomeBody extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Column(children: controller.listItems),
+            Column(
+              children: controller.listItems,
+            ),
           ],
         ),
       ),
