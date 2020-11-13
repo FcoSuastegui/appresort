@@ -1,4 +1,5 @@
 import 'package:appresort/app/src/themes/app_theme.dart';
+import 'package:appresort/app/src/widgets/PdfViewer/pdf_viewer_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,6 +25,31 @@ class Informacion {
     ],
   );
 
+  static final terminos = Container(
+    margin: EdgeInsets.only(top: 20.0),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: <Widget>[
+        GestureDetector(
+          onTap: () async => await Get.dialog(
+            PdfViewerDialog(
+              path: "assets/documents/terminos-condiciones.pdf",
+              isAsset: true,
+              onTap: Get.back,
+            ),
+            barrierDismissible: false,
+          ),
+          child: Text(
+            "Términinos y Condiciones",
+            style: TextStyle(
+                color: AppTheme.kTextColor,
+                decoration: TextDecoration.underline),
+          ),
+        )
+      ],
+    ),
+  );
+
   static final banner = Container(
     margin: EdgeInsets.only(top: 0.0),
     child: Container(
@@ -38,7 +64,7 @@ class Informacion {
     ),
     width: double.infinity,
     decoration: BoxDecoration(
-      gradient: AppTheme.kPrimaryGradientColor
+      gradient: AppTheme.kPrimaryGradientColor,
     ),
   );
 }

@@ -1,5 +1,5 @@
 name: appresort
-description: App para los condominios y villas de resort apapulco.
+description: App para los condominios y villas de resort Acapulco.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `pub publish`. This is preferred for private packages.
@@ -73,6 +73,7 @@ flutter:
     - assets/images/resort_banner.png
     - assets/images/resort_logo.png
     - assets/images/no_informacion.png
+    - assets/documents/terminos-condiciones.pdf
 
 
   # To add custom fonts to your application, add a fonts section here,

@@ -7,5 +7,3 @@ void main() async {
   await GetStorages.inst.init();
   runApp(App());
 }
-
-

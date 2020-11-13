@@ -26,18 +26,6 @@ class ProfileContent extends GetView<ProfileController> {
           title: Text("Correo"),
           subtitle: Text(perfil.correo),
         ),
-        ListTile(
-          title: Text("RFC"),
-          subtitle: Text(perfil.rfc),
-        ),
-        ListTile(
-          title: Text("NSS"),
-          subtitle: Text(perfil.nss),
-        ),
-        ListTile(
-          title: Text("Número de credito"),
-          subtitle: Text(perfil.numCredito),
-        ),
       ],
     );
   }

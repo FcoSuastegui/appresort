@@ -96,7 +96,6 @@ class LoginForm extends StatelessWidget {
                     ),
                   ),
                 ),
-                FadeAnimation(1, Informacion.footer),
               ],
             ),
           );

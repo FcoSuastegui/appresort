@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
 
-class PdfViewerWidget extends StatefulWidget {
+class PdfViewer extends StatefulWidget {
   final String path;
-  PdfViewerWidget({ @required this.path });
+  PdfViewer({ @required this.path });
 
   @override
-  _PdfViewerWidgetState createState() => _PdfViewerWidgetState();
+  _PdfViewerState createState() => _PdfViewerState();
 }
 
-class _PdfViewerWidgetState extends State<PdfViewerWidget> {
+class _PdfViewerState extends State<PdfViewer> {
 
   bool isLoading = true;
   PDFDocument document;

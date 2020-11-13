@@ -47,6 +47,9 @@ class GetStorages {
   set idpropietario(int valor) => _storage.write('idpropietario', valor);
   int get idpropietario => _storage.read('idpropietario') ?? 1;
 
+  set iddesarrollo(int valor) => _storage.write('iddesarrollo', valor);
+  int get iddesarrollo => _storage.read('iddesarrollo') ?? 0;
+
   set avatar(String valor) => _storage.write('avatar', server + '/' + valor);
   String get avatar =>
       _storage.read('avatar') ??

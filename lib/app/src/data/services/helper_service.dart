@@ -7,15 +7,15 @@ class HelperService {
   static HelperService _instance = HelperService._internal();
   static HelperService get inst => _instance;
 
-  Future<ResponseModel> reglamento({int idpropietario, int sistema}) async {
+  Future<ResponseModel> reglamentos({int desarrollo}) async {
     final ResponseModel respuesta = ResponseModel(
       status: false,
       message: '',
     );
     try {
       final Response response = await Network.inst.post(
-        route: 'avisoPrivacidad',
-        data: {"idpropietario": idpropietario, "sistema": sistema},
+        route: 'reglamentos',
+        data: {"desarrollo": desarrollo},
       );
       if (response.statusCode == 200) {
         final ResponseModel body = ResponseModel.fromJson(response.data);

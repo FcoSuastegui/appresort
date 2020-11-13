@@ -1,4 +1,4 @@
-import 'package:appresort/app/src/data/models/response_model.dart';
+import 'package:appresort/app/src/data/models/reglamento_model.dart';
 import 'package:appresort/app/src/data/services/helper_service.dart';
 import 'package:appresort/app/src/helpers/get_storage.dart';
 import 'package:get/get.dart';
@@ -11,22 +11,26 @@ class ReglamentoController extends GetxController {
   RxBool _loading = false.obs;
   bool get loading => _loading.value;
 
-  RxString _url = ''.obs;
-  String get url => _url.value;
+  RxList<ReglamentoModel> _reglamentos = List<ReglamentoModel>().obs;
+  RxList<ReglamentoModel> get reglamentos => _reglamentos;
 
   @override
   void onInit() {
-    obtenerReglamento();
+    getReglamentos();
     super.onInit();
   }
 
-  Future<void> obtenerReglamento() async {
+  Future<void> getReglamentos() async {
     _loading(true);
-    final ResponseModel respose = await HelperService.inst.reglamento(
-      idpropietario: GetStorages.inst.idpropietario,
-      sistema: GetStorages.inst.sistema,
+    final response = await HelperService.inst.reglamentos(
+      desarrollo: GetStorages.inst.iddesarrollo,
     );
-    _url.value = respose.data;
+    _reglamentos.clear();
+    if (response.status) {
+      response.data.forEach(
+        (item) => _reglamentos.add(ReglamentoModel.fromJson(item)),
+      );
+    }
     _loading(false);
   }
 }

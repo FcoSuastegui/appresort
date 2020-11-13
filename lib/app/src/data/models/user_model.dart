@@ -16,9 +16,9 @@ class UserModel {
   String correo;
   String photo;
   String token;
-  String temp;
   int sistema;
   int idpropietario;
+  int iddesarrollo;
 
   UserModel({
       this.id,
@@ -28,9 +28,9 @@ class UserModel {
       this.correo,
       this.photo,
       this.token,
-      this.temp,
       this.sistema,
       this.idpropietario,
+      this.iddesarrollo,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
@@ -41,9 +41,9 @@ class UserModel {
       correo          : json["correo"],
       photo           : json["photo"],
       token           : json["token"],
-      temp            : json["temp"],
       sistema         : int.parse(json["sistema"]),
       idpropietario   : int.parse(json["idpropietario"]),
+      iddesarrollo    : int.parse(json["iddesarrollo"]),
   );
 
   Map<String, dynamic> toJson() => {
@@ -54,8 +54,8 @@ class UserModel {
       "correo"          : correo,
       "photo"           : photo,
       "token"           : token,
-      "temp"            : temp,
       "sistema"         : sistema,
       "idpropietario"   : idpropietario,
+      "iddesarrollo"    : iddesarrollo,
   };
 }
