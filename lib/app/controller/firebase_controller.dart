@@ -1,6 +1,6 @@
-import 'package:appresort/app/src/data/services/token_service.dart';
-import 'package:appresort/app/src/helpers/get_storage.dart';
-import 'package:appresort/app/src/views/notification/controller/notification_controller.dart';
+import 'package:appresort/app/data/services/token_service.dart';
+import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/views/notification/controller/notification_controller.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:device_info/device_info.dart';
 import 'dart:io';
@@ -19,8 +19,7 @@ class FireBaseController {
         NotificationController.instance.getNotification();
         print(" onMessage $message");
       },
-      onBackgroundMessage:
-          Platform.isAndroid ? FireBaseController.backGroundMessage : null,
+      onBackgroundMessage: Platform.isAndroid ? FireBaseController.backGroundMessage : null,
       onLaunch: (Map<String, dynamic> message) async {
         NotificationController.instance.getNotification();
         print(" onLaunch $message");
@@ -38,8 +37,7 @@ class FireBaseController {
         provisional: false,
       ),
     );
-    _firebaseMessaging.onIosSettingsRegistered
-        .listen((IosNotificationSettings settings) {
+    _firebaseMessaging.onIosSettingsRegistered.listen((IosNotificationSettings settings) {
       print("Settings registered: $settings");
     });
     await sendToken();
@@ -57,7 +55,7 @@ class FireBaseController {
       device = iosInfo.utsname.machine;
       print('Running on ${iosInfo.utsname.machine}');
     }
-     await TokenService.inst.sendToken(
+    await TokenService.inst.sendToken(
       idusuario: GetStorages.inst.idusuario,
       token: token,
     );

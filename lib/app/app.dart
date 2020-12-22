@@ -1,6 +1,6 @@
 import 'package:appresort/app/controller/app_controller.dart';
-import 'package:appresort/app/src/routes/routes.dart';
-import 'package:appresort/app/src/themes/app_theme_data.dart';
+import 'package:appresort/app/routes/routes.dart';
+import 'package:appresort/app/themes/app_theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
@@ -23,8 +23,7 @@ class App extends StatelessWidget {
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        localeResolutionCallback: (deviceLocale, supporteLocate) =>
-            supporteLocate.first,
+        localeResolutionCallback: (deviceLocale, supporteLocate) => supporteLocate.first,
         supportedLocales: [
           const Locale('es'), // Español
           const Locale('en'), // English

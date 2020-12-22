@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:appresort/app/src/helpers/get_storage.dart';
+import 'package:appresort/app/helpers/get_storage.dart';
 import 'package:appresort/app/controller/firebase_controller.dart';
 
 class AppController extends GetxController {
@@ -12,7 +12,7 @@ class AppController extends GetxController {
 
   @override
   void onInit() async {
-    if( inicialRoute != '/' ) await FireBaseController.inst.init();
+    if (inicialRoute != '/') await FireBaseController.inst.init();
     super.onInit();
   }
 }

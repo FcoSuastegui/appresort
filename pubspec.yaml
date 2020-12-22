@@ -1,20 +1,8 @@
 name: appresort
 description: App para los condominios y villas de resort Acapulco.
 
-# The following line prevents the package from being accidentally published to
-# pub.dev using `pub publish`. This is preferred for private packages.
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
 environment:
@@ -29,20 +17,31 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.0
-  dio: ^3.0.9
-  get: ^3.13.2
-  get_storage: ^1.3.1
-  google_fonts: ^1.1.0
+  # Paquete One Signal
+  onesignal_flutter: ^2.6.2
+  # Paquetes webview
+  webview_flutter: ^1.0.7
+  # Paquete de http
+  dio: ^3.0.10
+  # Paquete de gestor de estado
+  get: ^3.22.2
   flutter_form_bloc: ^0.13.0
-  simple_animations: ^1.3.3
+  # Paquetes de Fuentes de texto y iconos
+  google_fonts: ^1.1.0
+  font_awesome_flutter: ^8.10.0
   badges: ^1.1.1
+  #Paquetes de images
+  cached_network_image: ^2.3.3
+  image_picker: ^0.6.7+11
+  #Paquetes de almacenamiento interno
+  get_storage: ^1.3.2
+
+  simple_animations: ^1.3.3
   advance_pdf_viewer: ^1.1.6
   jwt_decoder: ^1.0.1
   flutter_icons: ^1.1.0
   url_launcher: ^5.7.7
   device_info: ^0.4.2
-  cached_network_image: ^2.0.0
-  image_picker: ^0.6.7+11
   dropdown_search: ^0.4.3
   esys_flutter_share: ^1.0.2
   firebase_messaging: ^7.0.3
@@ -75,7 +74,6 @@ flutter:
     - assets/images/no_informacion.png
     - assets/documents/terminos-condiciones.pdf
 
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -92,4 +90,3 @@ flutter:
   #       - asset: fonts/TrajanPro.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
-
