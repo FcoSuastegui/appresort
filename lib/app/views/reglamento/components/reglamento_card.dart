@@ -1,5 +1,5 @@
 import 'package:appresort/app/data/models/reglamento_model.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/widgets/ListTile/list_tile_default.dart';
 import 'package:appresort/app/widgets/PdfViewer/pdf_viewer_dialog.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +22,8 @@ class ReglamentoCard extends StatelessWidget {
       trailing: Icons.book,
       onPress: () async => await Get.dialog(
         PdfViewerDialog(
-          path: "${GetStorages.inst.server}/${reglamento.ruta}",
-          onTap: Get.back,
+          path: "${GetStorages.i.server}/${reglamento.ruta}",
+          onTap: () => Get.back(),
         ),
         barrierDismissible: false,
       ),

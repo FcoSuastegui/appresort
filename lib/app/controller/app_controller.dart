@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/controller/firebase_controller.dart';
 
 class AppController extends GetxController {
@@ -7,7 +7,7 @@ class AppController extends GetxController {
   static AppController _instance = AppController._internal();
   static AppController get inst => _instance;
 
-  String _inicialRoute = GetStorages.inst.validarToken();
+  String _inicialRoute = GetStorages.i.validarToken();
   String get inicialRoute => _inicialRoute;
 
   @override

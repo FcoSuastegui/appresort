@@ -1,12 +1,12 @@
 import 'package:appresort/app/data/models/notification_model.dart';
 import 'package:appresort/app/data/services/notification_service.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:get/get.dart';
 
 class NotificationController extends GetxController {
   NotificationController._internal();
   static NotificationController _instance = NotificationController._internal();
-  static NotificationController get instance => _instance;
+  static NotificationController get i => _instance;
 
   RxList<NotificationModel> _notifications = List<NotificationModel>().obs;
   RxList<NotificationModel> get notifications => _notifications;
@@ -28,9 +28,9 @@ class NotificationController extends GetxController {
 
   Future<void> getNotification() async {
     _loading(true);
-    final response = await NotificationService.inst.notifications(
-      idusuario: GetStorages.inst.idusuario,
-      sistema: GetStorages.inst.sistema,
+    final response = await NotificationService.notifications(
+      idusuario: int.parse(GetStorages.i.user.id),
+      sistema: int.parse(GetStorages.i.user.sistema),
     );
     _notifications.clear();
 

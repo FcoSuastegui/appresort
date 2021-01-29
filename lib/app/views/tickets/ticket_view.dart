@@ -18,7 +18,7 @@ class TicketView extends GetView<TicketController> {
           IconButton(
             icon: Icon(Icons.add_circle, color: Colors.white),
             onPressed: () async {
-              Routes.inst.goToPage("/ticket-add");
+              Routes.goToPage("/ticket-add");
               await controller.obtenerCatalogoTicket();
             },
           )

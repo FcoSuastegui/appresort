@@ -1,5 +1,5 @@
 import 'package:appresort/app/data/services/token_service.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/views/notification/controller/notification_controller.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:device_info/device_info.dart';
@@ -16,16 +16,16 @@ class FireBaseController {
   Future<void> init() async {
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
-        NotificationController.instance.getNotification();
+        NotificationController.i.getNotification();
         print(" onMessage $message");
       },
       onBackgroundMessage: Platform.isAndroid ? FireBaseController.backGroundMessage : null,
       onLaunch: (Map<String, dynamic> message) async {
-        NotificationController.instance.getNotification();
+        NotificationController.i.getNotification();
         print(" onLaunch $message");
       },
       onResume: (Map<String, dynamic> message) async {
-        NotificationController.instance.getNotification();
+        NotificationController.i.getNotification();
         print(" onResume $message");
       },
     );
@@ -55,8 +55,8 @@ class FireBaseController {
       device = iosInfo.utsname.machine;
       print('Running on ${iosInfo.utsname.machine}');
     }
-    await TokenService.inst.sendToken(
-      idusuario: GetStorages.inst.idusuario,
+    await TokenService.sendToken(
+      idusuario: int.parse(GetStorages.i.user.id),
       token: token,
     );
     print("$device \n $token ");

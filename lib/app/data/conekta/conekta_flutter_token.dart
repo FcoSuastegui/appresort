@@ -27,7 +27,7 @@ class ConektaFlutterTokenizer {
   }
 
   Future<String> _getPublicKey() async {
-    final response = await HelperService.inst.publicKey();
+    final response = await HelperService.publicKey();
     if (response.status) {
       return response.data;
     }

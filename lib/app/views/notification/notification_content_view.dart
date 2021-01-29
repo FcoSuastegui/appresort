@@ -1,5 +1,5 @@
-import 'package:appresort/app/helpers/get_storage.dart';
-import 'package:appresort/app/helpers/iconos.dart';
+import 'package:appresort/app/utils/get_storage.dart';
+import 'package:appresort/app/utils/iconos.dart';
 import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/views/notification/controller/notification_controller.dart';
 import 'package:appresort/app/widgets/Appbars/app_bar_default.dart';
@@ -33,7 +33,7 @@ class NotificationContentView extends GetView<NotificationController> {
                     ),
                     SizedBox(height: 30.0),
                     Text(
-                      "Hola ${GetStorages.inst.nombre}",
+                      "Hola ${GetStorages.i.user.name}",
                       style: TextStyle(fontSize: 15.0),
                     )
                   ],

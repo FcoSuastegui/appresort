@@ -1,62 +1,36 @@
-import 'package:appresort/app/themes/app_theme.dart';
+import 'package:appresort/app/views/home/components/home_direct_access.dart';
+import 'package:appresort/app/views/home/components/home_know.dart';
 import 'package:appresort/app/views/home/controllers/home_controller.dart';
 import 'package:appresort/app/widgets/Linner/linner_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeBody extends StatelessWidget {
+class HomeBody extends GetView<HomeController> {
   const HomeBody({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
-      init: HomeController.instance,
-      builder: (controller) => Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * 0.85,
-        padding: EdgeInsets.all(10.0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(top: 10.0),
-              child: Text(
-                'Conoce: ',
-                style: TextStyle(
-                  color: AppTheme.kTextColor,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: controller.accesoRapido,
-              ),
-            ),
-            LinnerContainer(
-              left: 0.0,
-              right: 0.0,
-              width: 0.30,
-            ),
-            Text(
-              'Accesos directos:',
-              style: TextStyle(
-                color: AppTheme.kTextColor,
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Column(
-              children: controller.listItems,
-            ),
-          ],
-        ),
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height * 0.85,
+      padding: EdgeInsets.all(10.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          const HomeDirectAccess(),
+          const LinnerContainer(
+            left: 0.0,
+            right: 0.0,
+            width: 0.30,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const HomeKnow()
+        ],
       ),
     );
   }

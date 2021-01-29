@@ -2,8 +2,8 @@ import 'package:appresort/app/data/conekta/conekta_flutter_token.dart';
 import 'package:appresort/app/data/conekta/conekta_model.dart';
 import 'package:appresort/app/data/conekta/payment_model.dart';
 import 'package:appresort/app/data/services/conekta_service.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
-import 'package:appresort/app/helpers/validators_bloc.dart';
+import 'package:appresort/app/utils/get_storage.dart';
+import 'package:appresort/app/utils/validators_bloc.dart';
 import 'package:appresort/app/views/listar-cargos/controller/listar_cargos_controller.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:get/get.dart';
@@ -93,12 +93,12 @@ class PaymentBloc extends FormBloc<String, String> {
         return;
       }
 
-      final response = await ConektaService.inst.payment(
+      final response = await ConektaService.payment(
         {
           "nombreCompleto": nombreCompleto.value,
           "celular": celular.value,
           "correo": correo.value,
-          "idpropietario": GetStorages.inst.idpropietario,
+          "idpropietario": GetStorages.i.user.idpropietario,
           "idcargo": controller.cargoSeleccionado.idcargo,
           "total": controller.total,
           "token": token.id

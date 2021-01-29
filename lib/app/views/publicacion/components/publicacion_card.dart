@@ -1,5 +1,5 @@
 import 'package:appresort/app/data/models/publicacion_model.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/widgets/Cards/card_post.dart';
 import 'package:appresort/app/widgets/Cards/card_post_image.dart';
 import 'package:flutter/material.dart';
@@ -21,8 +21,8 @@ class PublicacionCard extends StatelessWidget {
         ? RepaintBoundary(
             key: keyPublicacion,
             child: CardPostImage(
-              image: "${GetStorages.inst.server}/${publicacion.imagen}",
-              avatar: "${GetStorages.inst.server}/${publicacion.avatar}",
+              image: "${GetStorages.i.server}/${publicacion.imagen}",
+              avatar: "${GetStorages.i.server}/${publicacion.avatar}",
               title: publicacion.titulo,
               subtitle: publicacion.desarrollo,
               date: publicacion.fechaPublicacion,
@@ -44,7 +44,7 @@ class PublicacionCard extends StatelessWidget {
         : RepaintBoundary(
             key: keyPublicacion,
             child: CardPost(
-              avatar: "${GetStorages.inst.server}/${publicacion.avatar}",
+              avatar: "${GetStorages.i.server}/${publicacion.avatar}",
               title: publicacion.titulo,
               subtitle: publicacion.desarrollo,
               date: publicacion.fechaPublicacion,

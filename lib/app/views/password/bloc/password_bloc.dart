@@ -1,6 +1,6 @@
 import 'package:appresort/app/data/services/auth_service.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
-import 'package:appresort/app/helpers/validators_bloc.dart';
+import 'package:appresort/app/utils/get_storage.dart';
+import 'package:appresort/app/utils/validators_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class PasswordBloc extends FormBloc<String, String> {
@@ -23,8 +23,8 @@ class PasswordBloc extends FormBloc<String, String> {
 
   @override
   void onSubmitting() async {
-    final response = await AuthService.inst.changePassword(
-      idusuario: GetStorages.inst.idusuario,
+    final response = await AuthService.changePassword(
+      idusuario: int.parse(GetStorages.i.user.id),
       password: password.value,
     );
     response.status

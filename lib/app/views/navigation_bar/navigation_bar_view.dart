@@ -1,4 +1,4 @@
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/themes/size_config.dart';
 import 'package:appresort/app/views/navigation_bar/controller/navigation_bar_controller.dart';
@@ -12,7 +12,7 @@ class NavigationBarView extends GetView<NavigationBarController> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    GetStorages.inst.page = routeName;
+    GetStorages.i.page = routeName;
     return Obx(
       () => Scaffold(
         body: controller.page[controller.index],
@@ -28,7 +28,7 @@ class NavigationBarView extends GetView<NavigationBarController> {
             BottomNavigationBarItem(
               icon: Badge(
                 badgeContent: GetBuilder<NotificationController>(
-                  init: NotificationController.instance,
+                  init: NotificationController.i,
                   builder: (_) => Obx(
                     () => Text(
                       _.counter.value.toString(),

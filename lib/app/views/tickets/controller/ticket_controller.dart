@@ -1,6 +1,6 @@
 import 'package:appresort/app/data/models/tickets_model.dart';
 import 'package:appresort/app/data/services/ticket_service.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -28,6 +28,8 @@ class TicketController extends GetxController {
 
   ImagePicker _picker = ImagePicker();
 
+  final user = GetStorages.i.user;
+
   @override
   void onInit() {
     listarTickets();
@@ -36,9 +38,9 @@ class TicketController extends GetxController {
 
   Future<void> listarTickets() async {
     _loading(true);
-    final response = await TicketService.inst.tickets(
-      idpropietario: GetStorages.inst.idpropietario,
-      sistema: GetStorages.inst.sistema,
+    final response = await TicketService.tickets(
+      idpropietario: int.parse(user.idpropietario),
+      sistema: int.parse(user.sistema),
     );
     _tickets.clear();
     if (response.status) {
@@ -51,9 +53,9 @@ class TicketController extends GetxController {
   }
 
   Future<void> obtenerCatalogoTicket() async {
-    final response = await TicketService.inst.catalogoTicket(
-      idpropietario: GetStorages.inst.idpropietario,
-      sistema: GetStorages.inst.sistema,
+    final response = await TicketService.catalogoTicket(
+      idpropietario: int.parse(user.idpropietario),
+      sistema: int.parse(user.sistema),
     );
 
     _catalogoItems.clear();

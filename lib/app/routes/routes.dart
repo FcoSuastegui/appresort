@@ -1,11 +1,10 @@
-import 'package:appresort/app/helpers/helpers.dart';
+import 'package:appresort/app/utils/helpers.dart';
 import 'package:appresort/app/views/conekta/oxxo-pay/oxxo_pay_view.dart';
 import 'package:appresort/app/views/conekta/payment/payment_view.dart';
 import 'package:appresort/app/views/listar-cargos/bindings/listar_cargos_binding.dart';
 import 'package:appresort/app/views/listar-cargos/listar_cargos_view.dart';
 import 'package:appresort/app/views/login/login_view.dart';
-import 'package:appresort/app/views/navigation_bar/bindings/navigation_bar_binding.dart';
-import 'package:appresort/app/views/navigation_bar/navigation_bar_view.dart';
+import 'package:appresort/app/views/nav_bar/nav_bar_view.dart';
 import 'package:appresort/app/views/notification/notification_content_view.dart';
 import 'package:appresort/app/views/onboarding/bindings/onboarding_binding.dart';
 import 'package:appresort/app/views/onboarding/onboarding_view.dart';
@@ -25,11 +24,11 @@ import 'package:appresort/app/views/tickets/ticket_view.dart';
 import 'package:get/get.dart';
 
 class Routes {
+  static final Routes _instancia = new Routes._internal();
+  factory Routes() => _instancia;
   Routes._internal();
-  static Routes _instance = Routes._internal();
-  static Routes get inst => _instance;
 
-  final List<GetPage> routes = [
+  static final List<GetPage> routes = [
     GetPage(
       name: LoginView.routeName,
       page: () => LoginView(),
@@ -40,9 +39,8 @@ class Routes {
       binding: OnBoardingBinding(),
     ),
     GetPage(
-      name: NavigationBarView.routeName,
-      page: () => NavigationBarView(),
-      binding: NavigationBarBinding(),
+      name: NavBarView.routeName,
+      page: () => NavBarView(),
     ),
     GetPage(
       name: ReglamentoView.routeName,
@@ -105,26 +103,12 @@ class Routes {
     ),
   ];
 
-  void goToPage(String page) {
-    List<String> pages = [
-      LoginView.routeName,
-      OnBoardingView.routeName,
-      NavigationBarView.routeName,
-      ReglamentoView.routeName,
-      SaldosView.routeName,
-      ListarCargosView.routeName,
-      OxxoPayView.routeName,
-      PaymentView.routeName,
-      ProfileView.routeName,
-      PassWordView.routeName,
-      ServicesView.routeName,
-      TicketView.routeName,
-      TicketAddView.routeName,
-      PublicacionView.routeName,
-    ];
-
-    pages.contains(page)
-        ? Get.toNamed(page)
+  static goToPage(String page, {dynamic arguments}) {
+    routes.any((e) => e.name == page)
+        ? Get.toNamed(
+            page,
+            arguments: arguments,
+          )
         : Helpers.error(
             message: "El módulo no esta disponible o no tienes acceso a ello.",
           );

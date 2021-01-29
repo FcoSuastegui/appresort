@@ -14,7 +14,7 @@ class NotificationView extends StatelessWidget {
         title: Text("Notificaciones"),
       ),
       body: GetBuilder<NotificationController>(
-        init: NotificationController.instance,
+        init: NotificationController.i,
         builder: (_) => SafeArea(
           child: NotificationBody(),
         ),

@@ -9,53 +9,57 @@ UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 String userModelToJson(UserModel data) => json.encode(data.toJson());
 
 class UserModel {
-  int id;
-  String nombre;
-  String usuario;
-  String nombreCompleto;
-  String correo;
+  String id;
+  String name;
+  String user;
+  String fullname;
+  String email;
   String photo;
   String token;
-  int sistema;
-  int idpropietario;
-  int iddesarrollo;
+  String rol;
+  String sistema;
+  String idpropietario;
+  String iddesarrollo;
 
   UserModel({
-      this.id,
-      this.nombre,
-      this.nombreCompleto,
-      this.usuario,
-      this.correo,
-      this.photo,
-      this.token,
-      this.sistema,
-      this.idpropietario,
-      this.iddesarrollo,
+    this.id,
+    this.name,
+    this.fullname,
+    this.user,
+    this.email,
+    this.photo,
+    this.token,
+    this.rol,
+    this.sistema,
+    this.idpropietario,
+    this.iddesarrollo,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-      id              : int.parse(json["id"]),
-      nombre          : json["nombre"],
-      usuario         : json["usuario"],
-      nombreCompleto  : json["nombreCompleto"],
-      correo          : json["correo"],
-      photo           : json["photo"],
-      token           : json["token"],
-      sistema         : int.parse(json["sistema"]),
-      idpropietario   : int.parse(json["idpropietario"]),
-      iddesarrollo    : int.parse(json["iddesarrollo"]),
-  );
+        id: json["id"] ?? '',
+        name: json["name"] ?? '',
+        user: json["user"] ?? '',
+        fullname: json["fullname"] ?? '',
+        email: json["email"] ?? '',
+        photo: json["photo"] ?? '',
+        token: json["token"] ?? '',
+        rol: json["rol"] ?? '',
+        sistema: json["sistema"] ?? '',
+        idpropietario: json["idpropietario"] ?? '',
+        iddesarrollo: json["iddesarrollo"] ?? '',
+      );
 
   Map<String, dynamic> toJson() => {
-      "id"              : id,
-      "nombre"          : nombre,
-      "nombreCompleto"  : nombreCompleto,
-      "usuario"         : usuario,
-      "correo"          : correo,
-      "photo"           : photo,
-      "token"           : token,
-      "sistema"         : sistema,
-      "idpropietario"   : idpropietario,
-      "iddesarrollo"    : iddesarrollo,
-  };
+        "id": id,
+        "name": name,
+        "fullname": fullname,
+        "user": user,
+        "email": email,
+        "photo": photo,
+        "token": token,
+        "rol": rol,
+        "sistema": sistema,
+        "idpropietario": idpropietario,
+        "iddesarrollo": iddesarrollo,
+      };
 }

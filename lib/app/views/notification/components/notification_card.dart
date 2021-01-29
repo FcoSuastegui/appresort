@@ -1,5 +1,5 @@
 import 'package:appresort/app/data/models/notification_model.dart';
-import 'package:appresort/app/helpers/iconos.dart';
+import 'package:appresort/app/utils/iconos.dart';
 import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/widgets/ListTile/list_tile_notification.dart';
 import 'package:flutter/material.dart';

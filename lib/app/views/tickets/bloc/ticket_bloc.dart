@@ -1,6 +1,5 @@
 import 'package:appresort/app/data/services/ticket_service.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
-import 'package:appresort/app/helpers/validators_bloc.dart';
+import 'package:appresort/app/utils/validators_bloc.dart';
 import 'package:appresort/app/views/tickets/controller/ticket_controller.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:get/get.dart' as getx;
@@ -28,10 +27,10 @@ class TicketBloc extends FormBloc<String, String> {
     if (controller.catalogoSeleccionado == null) {
       emitFailure(failureResponse: "Selecciona algun tipo de servicio");
     } else {
-      final response = await TicketService.inst.addTicket({
+      final response = await TicketService.addTicket({
         'id_cat_ticket': controller.catalogoSeleccionado.id,
         'mensaje': descripcion.value,
-        'idpropietario': GetStorages.inst.idpropietario,
+        'idpropietario': controller.user.idpropietario,
         "image": controller.image != null
             ? await MultipartFile.fromFile(controller.image.path,
                 filename: path.basename(controller.image.path))

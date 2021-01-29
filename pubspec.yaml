@@ -24,7 +24,7 @@ dependencies:
   # Paquete de http
   dio: ^3.0.10
   # Paquete de gestor de estado
-  get: ^3.22.2
+  get: ^3.24.0
   flutter_form_bloc: ^0.13.0
   # Paquetes de Fuentes de texto y iconos
   google_fonts: ^1.1.0
@@ -46,6 +46,7 @@ dependencies:
   esys_flutter_share: ^1.0.2
   firebase_messaging: ^7.0.3
   flutter_multi_formatter: ^1.1.8
+  custom_navigation_bar: ^0.7.1
 
 dev_dependencies:
   flutter_test:

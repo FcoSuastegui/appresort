@@ -21,7 +21,7 @@ class ServicesView extends StatelessWidget {
               text: 'Pago en línea',
               trailing: Icons.payment,
               bottom: 10.0,
-              onPress: () => Routes.inst.goToPage('/listar-cargos'),
+              onPress: () => Routes.goToPage('/listar-cargos'),
             ),
           ],
         ),

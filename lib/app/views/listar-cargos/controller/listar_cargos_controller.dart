@@ -1,6 +1,6 @@
 import 'package:appresort/app/data/models/cargo_model.dart';
 import 'package:appresort/app/data/services/saldo_service.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:get/get.dart';
 
 class ListarCargosController extends GetxController {
@@ -25,8 +25,8 @@ class ListarCargosController extends GetxController {
 
   Future<void> obtenerCargos() async {
     _loading(true);
-    final response = await SaldoService.inst.obtenerCargos(
-      GetStorages.inst.idpropietario,
+    final response = await SaldoService.obtenerCargos(
+      int.parse(GetStorages.i.user.idpropietario),
     );
     _cargos.clear();
     if (response.status) {

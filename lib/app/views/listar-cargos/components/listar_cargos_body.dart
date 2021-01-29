@@ -69,7 +69,7 @@ class ListarCargosBody extends GetView<ListarCargosController> {
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
                       Get.back();
-                      Routes.inst.goToPage("/oxxo-pay");
+                      Routes.goToPage("/oxxo-pay");
                     },
                     child: Container(
                       width: Get.width,
@@ -91,7 +91,7 @@ class ListarCargosBody extends GetView<ListarCargosController> {
                     behavior: HitTestBehavior.translucent,
                     onTap: () {
                       Get.back();
-                      Routes.inst.goToPage('/payment');
+                      Routes.goToPage('/payment');
                     },
                     child: Container(
                       width: Get.width,

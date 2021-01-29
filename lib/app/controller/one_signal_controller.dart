@@ -2,9 +2,9 @@
 import 'dart:io';
 
 /* import 'package:clubimperial/app/data/services/one_signal_backend.dart';
-import 'package:clubimperial/app/helpers/get_storages.dart';
+import 'package:clubimperial/app/utils/get_storages.dart';
 import 'package:clubimperial/app/views/notifications/controller/notification_controller.dart'; */
-import 'package:appresort/app/helpers/get_storage.dart';
+//import 'package:appresort/app/utils/get_storage.dart';
 import 'package:device_info/device_info.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'dart:async';
@@ -96,8 +96,8 @@ class OneSignalController {
   Future<void> setUserIdBackend(String playerId) async {
     print(playerId);
     if (playerId == null) return null;
-    final device = await getDevice();
-    final idusuario = GetStorages.inst.idusuario;
+    //final device = await getDevice();
+    //final idusuario = GetStorages.i.user.id;
     //await OneSignalBakend.sendPlayerId(device, playerId, idusuario);
   }
 

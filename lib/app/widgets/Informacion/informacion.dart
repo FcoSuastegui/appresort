@@ -32,11 +32,11 @@ class Informacion {
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         GestureDetector(
-          onTap: () async => await Get.dialog(
+          onTap: () => Get.dialog(
             PdfViewerDialog(
               path: "assets/documents/terminos-condiciones.pdf",
               isAsset: true,
-              onTap: Get.back,
+              onTap: () => Get.back(),
             ),
             barrierDismissible: false,
           ),

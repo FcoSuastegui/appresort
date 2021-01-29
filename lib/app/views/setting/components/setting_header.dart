@@ -1,4 +1,4 @@
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +7,8 @@ class SettingHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = GetStorages.i.user;
+
     return Container(
       margin: EdgeInsets.only(top: 15, left: 10, right: 10),
       child: Row(
@@ -20,7 +22,7 @@ class SettingHeader extends StatelessWidget {
                 radius: 40.0,
                 backgroundColor: Colors.white,
                 backgroundImage: NetworkImage(
-                  GetStorages.inst.avatar,
+                  user.photo,
                 ),
               ),
               decoration: BoxDecoration(
@@ -44,7 +46,7 @@ class SettingHeader extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     margin: EdgeInsets.only(top: 0.0, left: 10.0),
                     child: Text(
-                      GetStorages.inst.nombreCompleto,
+                      user.fullname,
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         color: AppTheme.kTextColor,
@@ -56,7 +58,7 @@ class SettingHeader extends StatelessWidget {
                     alignment: Alignment.centerLeft,
                     margin: EdgeInsets.only(top: 10.0, left: 10.0),
                     child: Text(
-                      GetStorages.inst.correo,
+                      user.email,
                       textAlign: TextAlign.start,
                       style: TextStyle(
                         color: AppTheme.kTextColor,

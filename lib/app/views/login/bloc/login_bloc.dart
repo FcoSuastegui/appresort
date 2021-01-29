@@ -2,8 +2,8 @@ import 'package:appresort/app/controller/firebase_controller.dart';
 import 'package:appresort/app/data/models/response_model.dart';
 import 'package:appresort/app/data/models/user_model.dart';
 import 'package:appresort/app/data/services/auth_service.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
-import 'package:appresort/app/helpers/validators_bloc.dart';
+import 'package:appresort/app/utils/get_storage.dart';
+import 'package:appresort/app/utils/validators_bloc.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class LoginBloc extends FormBloc<String, String> {
@@ -30,24 +30,15 @@ class LoginBloc extends FormBloc<String, String> {
 
   @override
   void onSubmitting() async {
-    final ResponseModel response = await AuthService.inst.login(
+    final ResponseModel response = await AuthService.login(
       username: username.value.replaceAll(' ', ''),
       password: password.value,
     );
 
     if (response.status) {
-      final UserModel user = UserModel.fromJson(response.data);
-      GetStorages.inst.token = user.token;
-      GetStorages.inst.idusuario = user.id;
-      GetStorages.inst.usuario = user.usuario;
-      GetStorages.inst.nombreCompleto = user.nombreCompleto;
-      GetStorages.inst.nombre = user.nombre;
-      GetStorages.inst.avatar = user.photo;
-      GetStorages.inst.correo = user.correo;
-      GetStorages.inst.idpropietario = user.idpropietario;
-      GetStorages.inst.iddesarrollo = user.iddesarrollo;
-      GetStorages.inst.sistema = user.sistema;
-      GetStorages.inst.page = GetStorages.inst.onboarding ? '/onboarding' : '/navigation-bar';
+      print(response.data);
+      GetStorages.i.user = UserModel.fromJson(response.data);
+      GetStorages.i.page = GetStorages.i.onboarding ? '/onboarding' : '/navigation-bar';
       await FireBaseController.inst.init();
       emitSuccess();
     } else {

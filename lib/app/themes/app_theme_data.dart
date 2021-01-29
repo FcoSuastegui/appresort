@@ -3,29 +3,58 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppThemeData {
-  static final ThemeData themeData = ThemeData(
-    scaffoldBackgroundColor: Colors.white,
+  static ThemeData _themeData = ThemeData();
+
+  static final lightTheme = ThemeData.light().copyWith(
     appBarTheme: AppBarTheme(
-      color: AppTheme.kPrimaryColor,
+      color: Colors.white,
+      centerTitle: false,
       elevation: 0.0,
       brightness: Brightness.light,
-      centerTitle: false,
       iconTheme: IconThemeData(
-        color: Colors.white,
+        color: Colors.black45,
       ),
-      textTheme: GoogleFonts.quicksandTextTheme(
-        TextTheme(
-          bodyText1: TextStyle(color: Colors.white),
-        ),
-      ),
+      textTheme: GoogleFonts.quicksandTextTheme(),
     ),
-    canvasColor: Colors.white,
     textTheme: GoogleFonts.quicksandTextTheme(),
-    unselectedWidgetColor: AppTheme.kPrimaryColor,
-    toggleableActiveColor: AppTheme.kPrimaryColor,
+    tabBarTheme: TabBarTheme(
+      labelColor: const Color(0xFF000000),
+    ),
+    backgroundColor: const Color(0xFFFFFFFF),
+    cardColor: const Color(0xFFFFFFFF),
+    bottomAppBarColor: const Color.fromRGBO(45, 45, 48, 1),
+    primaryColorLight: const Color(0xFFF5F5F5),
+    primaryColorDark: const Color(0xFFEEEEEE),
     primaryColor: AppTheme.kPrimaryColor,
-    backgroundColor: AppTheme.kPrimaryColor,
-    primarySwatch: Colors.blue,
-    visualDensity: VisualDensity.adaptivePlatformDensity,
   );
+  static final darkTheme = ThemeData.dark().copyWith(
+    appBarTheme: AppBarTheme(
+      color: Colors.white,
+      centerTitle: false,
+      elevation: 0.0,
+      brightness: Brightness.dark,
+      iconTheme: IconThemeData(
+        color: Colors.black45,
+      ),
+      textTheme: GoogleFonts.quicksandTextTheme(),
+    ),
+    textTheme: GoogleFonts.quicksandTextTheme(),
+    tabBarTheme: TabBarTheme(
+      labelColor: const Color(0xFFFFFFFF),
+    ),
+    backgroundColor: const Color(0xFF303030),
+    bottomAppBarColor: const Color(0xFF191919),
+    cardColor: const Color(0xFF333333),
+    primaryColorLight: const Color(0xFF505050),
+    primaryColorDark: const Color(0xFF404040),
+    primaryColor: AppTheme.kPrimaryColor,
+  );
+
+  static MediaQueryData _mediaQuery;
+
+  static ThemeData getTheme(BuildContext context) {
+    _mediaQuery = MediaQuery.of(context);
+    _themeData = _mediaQuery.platformBrightness == Brightness.light ? lightTheme : darkTheme;
+    return _themeData;
+  }
 }

@@ -1,23 +1,27 @@
-import 'package:appresort/app/controller/app_controller.dart';
+import 'package:appresort/app/globals/bindings/global_binding.dart';
+import 'package:appresort/app/shared/logger/logger_utils.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/routes/routes.dart';
 import 'package:appresort/app/themes/app_theme_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<AppController>(
-      init: AppController.inst,
-      builder: (controller) => GetMaterialApp(
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: GetMaterialApp(
         title: "App Resort",
         debugShowCheckedModeBanner: false,
-        initialRoute: controller.inicialRoute,
+        initialRoute: GetStorages.i.validarToken(),
         defaultTransition: Transition.cupertino,
-        getPages: Routes.inst.routes,
-        theme: AppThemeData.themeData,
+        getPages: Routes.routes,
+        theme: AppThemeData.lightTheme,
         locale: Locale('es'),
+        initialBinding: GlobalBinding(),
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
@@ -28,6 +32,8 @@ class App extends StatelessWidget {
           const Locale('es'), // Español
           const Locale('en'), // English
         ],
+        enableLog: true,
+        logWriterCallback: Logger.write,
       ),
     );
   }

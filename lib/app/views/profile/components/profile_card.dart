@@ -1,4 +1,4 @@
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
@@ -31,13 +31,13 @@ class ProfileCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      GetStorages.inst.nombreCompleto,
+                      GetStorages.i.user.fullname,
                       style: TextStyle(fontSize: 15.0),
                     ),
                     ListTile(
                       contentPadding: EdgeInsets.all(0),
-                      title: Text(GetStorages.inst.tipoUsuario),
-                      subtitle: Text(GetStorages.inst.correo),
+                      title: Text(GetStorages.i.user.rol),
+                      subtitle: Text(GetStorages.i.user.email),
                     ),
                   ],
                 ),
@@ -52,7 +52,7 @@ class ProfileCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(10.0),
             image: DecorationImage(
               image: CachedNetworkImageProvider(
-                GetStorages.inst.avatar,
+                GetStorages.i.user.photo,
               ),
               fit: BoxFit.cover,
             ),

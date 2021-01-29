@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:get/get.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/views/login/bloc/login_bloc.dart';
 import 'package:appresort/app/widgets/Alerts/custom_alert.dart';
@@ -25,7 +25,7 @@ class LoginForm extends StatelessWidget {
             onSuccess: (context, state) {
               LoadingDialog.hide(context);
               login.close();
-              Get.offAllNamed(GetStorages.inst.page);
+              Get.offAllNamed(GetStorages.i.page);
             },
             onFailure: (context, state) async {
               LoadingDialog.hide(context);

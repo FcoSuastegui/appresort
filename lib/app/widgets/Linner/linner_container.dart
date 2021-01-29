@@ -4,7 +4,7 @@ class LinnerContainer extends StatelessWidget {
   final double top, left, right, bottom, width;
   final Widget child;
 
-  LinnerContainer({
+  const LinnerContainer({
     this.top = 0.0,
     this.bottom = 10.0,
     this.left = 10.0,

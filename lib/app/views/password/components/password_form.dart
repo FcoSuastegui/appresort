@@ -1,4 +1,4 @@
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/views/password/bloc/password_bloc.dart';
 import 'package:appresort/app/widgets/Alerts/custom_alert.dart';
 import 'package:appresort/app/widgets/Buttons/button_submit.dart';
@@ -25,8 +25,8 @@ class PasswordForm extends StatelessWidget {
               onSuccess: (context, state) async {
                 LoadingDialog.hide(context);
                 change.close();
-                await GetStorages.inst.clear();
-                GetStorages.inst..onboarding = false;
+                await GetStorages.i.clear();
+                GetStorages.i.onboarding = false;
                 await Get.dialog(
                   CustomAlert(
                     type: AlertDialogType.SUCCESS,

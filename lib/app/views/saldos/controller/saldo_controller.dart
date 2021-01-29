@@ -1,12 +1,14 @@
 import 'package:appresort/app/data/models/saldos_model.dart';
 import 'package:appresort/app/data/services/saldo_service.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:get/get.dart';
 
 class SaldoController extends GetxController {
   SaldoController._internal();
   static SaldoController _instance = SaldoController._internal();
   static SaldoController get instance => _instance;
+
+  final user = GetStorages.i.user;
 
   SaldosModel _saldo;
   SaldosModel get saldo => _saldo;
@@ -22,7 +24,7 @@ class SaldoController extends GetxController {
 
   Future<void> obtenerSaldo() async {
     _loading(true);
-    final response = await SaldoService.inst.obtenerSaldo(GetStorages.inst.idpropietario);
+    final response = await SaldoService.obtenerSaldo(int.parse(user.idpropietario));
     if (response.status) {
       _saldo = SaldosModel.fromJson(response.data);
     }
@@ -31,9 +33,9 @@ class SaldoController extends GetxController {
 
   Future<String> estadoCuenta() async {
     String file = '';
-    final response = await SaldoService.inst.estadoCuenta(
-      idpropietario: GetStorages.inst.idpropietario,
-      sistema: GetStorages.inst.sistema,
+    final response = await SaldoService.estadoCuenta(
+      idpropietario: int.parse(user.idpropietario),
+      sistema: int.parse(user.sistema),
     );
     if (response.status) {
       file = response.data;

@@ -1,4 +1,4 @@
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/views/onboarding/components/onboarding_stepper.dart';
 import 'package:appresort/app/views/onboarding/controller/onboarding_controller.dart';
@@ -39,7 +39,7 @@ class OnBoardingBody extends GetView<OnBoardingController> {
                         onPressed: () {
                           final respuesta = controller.onPressed();
                           if (respuesta) {
-                            GetStorages.inst.onboarding = false;
+                            GetStorages.i.onboarding = false;
                             Get.offAllNamed('/navigation-bar');
                           }
                         },

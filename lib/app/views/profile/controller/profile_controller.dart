@@ -1,6 +1,6 @@
 import 'package:appresort/app/data/models/perfil_model.dart';
 import 'package:appresort/app/data/services/auth_service.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:get/get.dart';
 
 class ProfileController extends GetxController {
@@ -22,9 +22,9 @@ class ProfileController extends GetxController {
 
   Future<void> cargarPerfil() async {
     _loading(true);
-    final request = await AuthService.inst.profile(
-      idusuario: GetStorages.inst.idusuario,
-      token: GetStorages.inst.token,
+    final request = await AuthService.profile(
+      idusuario: int.parse(GetStorages.i.user.id),
+      token: GetStorages.i.user.token,
     );
     if (request.status) {
       _perfil = PerfilModel.fromJson(request.data);

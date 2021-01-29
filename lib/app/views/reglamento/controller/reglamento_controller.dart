@@ -1,6 +1,6 @@
 import 'package:appresort/app/data/models/reglamento_model.dart';
 import 'package:appresort/app/data/services/helper_service.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:get/get.dart';
 
 class ReglamentoController extends GetxController {
@@ -22,8 +22,8 @@ class ReglamentoController extends GetxController {
 
   Future<void> getReglamentos() async {
     _loading(true);
-    final response = await HelperService.inst.reglamentos(
-      desarrollo: GetStorages.inst.iddesarrollo,
+    final response = await HelperService.reglamentos(
+      desarrollo: int.parse(GetStorages.i.user.iddesarrollo),
     );
     _reglamentos.clear();
     if (response.status) {

@@ -15,15 +15,14 @@ class ResponseModel {
   dynamic data;
 
   factory ResponseModel.fromJson(Map<String, dynamic> json) => ResponseModel(
-    status    : json["status"],
-    message   : json["message"],
-    data      : json["data"],
-  );
+        status: json["status"],
+        message: json["message"],
+        data: json["data"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "status"    : status,
-    "message"   : message,
-    "data"      : data,
-  };
-
+        "status": status,
+        "message": message,
+        "data": data,
+      };
 }

@@ -1,4 +1,4 @@
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/routes/routes.dart';
 import 'package:appresort/app/views/setting/components/setting_header.dart';
 import 'package:appresort/app/widgets/Alerts/alert_actions.dart';
@@ -26,13 +26,13 @@ class SettingBody extends StatelessWidget {
                   ListTileDefault(
                     text: 'Mi perfil',
                     trailing: Icons.arrow_forward,
-                    onPress: () => Routes.inst.goToPage("/profile"),
+                    onPress: () => Routes.goToPage("/profile"),
                   ),
                   ListTileDefault(
                     top: 10.0,
                     text: 'Cambiar contraseña',
                     trailing: Icons.lock,
-                    onPress: () => Routes.inst.goToPage("/password"),
+                    onPress: () => Routes.goToPage("/password"),
                   ),
                   ListTileDefault(
                     top: 10.0,
@@ -54,8 +54,8 @@ class SettingBody extends StatelessWidget {
       AlertAction(
         title: "¿Deseas salir de la aplicación?",
         onPress: () async {
-          await GetStorages.inst.clear();
-          GetStorages.inst.onboarding = true;
+          await GetStorages.i.clear();
+          GetStorages.i.onboarding = true;
           Get.offAllNamed('/');
         },
       ),

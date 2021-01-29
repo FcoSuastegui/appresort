@@ -1,9 +1,9 @@
-import 'package:appresort/app/helpers/helpers.dart';
+import 'package:appresort/app/utils/helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:appresort/app/data/models/publicacion_model.dart';
 import 'package:appresort/app/data/services/publicacion_service.dart';
-import 'package:appresort/app/helpers/get_storage.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 
 import 'package:esys_flutter_share/esys_flutter_share.dart';
 import 'package:flutter/rendering.dart';
@@ -30,9 +30,9 @@ class Publicacioncontroller extends GetxController {
 
   Future<void> listarPublicaciones() async {
     _loading(true);
-    final response = await PublicacionService.inst.publicaciones(
-      idusuario: GetStorages.inst.idusuario,
-      sistema: GetStorages.inst.sistema,
+    final response = await PublicacionService.publicaciones(
+      idusuario: int.parse(GetStorages.i.user.id),
+      sistema: int.parse(GetStorages.i.user.sistema),
     );
     _publicaciones.clear();
     if (response.status) {

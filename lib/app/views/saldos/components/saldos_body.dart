@@ -1,4 +1,4 @@
-import 'package:appresort/app/helpers/helpers.dart';
+import 'package:appresort/app/utils/helpers.dart';
 import 'package:appresort/app/routes/routes.dart';
 import 'package:appresort/app/views/saldos/controller/saldo_controller.dart';
 import 'package:appresort/app/widgets/ListTile/list_tile_default.dart';
@@ -34,7 +34,7 @@ class SaldosBody extends GetView<SaldoController> {
             text: 'Pago en línea',
             trailing: Icons.payment,
             bottom: 10.0,
-            onPress: () => Routes.inst.goToPage("/listar-cargos"),
+            onPress: () => Routes.goToPage("/listar-cargos"),
           ),
           ListTileDefault(
             text: 'Estado de cuenta',
@@ -52,7 +52,7 @@ class SaldosBody extends GetView<SaldoController> {
             trailing: Icons.work,
             color: Colors.grey,
             bottom: 10.0,
-            onPress: () => Routes.inst.goToPage("page"),
+            onPress: () => Routes.goToPage("page"),
           ),
         ],
       ),
