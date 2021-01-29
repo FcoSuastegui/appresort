@@ -19,7 +19,7 @@ class PasswordForm extends StatelessWidget {
         create: (context) => PasswordBloc(),
         child: Builder(
           builder: (context) {
-            final change = context.bloc<PasswordBloc>();
+            final change = BlocProvider.of<PasswordBloc>(context);
             return FormBlocListener<PasswordBloc, String, String>(
               onSubmitting: (context, state) => LoadingDialog.show(context),
               onSuccess: (context, state) async {

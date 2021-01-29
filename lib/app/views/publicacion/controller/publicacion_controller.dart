@@ -1,4 +1,4 @@
-import 'package:appresort/app/utils/helpers.dart';
+import 'package:appresort/app/utils/helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:appresort/app/data/models/publicacion_model.dart';
@@ -58,7 +58,7 @@ class Publicacioncontroller extends GetxController {
         'image/png',
       );
     } catch (e) {
-      Helpers.error(message: e.toString());
+      Helper.error(message: e.toString());
     }
   }
 }

@@ -22,6 +22,7 @@ class ReglamentoController extends GetxController {
 
   Future<void> getReglamentos() async {
     _loading(true);
+    print(GetStorages.i.user.iddesarrollo);
     final response = await HelperService.reglamentos(
       desarrollo: int.parse(GetStorages.i.user.iddesarrollo),
     );

@@ -1,4 +1,4 @@
-import 'package:appresort/app/utils/helpers.dart';
+import 'package:appresort/app/utils/helper.dart';
 import 'package:appresort/app/views/conekta/oxxo-pay/oxxo_pay_view.dart';
 import 'package:appresort/app/views/conekta/payment/payment_view.dart';
 import 'package:appresort/app/views/listar-cargos/bindings/listar_cargos_binding.dart';
@@ -109,7 +109,7 @@ class Routes {
             page,
             arguments: arguments,
           )
-        : Helpers.error(
+        : Helper.error(
             message: "El módulo no esta disponible o no tienes acceso a ello.",
           );
   }

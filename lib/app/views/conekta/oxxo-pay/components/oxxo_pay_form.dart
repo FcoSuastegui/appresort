@@ -17,7 +17,7 @@ class OxxoPayForm extends StatelessWidget {
       create: (context) => OxxoBloc(),
       child: Builder(
         builder: (context) {
-          final oxxo = context.bloc<OxxoBloc>();
+          final oxxo = BlocProvider.of<OxxoBloc>(context);
           return FormBlocListener<OxxoBloc, String, String>(
             onSubmitting: (context, state) => LoadingDialog.show(context),
             onSuccess: (context, state) async {

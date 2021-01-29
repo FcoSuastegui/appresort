@@ -20,7 +20,7 @@ class TicketAddForm extends GetView<TicketController> {
       create: (context) => TicketBloc(),
       child: Builder(
         builder: (context) {
-          final ticket = context.bloc<TicketBloc>();
+          final ticket = BlocProvider.of<TicketBloc>(context);
           return FormBlocListener<TicketBloc, String, String>(
             onSubmitting: (context, state) => LoadingDialog.show(context),
             onSuccess: (context, state) async {

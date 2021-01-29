@@ -45,7 +45,7 @@ class NavBarItems extends GetView<NavBarController> {
         title: Text(
           "home".tr,
           style: TextStyle(
-            fontSize: Adapt.px(22),
+            fontSize: Adapt.px(25),
           ),
         ),
         icon: Icon(Icons.home),
@@ -54,7 +54,7 @@ class NavBarItems extends GetView<NavBarController> {
         title: Text(
           "notification".tr,
           style: TextStyle(
-            fontSize: Adapt.px(22),
+            fontSize: Adapt.px(25),
           ),
         ),
         icon: Badge(
@@ -62,14 +62,14 @@ class NavBarItems extends GetView<NavBarController> {
             () => Text(
               "${n.counter}",
               style: TextStyle(
-                fontSize: 8.0,
+                fontSize: Adapt.px(13),
                 color: Colors.white,
               ),
             ),
           ),
           child: Icon(
             Icons.notifications,
-            size: 18,
+            size: Adapt.px(35),
           ),
         ),
       ),
@@ -77,7 +77,7 @@ class NavBarItems extends GetView<NavBarController> {
         title: Text(
           "account".tr,
           style: TextStyle(
-            fontSize: Adapt.px(22),
+            fontSize: Adapt.px(25),
           ),
         ),
         icon: user.photo != null && user.photo.isNotEmpty
@@ -97,7 +97,7 @@ class NavBarItems extends GetView<NavBarController> {
             title: Text(
               "home".tr,
               style: TextStyle(
-                fontSize: Adapt.px(22),
+                fontSize: Adapt.px(25),
               ),
             ),
             icon: Icon(Icons.home),
@@ -110,7 +110,7 @@ class NavBarItems extends GetView<NavBarController> {
             title: Text(
               "home".tr,
               style: TextStyle(
-                fontSize: Adapt.px(22),
+                fontSize: Adapt.px(25),
               ),
             ),
             icon: Icon(Icons.home),
@@ -119,7 +119,7 @@ class NavBarItems extends GetView<NavBarController> {
             title: Text(
               "coupon".tr,
               style: TextStyle(
-                fontSize: Adapt.px(22),
+                fontSize: Adapt.px(25),
               ),
             ),
             icon: Icon(Icons.card_membership),

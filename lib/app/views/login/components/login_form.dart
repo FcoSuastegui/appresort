@@ -19,7 +19,7 @@ class LoginForm extends StatelessWidget {
       create: (context) => LoginBloc(),
       child: Builder(
         builder: (context) {
-          final login = context.bloc<LoginBloc>();
+          final login = BlocProvider.of<LoginBloc>(context);
           return FormBlocListener<LoginBloc, String, String>(
             onSubmitting: (context, state) => LoadingDialog.show(context),
             onSuccess: (context, state) {

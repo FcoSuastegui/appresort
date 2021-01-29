@@ -16,7 +16,7 @@ class PaymentForm extends StatelessWidget {
       create: (context) => PaymentBloc(),
       child: Builder(
         builder: (context) {
-          final payment = context.bloc<PaymentBloc>();
+          final payment = BlocProvider.of<PaymentBloc>(context);
           return FormBlocListener<PaymentBloc, String, String>(
             onSubmitting: (context, state) => LoadingDialog.show(context),
             onSuccess: (context, state) async {

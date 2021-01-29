@@ -25,7 +25,7 @@ dependencies:
   dio: ^3.0.10
   # Paquete de gestor de estado
   get: ^3.24.0
-  flutter_form_bloc: ^0.13.0
+  flutter_form_bloc: ^0.19.0
   # Paquetes de Fuentes de texto y iconos
   google_fonts: ^1.1.0
   font_awesome_flutter: ^8.10.0

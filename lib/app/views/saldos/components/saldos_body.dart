@@ -1,4 +1,4 @@
-import 'package:appresort/app/utils/helpers.dart';
+import 'package:appresort/app/utils/helper.dart';
 import 'package:appresort/app/routes/routes.dart';
 import 'package:appresort/app/views/saldos/controller/saldo_controller.dart';
 import 'package:appresort/app/widgets/ListTile/list_tile_default.dart';
@@ -43,8 +43,8 @@ class SaldosBody extends GetView<SaldoController> {
             onPress: () async {
               final file = await controller.estadoCuenta();
               file.isNotEmpty
-                  ? Helpers.launchInBrowser(file)
-                  : Helpers.error(message: "Hubó un error al cargar el archivo");
+                  ? Helper.launchInBrowser(file)
+                  : Helper.error(message: "Hubó un error al cargar el archivo");
             },
           ),
           ListTileDefault(
