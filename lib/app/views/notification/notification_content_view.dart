@@ -1,5 +1,5 @@
 import 'package:appresort/app/utils/get_storage.dart';
-import 'package:appresort/app/utils/iconos.dart';
+import 'package:appresort/app/utils/my_icons.dart';
 import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/views/notification/controller/notification_controller.dart';
 import 'package:appresort/app/widgets/Appbars/app_bar_default.dart';
@@ -25,8 +25,8 @@ class NotificationContentView extends GetView<NotificationController> {
                 child: Column(
                   children: <Widget>[
                     Container(
-                      child: Iconos.nombre(
-                        nombre: controller.notification.icono,
+                      child: MyIcons.name(
+                        name: controller.notification.icono,
                         size: 100.0,
                         color: AppTheme.kSecondColor,
                       ),

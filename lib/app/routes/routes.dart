@@ -100,6 +100,7 @@ class Routes {
     GetPage(
       name: NotificationContentView.routeName,
       page: () => NotificationContentView(),
+      fullscreenDialog: true,
     ),
   ];
 

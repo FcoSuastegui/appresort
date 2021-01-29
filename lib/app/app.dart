@@ -17,7 +17,7 @@ class App extends StatelessWidget {
         title: "App Resort",
         debugShowCheckedModeBanner: false,
         initialRoute: GetStorages.i.validarToken(),
-        defaultTransition: Transition.cupertino,
+        defaultTransition: Transition.fadeIn,
         getPages: Routes.routes,
         theme: AppThemeData.lightTheme,
         locale: Locale('es'),

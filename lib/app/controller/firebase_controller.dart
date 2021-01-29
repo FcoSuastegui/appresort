@@ -16,16 +16,16 @@ class FireBaseController {
   Future<void> init() async {
     _firebaseMessaging.configure(
       onMessage: (Map<String, dynamic> message) async {
-        NotificationController.i.getNotification();
+        NotificationController.i.countNotification();
         print(" onMessage $message");
       },
       onBackgroundMessage: Platform.isAndroid ? FireBaseController.backGroundMessage : null,
       onLaunch: (Map<String, dynamic> message) async {
-        NotificationController.i.getNotification();
+        NotificationController.i.countNotification();
         print(" onLaunch $message");
       },
       onResume: (Map<String, dynamic> message) async {
-        NotificationController.i.getNotification();
+        NotificationController.i.countNotification();
         print(" onResume $message");
       },
     );

@@ -12,4 +12,10 @@ class ScrollBarController extends GetxController {
   void onInit() {
     super.onInit();
   }
+
+  @override
+  void dispose() {
+    scroll.dispose();
+    super.dispose();
+  }
 }

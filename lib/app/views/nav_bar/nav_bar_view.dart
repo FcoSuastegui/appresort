@@ -15,7 +15,19 @@ class NavBarView extends GetView<NavBarController> {
     return Scaffold(
       extendBody: true,
       body: const NavBarPages(),
-      bottomNavigationBar: const NavBarItems(),
+      bottomNavigationBar: Obx(
+        () => AnimatedSwitcher(
+          duration: Duration(milliseconds: 300),
+          child: controller.show
+              ? Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: Adapt.px(25),
+                  ),
+                  child: const NavBarItems(),
+                )
+              : SizedBox.shrink(),
+        ),
+      ),
     );
   }
 }
