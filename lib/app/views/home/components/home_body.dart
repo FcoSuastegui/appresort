@@ -1,5 +1,5 @@
-import 'package:appresort/app/views/home/components/home_direct_access.dart';
 import 'package:appresort/app/views/home/components/home_know.dart';
+import 'package:appresort/app/views/home/components/home_direct_access.dart';
 import 'package:appresort/app/views/home/controllers/home_controller.dart';
 import 'package:appresort/app/widgets/Linner/linner_container.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +20,7 @@ class HomeBody extends GetView<HomeController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const HomeDirectAccess(),
+          const HomeKnow(),
           const LinnerContainer(
             left: 0.0,
             right: 0.0,
@@ -29,7 +29,7 @@ class HomeBody extends GetView<HomeController> {
           const SizedBox(
             height: 10,
           ),
-          const HomeKnow()
+          const HomeDirectAccess(),
         ],
       ),
     );

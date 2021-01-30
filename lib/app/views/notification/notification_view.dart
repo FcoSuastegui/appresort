@@ -6,7 +6,6 @@ import 'package:appresort/app/routes/routes.dart';
 import 'package:appresort/app/themes/adapt.dart';
 import 'package:appresort/app/utils/my_icons.dart';
 import 'package:appresort/app/views/notification/controller/notification_controller.dart';
-import 'package:appresort/app/widgets/Cards/card_circular_indicator.dart';
 import 'package:appresort/app/widgets/Cards/card_refresh.dart';
 import 'package:appresort/app/widgets/ListTile/list_tile_custom.dart';
 import 'package:appresort/app/widgets/Sliver/sliver_app_bar_view.dart';
@@ -67,7 +66,7 @@ class NotificationView extends StatelessWidget {
                       title: Text("No hay notificaciones disponibles"),
                     ),
                     noItemsFoundIndicatorBuilder: (context) => CardRefresh(
-                      title: Text("No hay cupones disponibles"),
+                      title: Text("No hay notificaciones disponibles"),
                     ),
                   ),
                   separatorBuilder: (context, index) => SizedBox(

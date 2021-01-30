@@ -9,11 +9,6 @@ class NotificationController extends GetxController {
   static NotificationController _instance = NotificationController._internal();
   static NotificationController get i => _instance;
 
-  static const _pageSize = 20;
-
-  RxList<NotificationModel> _notifications = List<NotificationModel>().obs;
-  RxList<NotificationModel> get notifications => _notifications;
-
   final pagingController = PagingController<int, NotificationModel>(
     firstPageKey: 1,
   );

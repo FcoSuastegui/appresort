@@ -11,8 +11,8 @@ import 'package:appresort/app/views/onboarding/onboarding_view.dart';
 import 'package:appresort/app/views/password/password_view.dart';
 import 'package:appresort/app/views/profile/binding/profile_binding.dart';
 import 'package:appresort/app/views/profile/profile_view.dart';
-import 'package:appresort/app/views/publicacion/binding/publicacion_binding.dart';
-import 'package:appresort/app/views/publicacion/publicacion_view.dart';
+import 'package:appresort/app/views/post/binding/post_binding.dart';
+import 'package:appresort/app/views/post/post_view.dart';
 import 'package:appresort/app/views/reglamento/bindings/reglamento_binding.dart';
 import 'package:appresort/app/views/reglamento/reglamento_view.dart';
 import 'package:appresort/app/views/saldos/bindings/saldos_binding.dart';
@@ -88,14 +88,9 @@ class Routes {
       page: () => TicketAddView(),
     ),
     GetPage(
-      name: PublicacionView.routeName,
-      page: () => PublicacionView(),
-      binding: PublicacionBinding(),
-    ),
-    GetPage(
-      name: PublicacionView.routeName,
-      page: () => PublicacionView(),
-      binding: PublicacionBinding(),
+      name: PostView.routeName,
+      page: () => PostView(),
+      binding: PostBinding(),
     ),
     GetPage(
       name: NotificationContentView.routeName,
