@@ -1,14 +1,15 @@
+import 'package:appresort/app/themes/adapt.dart';
+import 'package:appresort/app/utils/formatters.dart';
+import 'package:appresort/app/utils/helper.dart';
+import 'package:appresort/app/widgets/TextField/input_text_cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_multi_formatter/flutter_multi_formatter.dart';
 import 'package:get/get.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/views/login/bloc/login_bloc.dart';
-import 'package:appresort/app/widgets/Alerts/custom_alert.dart';
 import 'package:appresort/app/widgets/Animation/fade_animation.dart';
 import 'package:appresort/app/widgets/Buttons/button_submit.dart';
-import 'package:appresort/app/widgets/Fields/input_text_field_bloc.dart';
 import 'package:appresort/app/widgets/Informacion/informacion.dart';
 import 'package:appresort/app/widgets/Loading/loading.dart';
 
@@ -29,13 +30,7 @@ class LoginForm extends StatelessWidget {
             },
             onFailure: (context, state) async {
               LoadingDialog.hide(context);
-              Get.dialog(
-                CustomAlert(
-                  type: AlertDialogType.ERROR,
-                  text: state.failureResponse,
-                ),
-                barrierDismissible: true,
-              );
+              Helper.error(message: state.failureResponse);
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
@@ -57,24 +52,27 @@ class LoginForm extends StatelessWidget {
                     ),
                     child: Column(
                       children: <Widget>[
-                        InputTextFieldBloc(
+                        InputTextCupertino(
                           textFieldBloc: login.username,
-                          keyboardType: TextInputType.phone,
-                          labelText: 'Usuario',
-                          hintText: "744 1234 567",
-                          inputFormatters: [MaskedInputFormater('### #### ###')],
+                          placeholder: 'Usuario',
+                          inputFormatters: [
+                            MaskedTextInputFormatter(
+                              mask: '### #### ###',
+                              separator: ' ',
+                            )
+                          ],
                         ),
-                        InputTextFieldBloc(
-                          suffixButton: SuffixButton.obscureText,
+                        InputTextCupertino(
                           textFieldBloc: login.password,
-                          labelText: "Contraseña",
+                          placeholder: 'Contraseña',
+                          suffixButton: SuffixButton.obscureText,
                         ),
                       ],
                     ),
                   ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: Adapt.px(30),
                 ),
                 FadeAnimation(
                   1.5,

@@ -24,88 +24,122 @@ class PostItem extends StatelessWidget {
       key: postKey,
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(10),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: CircleAvatar(
-                      backgroundColor: Colors.transparent,
-                      child: CachedNetworkImage(
-                        imageUrl: "${GetStorages.i.server}/${post.avatar}",
+        child: Container(
+          child: Column(
+            children: [
+              CachedNetworkImage(
+                imageUrl: "${GetStorages.i.server}/${post.imagen}",
+                imageBuilder: (context, image) => Container(
+                  height: Adapt.px(380),
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: image,
+                      fit: BoxFit.fitWidth,
+                    ),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(
+                        Adapt.px(20),
+                      ),
+                      topRight: Radius.circular(
+                        Adapt.px(20),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Expanded(
-                    flex: 2,
-                    child: Text(
-                      post.desarrollo,
-                      style: textTheme.subtitle2,
+                    color: Colors.white,
+                    border: Border.all(
+                      width: 0.2,
+                      color: Colors.grey,
                     ),
                   ),
-                ],
+                ),
+                fit: BoxFit.cover,
+                placeholder: (context, url) => SizedBox.shrink(),
+                errorWidget: (context, url, error) => SizedBox.shrink(),
               ),
-            ),
-            post.imagen != null
-                ? CachedNetworkImage(
-                    width: Adapt.screenWidth,
-                    height: Adapt.screenWidth / 2,
-                    fit: BoxFit.cover,
-                    imageUrl: "${GetStorages.i.server}/${post.imagen}",
-                  )
-                : SizedBox.shrink(),
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    post.contenido,
-                    style: textTheme.bodyText2,
-                  ),
-                  SizedBox(
-                    height: Adapt.px(30),
-                  ),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        '${post.fechaPublicacion}',
-                        style: textTheme.bodyText2,
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      post.contenido,
+                      textAlign: TextAlign.justify,
+                      style: TextStyle(
+                        fontSize: Adapt.px(30),
+                        fontWeight: FontWeight.bold,
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          GestureDetector(
-                            child: Container(
-                              child: Icon(Icons.favorite_border),
+                    ),
+                    SizedBox(
+                      height: Adapt.px(30),
+                    ),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Colors.white,
+                              radius: 20,
+                              child: CachedNetworkImage(
+                                imageUrl: "${GetStorages.i.server}/${post.avatar}",
+                                fit: BoxFit.fill,
+                              ),
                             ),
-                          ),
-                          GestureDetector(
-                            child: Container(
-                              margin: EdgeInsets.only(left: 10.0),
-                              child: Icon(Icons.share),
+                            SizedBox(
+                              width: 10,
                             ),
-                            onTap: onShared,
-                          ),
-                        ],
-                      )
-                    ],
-                  )
-                ],
-              ),
-            )
-          ],
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  post.desarrollo,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: Adapt.px(25),
+                                  ),
+                                ),
+                                Text(
+                                  '${post.fechaPublicacion}',
+                                  style: textTheme.caption,
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              child: Container(
+                                margin: EdgeInsets.only(left: 10.0),
+                                child: Icon(
+                                  Icons.bookmark_border,
+                                  color: Colors.black26,
+                                ),
+                              ),
+                              onTap: onShared,
+                            ),
+                            GestureDetector(
+                              child: Container(
+                                child: Icon(
+                                  Icons.favorite_border,
+                                  color: Color(0xFF939BB9),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

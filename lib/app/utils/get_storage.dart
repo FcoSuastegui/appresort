@@ -21,9 +21,6 @@ class GetStorages {
   set api(String valor) => _storage.write('api', valor);
   String get api => _storage.read('api') ?? '$server/server/api';
 
-  set tokenFireBase(String valor) => _storage.write('tokenFireBase', valor);
-  String get tokenFireBase => _storage.read('tokenFireBase') ?? '';
-
   set page(String valor) => _storage.write('page', valor);
   String get page => _storage.read('page') ?? '/';
 

@@ -1,7 +1,7 @@
+import 'package:appresort/app/globals/controller/scroll_bar_controller.dart';
 import 'package:appresort/app/views/home/components/home_body.dart';
-import 'package:appresort/app/views/home/components/home_header.dart';
-import 'package:appresort/app/views/home/controllers/home_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:appresort/app/views/home/components/home_header.dart';
 import 'package:get/get.dart';
 
 class HomeView extends StatelessWidget {
@@ -9,20 +9,20 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<HomeController>(
-      init: HomeController.i,
-      builder: (controller) => Scaffold(
-        backgroundColor: Colors.white,
-        body: SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.only(top: 0.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                HomeHeader(),
-                HomeBody(),
-              ],
-            ),
+    final ScrollController scroll = Get.find<ScrollBarController>().scroll;
+    return Scaffold(
+      extendBody: true,
+      backgroundColor: Color(0xFFF9F9F9),
+      body: SingleChildScrollView(
+        controller: scroll,
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const HomeHeader(),
+              HomeBody(),
+            ],
           ),
         ),
       ),

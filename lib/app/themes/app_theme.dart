@@ -1,4 +1,4 @@
-import 'package:appresort/app/themes/size_config.dart';
+import 'package:appresort/app/themes/adapt.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
@@ -23,7 +23,7 @@ class AppTheme {
   static const kAnimationDuration = Duration(milliseconds: 200);
 
   static final headingStyle = TextStyle(
-    fontSize: getProportionateScreenWidth(28.0),
+    fontSize: Adapt.px(28.0),
     fontWeight: FontWeight.bold,
     color: Colors.black,
     height: 1.5,

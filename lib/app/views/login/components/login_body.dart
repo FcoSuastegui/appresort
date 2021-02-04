@@ -11,7 +11,9 @@ class LoginBody extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Stack(
-            children: <Widget>[Informacion.banner],
+            children: <Widget>[
+              Informacion.banner,
+            ],
           ),
           LoginForm(),
           LoginFooter(),

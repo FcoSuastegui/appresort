@@ -16,7 +16,7 @@ class TicketView extends GetView<TicketController> {
         title: Text("Mis Tickets"),
         actions: [
           IconButton(
-            icon: Icon(Icons.add_circle, color: Colors.white),
+            icon: Icon(Icons.add),
             onPressed: () async {
               Routes.goToPage("/ticket-add");
               await controller.obtenerCatalogoTicket();

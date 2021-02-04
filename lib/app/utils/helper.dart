@@ -62,4 +62,7 @@ class Helper {
       );
     }
   }
+
+  static int numeric(String s) => _isNumeric(s) ? int.parse(s) : s;
+  static bool _isNumeric(String s) => s == null ? false : double.parse(s, (e) => null) != null;
 }

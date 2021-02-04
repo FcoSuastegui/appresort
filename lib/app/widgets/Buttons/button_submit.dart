@@ -1,4 +1,5 @@
 import 'package:appresort/app/themes/app_theme.dart';
+import 'package:appresort/app/themes/adapt.dart';
 import 'package:flutter/material.dart';
 
 class ButtonSubmit extends StatelessWidget {
@@ -16,17 +17,11 @@ class ButtonSubmit extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return FlatButton(
       child: Container(
         width: MediaQuery.of(context).size.width * 0.5,
         padding: EdgeInsets.symmetric(
-          vertical: 10.0,
-        ),
-        margin: EdgeInsets.only(
-          bottom: 10,
-          top: 10,
-          left: 20,
-          right: 20,
+          vertical: Adapt.px(10),
         ),
         child: Center(
           child: Text(
@@ -34,10 +29,6 @@ class ButtonSubmit extends StatelessWidget {
           ),
         ),
       ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      elevation: 0.0,
       color: color,
       textColor: textColor,
       onPressed: submit,

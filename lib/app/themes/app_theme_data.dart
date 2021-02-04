@@ -3,6 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppThemeData {
+  static BuildContext _context;
+  static init(BuildContext context) {
+    _context = context;
+  }
+
   static ThemeData _themeData = ThemeData();
 
   static final lightTheme = ThemeData.light().copyWith(
@@ -12,11 +17,15 @@ class AppThemeData {
       elevation: 0.0,
       brightness: Brightness.light,
       iconTheme: IconThemeData(
-        color: Colors.black45,
+        color: Colors.black,
       ),
-      textTheme: GoogleFonts.quicksandTextTheme(),
+      textTheme: GoogleFonts.mavenProTextTheme(
+        Theme.of(_context).textTheme,
+      ),
     ),
-    textTheme: GoogleFonts.quicksandTextTheme(),
+    textTheme: GoogleFonts.mavenProTextTheme(
+      Theme.of(_context).textTheme,
+    ),
     tabBarTheme: TabBarTheme(
       labelColor: const Color(0xFF000000),
     ),
@@ -34,11 +43,15 @@ class AppThemeData {
       elevation: 0.0,
       brightness: Brightness.dark,
       iconTheme: IconThemeData(
-        color: Colors.black45,
+        color: Colors.black,
       ),
-      textTheme: GoogleFonts.quicksandTextTheme(),
+      textTheme: GoogleFonts.mavenProTextTheme(
+        Theme.of(_context).textTheme,
+      ),
     ),
-    textTheme: GoogleFonts.quicksandTextTheme(),
+    textTheme: GoogleFonts.mavenProTextTheme(
+      Theme.of(_context).textTheme,
+    ),
     tabBarTheme: TabBarTheme(
       labelColor: const Color(0xFFFFFFFF),
     ),

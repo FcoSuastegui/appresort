@@ -1,6 +1,5 @@
 import 'package:appresort/app/views/home/home_view.dart';
 import 'package:appresort/app/views/nav_bar/controller/nav_bar_controller.dart';
-import 'package:appresort/app/views/notification/notification_view.dart';
 import 'package:appresort/app/views/setting/setting_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +17,6 @@ class NavBarPages extends GetView<NavBarController> {
     /* final user = GetStorages.i.user; */
     List<Widget> pages = [
       HomeView(),
-      NotificationView(),
       SettingView(),
     ];
 

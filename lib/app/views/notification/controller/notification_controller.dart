@@ -9,6 +9,8 @@ class NotificationController extends GetxController {
   static NotificationController _instance = NotificationController._internal();
   static NotificationController get i => _instance;
 
+  static const _pageSize = 10;
+
   final pagingController = PagingController<int, NotificationModel>(
     firstPageKey: 1,
   );
@@ -38,14 +40,11 @@ class NotificationController extends GetxController {
     final list = await NotificationService.notifications(
       idusuario: int.parse(GetStorages.i.user.id),
       sistema: int.parse(GetStorages.i.user.sistema),
+      page: pageKey,
     );
 
     if (list.message == null) {
-      _counter(list.totalCount);
-      final previouslyFetchedItemsCount = pagingController.itemList?.length ?? 0;
-
-      final isLastPage = list.isLastPage(previouslyFetchedItemsCount);
-
+      final isLastPage = list.itemList.length < _pageSize;
       if (isLastPage) {
         pagingController.appendLastPage(list.itemList);
       } else {
@@ -58,14 +57,10 @@ class NotificationController extends GetxController {
   }
 
   Future<void> countNotification() async {
-    final list = await NotificationService.notifications(
+    final total = await NotificationService.totalNotificaciones(
       idusuario: int.parse(GetStorages.i.user.id),
-      sistema: int.parse(GetStorages.i.user.sistema),
     );
-
-    if (list.message == null) {
-      _counter(list.totalCount);
-    }
+    _counter(total);
   }
 
   void selectNotification(NotificationModel notification) => _notification = notification;
