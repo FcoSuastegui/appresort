@@ -17,21 +17,26 @@ class AppThemeData {
       elevation: 0.0,
       brightness: Brightness.light,
       iconTheme: IconThemeData(
-        color: Colors.black,
+        color: AppTheme.kPrimaryColor,
       ),
       textTheme: GoogleFonts.mavenProTextTheme(
-        Theme.of(_context).textTheme,
+        Theme.of(_context).textTheme.apply(
+              bodyColor: AppTheme.kPrimaryColor,
+            ),
       ),
     ),
     textTheme: GoogleFonts.mavenProTextTheme(
-      Theme.of(_context).textTheme,
+      Theme.of(_context).textTheme.apply(
+            bodyColor: AppTheme.kPrimaryColor,
+            displayColor: AppTheme.kPrimaryColor,
+          ),
     ),
     tabBarTheme: TabBarTheme(
-      labelColor: const Color(0xFF000000),
+      labelColor: AppTheme.kPrimaryColor,
     ),
-    backgroundColor: const Color(0xFFFFFFFF),
+    backgroundColor: const Color(0xFFF9F9F9),
     cardColor: const Color(0xFFFFFFFF),
-    bottomAppBarColor: const Color.fromRGBO(45, 45, 48, 1),
+    bottomAppBarColor: const Color(0xFFFFFFFF),
     primaryColorLight: const Color(0xFFF5F5F5),
     primaryColorDark: const Color(0xFFEEEEEE),
     primaryColor: AppTheme.kPrimaryColor,
@@ -43,20 +48,26 @@ class AppThemeData {
       elevation: 0.0,
       brightness: Brightness.dark,
       iconTheme: IconThemeData(
-        color: Colors.black,
+        color: AppTheme.kPrimaryColor,
       ),
       textTheme: GoogleFonts.mavenProTextTheme(
-        Theme.of(_context).textTheme,
+        Theme.of(_context).textTheme.apply(
+              bodyColor: AppTheme.kPrimaryColor,
+              displayColor: AppTheme.kPrimaryColor,
+            ),
       ),
     ),
     textTheme: GoogleFonts.mavenProTextTheme(
-      Theme.of(_context).textTheme,
+      Theme.of(_context).textTheme.apply(
+            bodyColor: AppTheme.kPrimaryColor,
+            displayColor: AppTheme.kPrimaryColor,
+          ),
     ),
     tabBarTheme: TabBarTheme(
       labelColor: const Color(0xFFFFFFFF),
     ),
     backgroundColor: const Color(0xFF303030),
-    bottomAppBarColor: const Color(0xFF191919),
+    bottomAppBarColor: const Color(0xFFFFFFFF),
     cardColor: const Color(0xFF333333),
     primaryColorLight: const Color(0xFF505050),
     primaryColorDark: const Color(0xFF404040),

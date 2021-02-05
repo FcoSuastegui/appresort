@@ -1,3 +1,4 @@
+import 'package:appresort/app/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class ListTileCustom extends StatelessWidget {
@@ -8,31 +9,48 @@ class ListTileCustom extends StatelessWidget {
   final double height, width, borderRadius;
   final Function onPressed;
   final TextStyle titleStyle, subTitleStyle;
+  final Border border;
+  final bool showBorder;
 
   const ListTileCustom({
     Key key,
     this.icon,
     this.title,
     this.subtitle,
-    this.backgroundicon = Colors.red,
+    this.backgroundicon = AppTheme.kPrimaryColor,
     this.height = 70.0,
     this.width = 70.0,
     this.borderRadius = 10.0,
     this.onPressed,
     this.titleStyle,
     this.subTitleStyle,
-    this.iconPressColor,
+    this.iconPressColor = AppTheme.kPrimaryColor,
     this.iconPress = Icons.arrow_forward_ios,
+    this.border,
+    this.showBorder = false,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(borderRadius),
+        borderRadius: BorderRadius.circular(
+          borderRadius,
+        ),
         child: Container(
           height: height,
-          color: Colors.white,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: showBorder
+                ? border ??
+                    Border(
+                      bottom: BorderSide(
+                        width: 0.5,
+                        color: AppTheme.kPrimaryColor,
+                      ),
+                    )
+                : null,
+          ),
           child: Row(
             children: <Widget>[
               icon != null
@@ -73,7 +91,7 @@ class ListTileCustom extends StatelessWidget {
               Expanded(
                 child: Icon(
                   iconPress,
-                  color: iconPressColor ?? Colors.blue,
+                  color: iconPressColor,
                 ),
               ),
             ],

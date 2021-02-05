@@ -37,6 +37,7 @@ class MyIcons {
       'support_agent': Icon(Icons.support_agent, color: color, size: size),
       'menu_book': Icon(Icons.menu_book, color: color, size: size),
       'live_help': Icon(Icons.live_help, color: color, size: size),
+      'payment': Icon(Icons.payment, color: color, size: size),
     };
     return names[name] ?? Icon(Icons.home, color: color, size: size);
   }

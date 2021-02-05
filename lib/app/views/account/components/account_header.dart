@@ -2,8 +2,8 @@ import 'package:appresort/app/utils/get_storage.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class ProfileCard extends StatelessWidget {
-  const ProfileCard({Key key}) : super(key: key);
+class AccountHeader extends StatelessWidget {
+  const AccountHeader({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class ProfileCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(left: 96.0),
+                margin: EdgeInsets.only(left: 95.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -36,7 +36,7 @@ class ProfileCard extends StatelessWidget {
                     ),
                     ListTile(
                       contentPadding: EdgeInsets.all(0),
-                      title: Text(GetStorages.i.user.rol),
+                      title: Text(GetStorages.i.user.user),
                       subtitle: Text(GetStorages.i.user.email),
                     ),
                   ],

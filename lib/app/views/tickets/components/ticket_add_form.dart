@@ -24,7 +24,7 @@ class TicketAddForm extends GetView<TicketController> {
           return FormBlocListener<TicketBloc, String, String>(
             onSubmitting: (context, state) => LoadingDialog.show(context),
             onSuccess: (context, state) async {
-              controller.listarTickets();
+              //controller.listarTickets();
               LoadingDialog.hide(context);
               await Get.dialog(
                 CustomAlert(

@@ -1,4 +1,4 @@
-import 'package:appresort/app/views/tickets/components/ticket_card.dart';
+/* import 'package:appresort/app/views/tickets/components/ticket_card.dart';
 import 'package:appresort/app/views/tickets/controller/ticket_controller.dart';
 import 'package:appresort/app/widgets/Informacion/no_information.dart';
 import 'package:flutter/material.dart';
@@ -25,3 +25,4 @@ class TicketContent extends GetView<TicketController> {
           );
   }
 }
+ */

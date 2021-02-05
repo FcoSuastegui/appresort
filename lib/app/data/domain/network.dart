@@ -36,7 +36,7 @@ class Network {
       }
     } on DioError catch (e) {
       resquest.message =
-          "${_getResponseCode(e.response.statusCode.toString())} \n ${e.error.toString()}";
+          "${_getResponseCode(e.response?.statusCode.toString())} \n ${e.error.toString()}";
     }
     return resquest;
   }

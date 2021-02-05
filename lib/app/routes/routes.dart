@@ -6,15 +6,14 @@ import 'package:appresort/app/views/listar-cargos/listar_cargos_view.dart';
 import 'package:appresort/app/views/login/login_view.dart';
 import 'package:appresort/app/views/nav_bar/nav_bar_view.dart';
 import 'package:appresort/app/views/notification/notification_content_view.dart';
+import 'package:appresort/app/views/notification/notification_view.dart';
 import 'package:appresort/app/views/onboarding/bindings/onboarding_binding.dart';
 import 'package:appresort/app/views/onboarding/onboarding_view.dart';
 import 'package:appresort/app/views/password/password_view.dart';
-import 'package:appresort/app/views/profile/binding/profile_binding.dart';
-import 'package:appresort/app/views/profile/profile_view.dart';
 import 'package:appresort/app/views/post/binding/post_binding.dart';
 import 'package:appresort/app/views/post/post_view.dart';
-import 'package:appresort/app/views/reglamento/bindings/reglamento_binding.dart';
-import 'package:appresort/app/views/reglamento/reglamento_view.dart';
+import 'package:appresort/app/views/regulation/binding/regulation_binding.dart';
+import 'package:appresort/app/views/regulation/regulation_view.dart';
 import 'package:appresort/app/views/saldos/bindings/saldos_binding.dart';
 import 'package:appresort/app/views/saldos/saldos_view.dart';
 import 'package:appresort/app/views/services/services_view.dart';
@@ -34,6 +33,10 @@ class Routes {
       page: () => LoginView(),
     ),
     GetPage(
+      name: NotificationView.routeName,
+      page: () => NotificationView(),
+    ),
+    GetPage(
       name: OnBoardingView.routeName,
       page: () => OnBoardingView(),
       binding: OnBoardingBinding(),
@@ -43,9 +46,9 @@ class Routes {
       page: () => NavBarView(),
     ),
     GetPage(
-      name: ReglamentoView.routeName,
-      page: () => ReglamentoView(),
-      binding: ReglamentoBindig(),
+      name: RegulationView.routeName,
+      page: () => RegulationView(),
+      binding: RegulationBinding(),
     ),
     GetPage(
       name: SaldosView.routeName,
@@ -64,11 +67,6 @@ class Routes {
     GetPage(
       name: PaymentView.routeName,
       page: () => PaymentView(),
-    ),
-    GetPage(
-      name: ProfileView.routeName,
-      page: () => ProfileView(),
-      binding: ProfileBinding(),
     ),
     GetPage(
       name: PassWordView.routeName,
@@ -100,6 +98,7 @@ class Routes {
   ];
 
   static goToPage(String page, {dynamic arguments}) {
+    print(page);
     routes.any((e) => e.name == page)
         ? Get.toNamed(
             page,

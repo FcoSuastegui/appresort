@@ -35,7 +35,8 @@ class I18 extends Translations {
           'services': 'Services',
           'tickets': 'Tickets',
           'polls': 'Polls',
-          'current-balance': 'Current balance'
+          'current-balance': 'Current balance',
+          'notifications': 'Notifications',
         },
         'es': {
           'home': 'Inicio',
@@ -69,7 +70,8 @@ class I18 extends Translations {
           'services': 'Servicios',
           'tickets': 'Tickets',
           'polls': 'Encuestas',
-          'current-balance': 'Saldo actual'
+          'current-balance': 'Saldo actual',
+          'notifications': 'Notificaciones',
         }
       };
 }

@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 
 TicketsModel ticketsModelFromJson(String str) => TicketsModel.fromJson(json.decode(str));
@@ -12,33 +11,33 @@ class TicketsModel {
     this.status,
   });
 
-  int id;
+  String id;
   String folio;
   String descripcion;
   String status;
 
   factory TicketsModel.fromJson(Map<String, dynamic> json) => TicketsModel(
-      id            : int.parse(json["id"]),
-      folio         : json["folio"],
-      descripcion   : json["descripcion"],
-      status        : json["status"],
-  );
+        id: json["id"] ?? '',
+        folio: json["folio"] ?? '',
+        descripcion: json["descripcion"] ?? '',
+        status: json["status"] ?? '',
+      );
 
   Map<String, dynamic> toJson() => {
-      "id"            : id,
-      "folio"         : folio,
-      "descripcion"   : descripcion,
-      "status"        : status,
-  };
+        "id": id,
+        "folio": folio,
+        "descripcion": descripcion,
+        "status": status,
+      };
 }
-
 
 enum status {
   Pendiente,
 }
 // Modelo para las opciones de tickets
 
-CatalogoTicketModel catalogoTicketModelFromJson(String str) => CatalogoTicketModel.fromJson(json.decode(str));
+CatalogoTicketModel catalogoTicketModelFromJson(String str) =>
+    CatalogoTicketModel.fromJson(json.decode(str));
 String catalogoTicketModelToJson(CatalogoTicketModel data) => json.encode(data.toJson());
 
 class CatalogoTicketModel {
@@ -51,12 +50,12 @@ class CatalogoTicketModel {
   String texto;
 
   factory CatalogoTicketModel.fromJson(Map<String, dynamic> json) => CatalogoTicketModel(
-      id      : json["id"],
-      texto   : json["nombre"],
-  );
+        id: json["id"],
+        texto: json["nombre"],
+      );
 
   Map<String, dynamic> toJson() => {
-      "id"      : id,
-      "texto"   : texto,
-  };
+        "id": id,
+        "texto": texto,
+      };
 }

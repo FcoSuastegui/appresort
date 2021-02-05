@@ -4,6 +4,7 @@ import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/views/notification/controller/notification_controller.dart';
 import 'package:badges/badges.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -81,8 +82,10 @@ class HomeHeader extends StatelessWidget {
                             width: Adapt.px(70),
                             decoration: BoxDecoration(
                               image: DecorationImage(
+                                image: CachedNetworkImageProvider(
+                                  GetStorages.i.user.photo,
+                                ),
                                 fit: BoxFit.cover,
-                                image: Image.network(user.photo).image,
                               ),
                             ),
                           ),

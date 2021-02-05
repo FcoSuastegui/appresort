@@ -9,7 +9,6 @@ class LoginView extends StatelessWidget {
   Widget build(BuildContext context) {
     Adapt.initContext(context);
     return Scaffold(
-      backgroundColor: Colors.white,
       body: ScrollBarView(
         child: SingleChildScrollView(
           child: LoginBody(),

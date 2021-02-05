@@ -22,9 +22,14 @@ class NotificationView extends GetView<NotificationController> {
       child: Scaffold(
         appBar: AppBar(
           elevation: 0.0,
-          title: Text("Notificaciones"),
+          title: Text(
+            "notifications".tr,
+          ),
         ),
         body: SliverScrollView(
+          onRefresh: () => Future.sync(
+            () => controller.pagingController.refresh(),
+          ),
           slivers: [
             PagedSliverList.separated(
               pagingController: controller.pagingController,

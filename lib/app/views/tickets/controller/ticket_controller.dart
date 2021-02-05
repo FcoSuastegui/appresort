@@ -5,10 +5,28 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+
 class TicketController extends GetxController {
   TicketController._internal();
   static TicketController _instance = TicketController._internal();
   static TicketController get instance => _instance;
+
+  static const _pageSize = 10;
+
+  final user = GetStorages.i.user;
+
+  final pagingController = PagingController<int, TicketsModel>(
+    firstPageKey: 1,
+  );
+
+  @override
+  void onInit() {
+    pagingController.addPageRequestListener((pageKey) {
+      getTickets(pageKey);
+    });
+    super.onInit();
+  }
 
   RxList<TicketsModel> _tickets = List<TicketsModel>().obs;
   RxList<TicketsModel> get tickets => _tickets;
@@ -28,28 +46,24 @@ class TicketController extends GetxController {
 
   ImagePicker _picker = ImagePicker();
 
-  final user = GetStorages.i.user;
-
-  @override
-  void onInit() {
-    listarTickets();
-    super.onInit();
-  }
-
-  Future<void> listarTickets() async {
-    _loading(true);
-    final response = await TicketService.tickets(
+  Future<void> getTickets(int pageKey) async {
+    final list = await TicketService.tickets(
       idpropietario: int.parse(user.idpropietario),
       sistema: int.parse(user.sistema),
+      page: pageKey,
     );
-    _tickets.clear();
-    if (response.status) {
-      response.data.forEach(
-        (item) => _tickets.add(TicketsModel.fromJson(item)),
-      );
+
+    if (list.message == null) {
+      final isLastPage = list.itemList.length < _pageSize;
+      if (isLastPage) {
+        pagingController.appendLastPage(list.itemList);
+      } else {
+        final nextPageKey = pageKey + 1;
+        pagingController.appendPage(list.itemList, nextPageKey);
+      }
+    } else {
+      pagingController.error = list.message;
     }
-    _image = null;
-    _loading(false);
   }
 
   Future<void> obtenerCatalogoTicket() async {

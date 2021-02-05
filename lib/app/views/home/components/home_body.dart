@@ -30,7 +30,7 @@ class HomeBody extends GetView<HomeController> {
     ),
     ActionsModel(
       backGroundColor: Color(0xFFC7DFFC),
-      title: 'balance',
+      title: 'balances'.tr,
       icon: MyIcons.name(
         name: 'balance-scale',
         size: Adapt.px(80),
@@ -95,6 +95,7 @@ class HomeBody extends GetView<HomeController> {
               "all-services".tr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
+                color: AppTheme.kPrimaryColor,
               ),
             ),
           ),
@@ -143,6 +144,9 @@ class HomeBody extends GetView<HomeController> {
                                 child: Text(
                                   action.title.tr,
                                   overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color: AppTheme.kPrimaryColor,
+                                  ),
                                 ),
                               ),
                             ],

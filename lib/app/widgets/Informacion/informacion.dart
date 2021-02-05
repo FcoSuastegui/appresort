@@ -36,7 +36,6 @@ class Informacion {
             PdfViewerDialog(
               path: "assets/documents/terminos-condiciones.pdf",
               isAsset: true,
-              onTap: () => Get.back(),
             ),
             barrierDismissible: false,
           ),

@@ -3,12 +3,10 @@ import 'package:advance_pdf_viewer/advance_pdf_viewer.dart';
 
 class PdfViewerDialog extends StatefulWidget {
   final String path;
-  final Function onTap;
   final bool isAsset;
 
   PdfViewerDialog({
     @required this.path,
-    this.onTap,
     this.isAsset = false,
   });
 
@@ -53,7 +51,7 @@ class _PdfViewerDialogState extends State<PdfViewerDialog> {
                 top: -5.0,
                 child: GestureDetector(
                   behavior: HitTestBehavior.translucent,
-                  onTap: widget.onTap,
+                  onTap: () => Navigator.pop(context),
                   child: Icon(
                     Icons.clear,
                     color: Colors.white,

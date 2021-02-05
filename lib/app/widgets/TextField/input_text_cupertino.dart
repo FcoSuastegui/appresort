@@ -210,6 +210,12 @@ class _InputTextCupertinoState extends State<InputTextCupertino> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CupertinoTextField(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            border: Border.all(
+              color: Colors.black.withOpacity(0.1),
+            ),
+          ),
           placeholder: widget.placeholder,
           obscureText: _obscureText,
           controller: _controller,
@@ -232,12 +238,10 @@ class _InputTextCupertinoState extends State<InputTextCupertino> {
           },
           placeholderStyle: widget.placeholderStyle ??
               Theme.of(context).textTheme.bodyText1.copyWith(
-                    color: Colors.black54,
                     fontSize: 14,
                   ),
           style: widget.style ??
               Theme.of(context).textTheme.bodyText1.copyWith(
-                    color: Colors.black54,
                     fontSize: 14,
                   ),
         ),

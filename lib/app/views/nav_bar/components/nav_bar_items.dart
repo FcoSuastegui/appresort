@@ -1,6 +1,8 @@
 import 'package:appresort/app/themes/adapt.dart';
+import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/views/nav_bar/controller/nav_bar_controller.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +18,7 @@ class NavBarItems extends GetView<NavBarController> {
         bubbleCurve: Curves.easeIn,
         strokeColor: Colors.transparent,
         iconSize: Adapt.px(30),
-        selectedColor: Colors.grey,
+        selectedColor: AppTheme.kPrimaryColor,
         unSelectedColor: Colors.grey[300],
         backgroundColor: Colors.white,
         borderRadius: Radius.circular(
@@ -38,6 +40,7 @@ class NavBarItems extends GetView<NavBarController> {
           "home".tr,
           style: TextStyle(
             fontSize: Adapt.px(25),
+            color: AppTheme.kPrimaryColor,
           ),
         ),
         icon: Icon(Icons.home),
@@ -47,11 +50,14 @@ class NavBarItems extends GetView<NavBarController> {
           "account".tr,
           style: TextStyle(
             fontSize: Adapt.px(25),
+            color: AppTheme.kPrimaryColor,
           ),
         ),
         icon: user.photo != null && user.photo.isNotEmpty
             ? CircleAvatar(
-                backgroundImage: Image.network(user.photo).image,
+                backgroundImage: CachedNetworkImageProvider(
+                  GetStorages.i.user.photo,
+                ),
               )
             : Icon(Icons.account_circle),
       ),

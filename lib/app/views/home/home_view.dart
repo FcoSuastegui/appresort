@@ -12,7 +12,6 @@ class HomeView extends StatelessWidget {
     final ScrollController scroll = Get.find<ScrollBarController>().scroll;
     return Scaffold(
       extendBody: true,
-      backgroundColor: Color(0xFFF9F9F9),
       body: SingleChildScrollView(
         controller: scroll,
         child: Container(

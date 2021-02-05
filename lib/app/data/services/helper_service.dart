@@ -1,11 +1,30 @@
 import 'package:appresort/app/data/domain/network.dart';
+import 'package:appresort/app/data/models/list_page.dart';
+import 'package:appresort/app/data/models/regulation_model.dart';
 import 'package:appresort/app/data/models/response_model.dart';
 
 class HelperService {
-  static Future<ResponseModel> reglamentos({int desarrollo}) async {
-    return Network.i.post(
+  static Future<ListPage<RegulationModel>> reglamentos({
+    int desarrollo = 0,
+    int page = 1,
+  }) async {
+    final response = await Network.i.post(
       route: '/app/reglamentos',
-      data: {"desarrollo": desarrollo},
+      data: {
+        "desarrollo": desarrollo,
+        "page": page,
+      },
+    );
+    final List<RegulationModel> list = List<RegulationModel>();
+    String message;
+    response.status
+        ? response.data.forEach((e) => list.add(RegulationModel.fromJson(e)))
+        : message = response.message;
+
+    return ListPage<RegulationModel>(
+      itemList: list,
+      totalCount: list.length,
+      message: message,
     );
   }
 
