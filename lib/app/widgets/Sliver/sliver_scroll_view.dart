@@ -18,7 +18,7 @@ class SliverScrollView extends StatelessWidget {
     return ScrollBarView(
       child: RefreshIndicator(
         strokeWidth: 1.0,
-        onRefresh: onRefresh ?? onReFreshNull,
+        onRefresh: onRefresh ?? () => Future.sync(() {}),
         child: CustomScrollView(
           controller: controller,
           slivers: slivers,
@@ -26,6 +26,4 @@ class SliverScrollView extends StatelessWidget {
       ),
     );
   }
-
-  Future<void> onReFreshNull() async {}
 }

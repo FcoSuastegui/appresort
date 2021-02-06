@@ -21,14 +21,13 @@ class AppThemeData {
       ),
       textTheme: GoogleFonts.mavenProTextTheme(
         Theme.of(_context).textTheme.apply(
-              bodyColor: AppTheme.kPrimaryColor,
+              bodyColor: Colors.black.withOpacity(0.5),
             ),
       ),
     ),
     textTheme: GoogleFonts.mavenProTextTheme(
       Theme.of(_context).textTheme.apply(
-            bodyColor: AppTheme.kPrimaryColor,
-            displayColor: AppTheme.kPrimaryColor,
+            bodyColor: Colors.black.withOpacity(0.5),
           ),
     ),
     tabBarTheme: TabBarTheme(
@@ -52,15 +51,13 @@ class AppThemeData {
       ),
       textTheme: GoogleFonts.mavenProTextTheme(
         Theme.of(_context).textTheme.apply(
-              bodyColor: AppTheme.kPrimaryColor,
-              displayColor: AppTheme.kPrimaryColor,
+              bodyColor: Colors.black.withOpacity(0.5),
             ),
       ),
     ),
     textTheme: GoogleFonts.mavenProTextTheme(
       Theme.of(_context).textTheme.apply(
-            bodyColor: AppTheme.kPrimaryColor,
-            displayColor: AppTheme.kPrimaryColor,
+            bodyColor: Colors.black.withOpacity(0.5),
           ),
     ),
     tabBarTheme: TabBarTheme(

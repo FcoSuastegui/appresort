@@ -30,6 +30,32 @@ class Network {
         if (body.status) {
           resquest.status = body.status;
           resquest.data = body.data;
+          resquest.message = body.message;
+        } else {
+          resquest.message = body.message;
+        }
+      }
+    } on DioError catch (e) {
+      resquest.message =
+          "${_getResponseCode(e.response?.statusCode.toString())} \n ${e.error.toString()}";
+    }
+    return resquest;
+  }
+
+  Future<ResponseModel> postFormData({@required route, data = const {}}) async {
+    final ResponseModel resquest = ResponseModel(
+      status: false,
+      message: '',
+    );
+    try {
+      FormData formData = FormData.fromMap(data);
+      final Response response = await _dio.post(route, data: formData);
+      if (response.statusCode == 200) {
+        final ResponseModel body = ResponseModel.fromJson(response.data);
+        if (body.status) {
+          resquest.status = body.status;
+          resquest.data = body.data;
+          resquest.message = body.message;
         } else {
           resquest.message = body.message;
         }

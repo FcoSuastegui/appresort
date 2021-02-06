@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class NavBarView extends GetView<NavBarController> {
-  static final String routeName = '/navigation-bar';
+  static final String routeName = '/nav-bar';
   const NavBarView({Key key}) : super(key: key);
 
   @override

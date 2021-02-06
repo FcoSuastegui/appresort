@@ -4,7 +4,6 @@ import 'package:appresort/app/routes/routes.dart';
 import 'package:appresort/app/views/account/components/account_header.dart';
 import 'package:appresort/app/widgets/Alerts/alert_actions.dart';
 import 'package:appresort/app/widgets/ListTile/list_tile_custom.dart';
-import 'package:appresort/app/widgets/ListTile/list_tile_default.dart';
 import 'package:appresort/app/widgets/Sliver/sliver_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -62,7 +61,6 @@ class AccountBody extends StatelessWidget {
         title: "¿Deseas salir de la aplicación?",
         onPress: () async {
           await GetStorages.i.clear();
-          GetStorages.i.onboarding = true;
           Get.offAllNamed('/');
         },
       ),

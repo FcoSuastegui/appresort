@@ -211,7 +211,8 @@ class _InputTextCupertinoState extends State<InputTextCupertino> {
       children: [
         CupertinoTextField(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(6),
             border: Border.all(
               color: Colors.black.withOpacity(0.1),
             ),
@@ -223,7 +224,7 @@ class _InputTextCupertinoState extends State<InputTextCupertino> {
           suffix: widget.suffix ?? _builderSuffix(state),
           padding: EdgeInsets.symmetric(
             horizontal: 10.0,
-            vertical: 10,
+            vertical: 13,
           ),
           keyboardType: widget.keyboardType,
           textCapitalization: widget.textCapitalization,
@@ -239,10 +240,12 @@ class _InputTextCupertinoState extends State<InputTextCupertino> {
           placeholderStyle: widget.placeholderStyle ??
               Theme.of(context).textTheme.bodyText1.copyWith(
                     fontSize: 14,
+                    color: Colors.black.withOpacity(0.3),
                   ),
           style: widget.style ??
               Theme.of(context).textTheme.bodyText1.copyWith(
                     fontSize: 14,
+                    color: Colors.black.withOpacity(0.7),
                   ),
         ),
         errorText == null || errorText.isEmpty
@@ -264,64 +267,3 @@ class _InputTextCupertinoState extends State<InputTextCupertino> {
     );
   }
 }
-
-/*
-
-return CupertinoTextField(
-      obscureText: _obscureText,
-      controller: _controller,
-      clearButtonMode: OverlayVisibilityMode.editing,
-      padding: EdgeInsets.symmetric(horizontal: 10.0),
-      decoration: BoxDecoration(color: Colors.white),
-      placeholderStyle: Theme.of(context).textTheme.bodyText1.copyWith(
-            color: Colors.black26,
-            fontSize: 14,
-          ),
-      style: Theme.of(context).textTheme.bodyText1.copyWith(
-            color: Colors.black26,
-            fontSize: 14,
-          ),
-    );
-class InputTextCupertino extends StatelessWidget {
-  final Stream input;
-  final Function(String) onChanged;
-  final String placeholder;
-  final Widget prefix;
-
-  const InputTextCupertino({
-    Key key,
-    this.input,
-    this.onChanged,
-    this.placeholder,
-    this.prefix,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 20.0),
-      height: 40.0,
-      child: StreamBuilder(
-        stream: input,
-        builder: (_, __) => CupertinoTextField(
-          clearButtonMode: OverlayVisibilityMode.editing,
-          onChanged: onChanged,
-          padding: EdgeInsets.symmetric(horizontal: 10.0),
-          decoration: BoxDecoration(color: Colors.white),
-          placeholder: placeholder,
-          prefix: prefix,
-          placeholderStyle: Theme.of(context).textTheme.bodyText1.copyWith(
-                color: Colors.black26,
-                fontSize: 14,
-              ),
-          style: Theme.of(context).textTheme.bodyText1.copyWith(
-                color: Colors.black26,
-                fontSize: 14,
-              ),
-        ),
-      ),
-    );
-  }
-}
-
-*/

@@ -55,6 +55,7 @@ class LoginForm extends StatelessWidget {
                         InputTextCupertino(
                           textFieldBloc: login.username,
                           placeholder: 'Usuario',
+                          keyboardType: TextInputType.phone,
                           inputFormatters: [
                             MaskedTextInputFormatter(
                               mask: '### #### ###',

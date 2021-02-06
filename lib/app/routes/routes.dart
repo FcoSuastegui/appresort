@@ -1,4 +1,6 @@
 import 'package:appresort/app/utils/helper.dart';
+import 'package:appresort/app/views/balance/balance_view.dart';
+import 'package:appresort/app/views/balance/binding/balance_binding.dart';
 import 'package:appresort/app/views/conekta/oxxo-pay/oxxo_pay_view.dart';
 import 'package:appresort/app/views/conekta/payment/payment_view.dart';
 import 'package:appresort/app/views/listar-cargos/bindings/listar_cargos_binding.dart';
@@ -14,8 +16,6 @@ import 'package:appresort/app/views/post/binding/post_binding.dart';
 import 'package:appresort/app/views/post/post_view.dart';
 import 'package:appresort/app/views/regulation/binding/regulation_binding.dart';
 import 'package:appresort/app/views/regulation/regulation_view.dart';
-import 'package:appresort/app/views/saldos/bindings/saldos_binding.dart';
-import 'package:appresort/app/views/saldos/saldos_view.dart';
 import 'package:appresort/app/views/services/services_view.dart';
 import 'package:appresort/app/views/tickets/bindings/ticket_binding.dart';
 import 'package:appresort/app/views/tickets/ticket_add_view.dart';
@@ -51,9 +51,9 @@ class Routes {
       binding: RegulationBinding(),
     ),
     GetPage(
-      name: SaldosView.routeName,
-      page: () => SaldosView(),
-      binding: SaldoBinding(),
+      name: BalanceView.routeName,
+      page: () => BalanceView(),
+      binding: BalanceBinding(),
     ),
     GetPage(
       name: ListarCargosView.routeName,
@@ -71,6 +71,7 @@ class Routes {
     GetPage(
       name: PassWordView.routeName,
       page: () => PassWordView(),
+      fullscreenDialog: true,
     ),
     GetPage(
       name: ServicesView.routeName,
@@ -84,6 +85,7 @@ class Routes {
     GetPage(
       name: TicketAddView.routeName,
       page: () => TicketAddView(),
+      fullscreenDialog: true,
     ),
     GetPage(
       name: PostView.routeName,

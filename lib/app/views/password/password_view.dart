@@ -14,7 +14,13 @@ class PassWordView extends StatelessWidget {
           "change-password".tr,
         ),
       ),
-      body: PasswordForm(),
+      body: Container(
+        margin: EdgeInsets.symmetric(
+          horizontal: 20,
+          vertical: 20,
+        ),
+        child: PasswordForm(),
+      ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/themes/app_theme.dart';
+import 'package:appresort/app/views/nav_bar/controller/nav_bar_controller.dart';
 import 'package:appresort/app/views/onboarding/components/onboarding_stepper.dart';
 import 'package:appresort/app/views/onboarding/controller/onboarding_controller.dart';
 import 'package:flutter/material.dart';
@@ -39,8 +40,9 @@ class OnBoardingBody extends GetView<OnBoardingController> {
                         onPressed: () {
                           final respuesta = controller.onPressed();
                           if (respuesta) {
-                            GetStorages.i.onboarding = false;
-                            Get.offAllNamed('/navigation-bar');
+                            Get.find<NavBarController>().currentIndex = 0;
+                            GetStorages.i.page = '/nav-bar';
+                            Get.offAllNamed(GetStorages.i.page);
                           }
                         },
                         padding: EdgeInsets.all(13.0),

@@ -34,14 +34,14 @@ class HomeHeader extends StatelessWidget {
                     "Bienvenido de nuevo",
                     style: TextStyle(
                       fontSize: Adapt.px(25),
-                      color: AppTheme.kPrimaryColor.withOpacity(0.9),
+                      color: Colors.black.withOpacity(0.5),
                     ),
                   ),
                   Text(
                     user.fullname,
                     style: TextStyle(
                       fontSize: Adapt.px(25),
-                      color: AppTheme.kPrimaryColor.withOpacity(0.9),
+                      color: Colors.black.withOpacity(0.7),
                       fontWeight: FontWeight.bold,
                     ),
                   ),

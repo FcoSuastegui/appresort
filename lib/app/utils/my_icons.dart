@@ -31,13 +31,15 @@ class MyIcons {
       'info': Icon(Icons.info, color: color, size: size),
       'gavel': Icon(Icons.gavel, color: color, size: size),
       'bookmark': Icon(FontAwesome.bookmark, color: color, size: size),
-      'balance-scale': Icon(FontAwesome.balance_scale, color: color, size: size),
+      'balance_scale': Icon(FontAwesome.balance_scale, color: color, size: size),
       'photo_album': Icon(Icons.photo_album, color: color, size: size),
       'headset_mic': Icon(Icons.headset_mic, color: color, size: size),
       'support_agent': Icon(Icons.support_agent, color: color, size: size),
       'menu_book': Icon(Icons.menu_book, color: color, size: size),
       'live_help': Icon(Icons.live_help, color: color, size: size),
       'payment': Icon(Icons.payment, color: color, size: size),
+      'download_sharp': Icon(Icons.download_sharp, color: color, size: size),
+      'work': Icon(Icons.work, color: color, size: size),
     };
     return names[name] ?? Icon(Icons.home, color: color, size: size);
   }

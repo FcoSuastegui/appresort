@@ -39,7 +39,7 @@ class TicketService {
   }
 
   static Future<ResponseModel> addTicket(Map<String, dynamic> data) async {
-    return Network.i.post(
+    return Network.i.postFormData(
       route: '/app/agregarTicket',
       data: data,
     );

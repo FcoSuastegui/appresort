@@ -15,8 +15,8 @@ class ResponseModel {
   dynamic data;
 
   factory ResponseModel.fromJson(Map<String, dynamic> json) => ResponseModel(
-        status: json["status"],
-        message: json["message"],
+        status: json["status"] ?? false,
+        message: json["message"] ?? '',
         data: json["data"],
       );
 

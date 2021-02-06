@@ -36,9 +36,8 @@ class LoginBloc extends FormBloc<String, String> {
     );
 
     if (response.status) {
-      print(response.data);
       GetStorages.i.user = UserModel.fromJson(response.data);
-      GetStorages.i.page = GetStorages.i.onboarding ? '/onboarding' : '/navigation-bar';
+      GetStorages.i.page = GetStorages.i.onboarding ? '/onboarding' : '/nav-bar';
       await FireBaseController.inst.init();
       emitSuccess();
     } else {

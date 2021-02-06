@@ -1,4 +1,3 @@
-import 'package:appresort/app/themes/app_theme.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,17 +22,25 @@ class DropSearchField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 10.0, right: 10.0),
+      height: 80,
+      padding: EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 10,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8),
+      ),
       child: DropdownSearch<String>(
         dropdownSearchDecoration: InputDecoration(
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: AppTheme.kSecondColor,
+              color: Colors.white,
             ),
           ),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(
-              color: AppTheme.kSecondColor,
+              color: Colors.white,
             ),
           ),
           labelStyle: GoogleFonts.lato(

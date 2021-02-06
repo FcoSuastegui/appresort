@@ -3,10 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class OnBoardingController extends GetxController {
-  OnBoardingController._internal();
-  static OnBoardingController _instance = OnBoardingController._internal();
-  static OnBoardingController get instance => _instance;
-
   int _numPages = 3;
   int get numbPages => _numPages;
 

@@ -1,12 +1,13 @@
-import 'package:appresort/app/themes/app_theme.dart';
+import 'package:appresort/app/themes/adapt.dart';
+import 'package:appresort/app/utils/helper.dart';
 import 'package:appresort/app/views/tickets/bloc/ticket_bloc.dart';
 import 'package:appresort/app/views/tickets/controller/ticket_controller.dart';
 import 'package:appresort/app/widgets/Alerts/alert_image_picker.dart';
 import 'package:appresort/app/widgets/Alerts/custom_alert.dart';
 import 'package:appresort/app/widgets/Buttons/button_submit_align.dart';
 import 'package:appresort/app/widgets/Fields/drop_search_field.dart';
-import 'package:appresort/app/widgets/Fields/input_text_field_bloc.dart';
 import 'package:appresort/app/widgets/Loading/loading.dart';
+import 'package:appresort/app/widgets/TextField/input_text_cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:get/get.dart';
@@ -24,8 +25,8 @@ class TicketAddForm extends GetView<TicketController> {
           return FormBlocListener<TicketBloc, String, String>(
             onSubmitting: (context, state) => LoadingDialog.show(context),
             onSuccess: (context, state) async {
-              //controller.listarTickets();
               LoadingDialog.hide(context);
+              ticket.controller.pagingController.refresh();
               await Get.dialog(
                 CustomAlert(
                   type: AlertDialogType.SUCCESS,
@@ -39,17 +40,9 @@ class TicketAddForm extends GetView<TicketController> {
             },
             onFailure: (context, state) async {
               LoadingDialog.hide(context);
-              Get.dialog(
-                CustomAlert(
-                  type: AlertDialogType.ERROR,
-                  text: state.failureResponse,
-                  action: () => Get.back(),
-                ),
-                barrierDismissible: true,
-              );
+              Helper.error(message: state.failureResponse);
             },
             child: Container(
-              margin: EdgeInsets.only(left: 10.0, right: 10.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -57,86 +50,87 @@ class TicketAddForm extends GetView<TicketController> {
                   Obx(
                     () => DropSearchField(
                       showClearButton: false,
-                      label: " Seleccione una opción",
+                      label: " Seleccione una servicio",
                       items: controller.catalogoItems,
                       onChanged: (String v) => controller.seleccionarCatalogo(v),
                     ),
                   ),
-                  InputTextFieldBloc(
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "*Favor de describir a detalle el caso.",
+                    style: TextStyle(fontSize: 17.0),
+                    textAlign: TextAlign.start,
+                  ),
+                  InputTextCupertino(
                     textFieldBloc: ticket.descripcion,
-                    labelText: "Descripción",
+                    placeholder: "Descripción",
                   ),
-                  Container(
-                    margin: EdgeInsets.only(top: 20.0, bottom: 20.0),
-                    child: Text(
-                      "*Favor de describir a detalle el caso.",
-                      style: TextStyle(fontSize: 17.0),
-                      textAlign: TextAlign.start,
-                    ),
+                  SizedBox(
+                    height: 10,
                   ),
-                  Container(
-                    width: Get.width,
-                    margin: EdgeInsets.only(top: 20.0),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: RaisedButton(
-                              onPressed: showSelectDialog,
-                              color: Colors.white,
-                              padding: EdgeInsets.all(10.0),
-                              elevation: 0.0,
-                              child: Text(
-                                "Seleccione una imagen(opcional).",
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5.0),
-                                side: BorderSide(
-                                  color: AppTheme.kPrimaryColor,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        GetBuilder<TicketController>(
-                          id: "image",
-                          builder: (controller) => Container(
-                            width: Get.width,
-                            margin: EdgeInsets.only(top: 20.0),
-                            child: controller.image != null
-                                ? Stack(
-                                    children: [
-                                      Center(
-                                        child: Container(
-                                          height: 200.0,
-                                          width: 300.0,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              image: Image.file(controller.image).image,
-                                              fit: BoxFit.contain,
-                                            ),
-                                          ),
-                                          child: null,
+                  Text(
+                    "Seleccione una imagen(opcional).",
+                    style: TextStyle(fontSize: 17.0),
+                    textAlign: TextAlign.start,
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: GetBuilder<TicketController>(
+                      id: "image",
+                      builder: (c) => Stack(
+                        children: [
+                          Container(
+                            height: 200,
+                            width: 200,
+                            child: c.image == null
+                                ? GestureDetector(
+                                    onTap: showSelectDialog,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.grey.withOpacity(0.4),
+                                      ),
+                                      child: Center(
+                                        child: Icon(
+                                          Icons.add,
+                                          color: Colors.black54,
                                         ),
                                       ),
-                                      Positioned(
-                                        right: 1,
-                                        child: GestureDetector(
-                                          behavior: HitTestBehavior.translucent,
-                                          onTap: controller.deleteImage,
-                                          child: Icon(
-                                            Icons.clear,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      )
-                                    ],
+                                    ),
                                   )
-                                : SizedBox.shrink(),
+                                : Container(
+                                    decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                        image: Image.file(controller.image).image,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                  ),
                           ),
-                        ),
-                      ],
+                          c.image != null
+                              ? Positioned(
+                                  right: 0,
+                                  top: 0,
+                                  child: GestureDetector(
+                                    behavior: HitTestBehavior.translucent,
+                                    onTap: controller.deleteImage,
+                                    child: CircleAvatar(
+                                      radius: Adapt.px(25),
+                                      backgroundColor: Colors.black,
+                                      child: Icon(
+                                        Icons.clear,
+                                        size: Adapt.px(30),
+                                        color: Colors.white.withOpacity(0.9),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : SizedBox.shrink()
+                        ],
+                      ),
                     ),
                   ),
                   ButtonSubmitAlign(

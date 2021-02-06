@@ -8,14 +8,8 @@ import 'dart:io';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class TicketController extends GetxController {
-  TicketController._internal();
-  static TicketController _instance = TicketController._internal();
-  static TicketController get instance => _instance;
-
   static const _pageSize = 10;
-
   final user = GetStorages.i.user;
-
   final pagingController = PagingController<int, TicketsModel>(
     firstPageKey: 1,
   );
@@ -27,12 +21,6 @@ class TicketController extends GetxController {
     });
     super.onInit();
   }
-
-  RxList<TicketsModel> _tickets = List<TicketsModel>().obs;
-  RxList<TicketsModel> get tickets => _tickets;
-
-  RxBool _loading = false.obs;
-  bool get loading => _loading.value;
 
   RxList<String> _catalogoItems = List<String>().obs;
   // ignore: invalid_use_of_protected_member
@@ -67,6 +55,8 @@ class TicketController extends GetxController {
   }
 
   Future<void> obtenerCatalogoTicket() async {
+    catalogoSeleccionado = null;
+    _image = null;
     final response = await TicketService.catalogoTicket(
       idpropietario: int.parse(user.idpropietario),
       sistema: int.parse(user.sistema),
@@ -94,6 +84,7 @@ class TicketController extends GetxController {
       maxHeight: 500,
       maxWidth: 640,
     );
+
     _image = picture != null ? File(picture.path) : null;
     if (picture != null) Get.back();
     update(['image']);

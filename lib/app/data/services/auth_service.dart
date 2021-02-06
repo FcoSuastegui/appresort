@@ -9,13 +9,6 @@ class AuthService {
     );
   }
 
-  static Future<ResponseModel> profile({int idusuario, String token}) async {
-    return Network.i.post(
-      route: '/app/datosgenerales',
-      data: {"idusuario": idusuario, "token": token},
-    );
-  }
-
   static Future<ResponseModel> changePassword({int idusuario, String password}) async {
     return Network.i.post(
       route: '/app/changepassword',

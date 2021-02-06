@@ -1,7 +1,6 @@
 import 'package:appresort/app/data/models/tickets_model.dart';
 import 'package:appresort/app/routes/routes.dart';
 import 'package:appresort/app/themes/adapt.dart';
-import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/views/tickets/controller/ticket_controller.dart';
 import 'package:appresort/app/widgets/Cards/card_refresh.dart';
 import 'package:appresort/app/widgets/ListTile/list_tile_custom.dart';
@@ -20,9 +19,6 @@ class TicketView extends GetView<TicketController> {
       appBar: AppBar(
         title: Text(
           "Mis Tickets",
-          style: TextStyle(
-            color: AppTheme.kPrimaryColor,
-          ),
         ),
         actions: [
           IconButton(
@@ -49,8 +45,8 @@ class TicketView extends GetView<TicketController> {
                 ),
                 child: ListTileCustom(
                   backgroundicon: Colors.indigo,
-                  title: ticket.descripcion,
-                  subtitle: ticket.folio,
+                  title: "Folio: ${ticket.folio}",
+                  subtitle: ticket.descripcion,
                   onPressed: () {},
                 ),
               ),

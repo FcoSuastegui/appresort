@@ -4,6 +4,6 @@ import 'package:get/get.dart';
 class TicketBinding implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut(() => TicketController.instance);
+    Get.lazyPut(() => TicketController());
   }
 }

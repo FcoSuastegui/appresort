@@ -32,7 +32,7 @@ class HomeBody extends GetView<HomeController> {
       backGroundColor: Color(0xFFC7DFFC),
       title: 'balances'.tr,
       icon: MyIcons.name(
-        name: 'balance-scale',
+        name: 'balance_scale',
         size: Adapt.px(80),
       ),
       page: '/balance',
@@ -80,7 +80,6 @@ class HomeBody extends GetView<HomeController> {
     return Container(
       width: MediaQuery.of(context).size.width,
       margin: EdgeInsets.symmetric(
-        vertical: Adapt.px(30),
         horizontal: Adapt.px(30),
       ),
       child: Column(
@@ -95,7 +94,7 @@ class HomeBody extends GetView<HomeController> {
               "all-services".tr,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: AppTheme.kPrimaryColor,
+                color: Colors.black.withOpacity(0.9),
               ),
             ),
           ),
@@ -109,53 +108,7 @@ class HomeBody extends GetView<HomeController> {
               runSpacing: 10.0,
               children: List.generate(actions.length, (index) {
                 final action = actions[index];
-                return Tooltip(
-                  message: action.title.tr,
-                  child: GestureDetector(
-                    onTap: () => Routes.goToPage(action.page),
-                    child: Container(
-                      width: Adapt.px(200),
-                      height: Adapt.px(220),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(
-                          Adapt.px(10),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            blurRadius: 7.0,
-                            color: Colors.grey.withOpacity(0.3),
-                          ),
-                        ],
-                      ),
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              action.icon,
-                              SizedBox(
-                                height: Adapt.px(30),
-                              ),
-                              Container(
-                                child: Text(
-                                  action.title.tr,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    color: AppTheme.kPrimaryColor,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                );
+                return _CardService(action: action);
               }),
             ),
           ),
@@ -168,28 +121,60 @@ class HomeBody extends GetView<HomeController> {
   }
 }
 
-class CategoryCard extends StatelessWidget {
-  const CategoryCard({
+class _CardService extends StatelessWidget {
+  const _CardService({
     Key key,
-    @required this.icon,
-    @required this.text,
-    @required this.press,
+    @required this.action,
   }) : super(key: key);
 
-  final String text;
-  final Widget icon;
-  final GestureTapCallback press;
+  final ActionsModel action;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: press,
-      child: Container(
-        height: Adapt.px(250),
-        width: MediaQuery.of(context).size.width / 2.5,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          color: Colors.red,
+    return Tooltip(
+      message: action.title.tr,
+      child: GestureDetector(
+        onTap: () => Routes.goToPage(action.page),
+        child: Container(
+          width: Adapt.px(200),
+          height: Adapt.px(220),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(
+              Adapt.px(10),
+            ),
+            boxShadow: [
+              BoxShadow(
+                blurRadius: 7.0,
+                color: Colors.grey.withOpacity(0.3),
+              ),
+            ],
+          ),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  action.icon,
+                  SizedBox(
+                    height: Adapt.px(30),
+                  ),
+                  Container(
+                    child: Text(
+                      action.title.tr,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Colors.black.withOpacity(0.5),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -226,33 +211,52 @@ class _CardBalance extends StatelessWidget {
           ),
         ],
       ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          vertical: Adapt.px(40),
-          horizontal: Adapt.px(60),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "current-balance".tr,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+              vertical: Adapt.px(10),
+              horizontal: Adapt.px(30),
             ),
-            SizedBox(
-              height: Adapt.px(20),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "current-balance".tr,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                GestureDetector(
+                  child: Icon(
+                    Icons.replay,
+                    color: Colors.white,
+                  ),
+                )
+              ],
             ),
-            Text(
-              "\$ 8, 458.00",
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-              ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: Adapt.px(30),
             ),
-          ],
-        ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "\$ 8, 458.00",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }

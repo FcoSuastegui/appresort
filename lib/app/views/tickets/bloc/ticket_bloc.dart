@@ -1,3 +1,4 @@
+import 'package:appresort/app/data/models/response_model.dart';
 import 'package:appresort/app/data/services/ticket_service.dart';
 import 'package:appresort/app/utils/validators_bloc.dart';
 import 'package:appresort/app/views/tickets/controller/ticket_controller.dart';
@@ -25,21 +26,26 @@ class TicketBloc extends FormBloc<String, String> {
   @override
   void onSubmitting() async {
     if (controller.catalogoSeleccionado == null) {
-      emitFailure(failureResponse: "Selecciona algun tipo de servicio");
+      emitFailure(
+        failureResponse: "Selecciona algun tipo de servicio",
+      );
     } else {
-      final response = await TicketService.addTicket({
-        'id_cat_ticket': controller.catalogoSeleccionado.id,
-        'mensaje': descripcion.value,
-        'idpropietario': controller.user.idpropietario,
-        "image": controller.image != null
-            ? await MultipartFile.fromFile(controller.image.path,
-                filename: path.basename(controller.image.path))
-            : ''
-      });
-
+      final response = await addTicket();
       response.status
           ? emitSuccess(successResponse: response.message)
           : emitFailure(failureResponse: response.message);
     }
+  }
+
+  Future<ResponseModel> addTicket() async {
+    return await TicketService.addTicket({
+      'id_cat_ticket': controller.catalogoSeleccionado.id,
+      'mensaje': descripcion.value,
+      'idpropietario': controller.user.idpropietario,
+      "image": controller.image != null
+          ? await MultipartFile.fromFile(controller.image.path,
+              filename: path.basename(controller.image.path))
+          : ''
+    });
   }
 }

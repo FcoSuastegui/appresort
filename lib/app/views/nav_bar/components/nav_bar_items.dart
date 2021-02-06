@@ -40,7 +40,7 @@ class NavBarItems extends GetView<NavBarController> {
           "home".tr,
           style: TextStyle(
             fontSize: Adapt.px(25),
-            color: AppTheme.kPrimaryColor,
+            color: Colors.black.withOpacity(0.5),
           ),
         ),
         icon: Icon(Icons.home),
@@ -50,7 +50,7 @@ class NavBarItems extends GetView<NavBarController> {
           "account".tr,
           style: TextStyle(
             fontSize: Adapt.px(25),
-            color: AppTheme.kPrimaryColor,
+            color: Colors.black.withOpacity(0.5),
           ),
         ),
         icon: user.photo != null && user.photo.isNotEmpty
