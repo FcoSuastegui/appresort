@@ -141,7 +141,7 @@ class PaymentForm extends StatelessWidget {
               child: Align(
                 alignment: Alignment.bottomRight,
                 child: Text(
-                  "Total a pagar ${bloc.controller.total.toCurrencyString(
+                  "Total a pagar ${80.toCurrencyString(
                     leadingSymbol: MoneyInputFormatter.DOLLAR_SIGN,
                   )}",
                   style: TextStyle(

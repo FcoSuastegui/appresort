@@ -3,12 +3,15 @@ import 'package:flutter/material.dart';
 
 class CardRefresh extends StatelessWidget {
   final Widget title;
+  final Widget content;
+
   final double margin;
 
   const CardRefresh({
     Key key,
     this.title,
     this.margin = 300,
+    this.content,
   }) : super(key: key);
 
   @override
@@ -18,14 +21,15 @@ class CardRefresh extends StatelessWidget {
         vertical: Adapt.px(margin),
       ),
       child: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            title ?? SizedBox.shrink(),
-            Text("Tire para refrescar"),
-            Icon(Icons.arrow_downward),
-          ],
-        ),
+        child: content ??
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                title ?? SizedBox.shrink(),
+                Text("Tire para refrescar"),
+                Icon(Icons.arrow_downward),
+              ],
+            ),
       ),
     );
   }

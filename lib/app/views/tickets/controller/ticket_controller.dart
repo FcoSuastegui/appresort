@@ -1,4 +1,5 @@
 import 'package:appresort/app/data/models/tickets_model.dart';
+import 'package:appresort/app/data/models/user_model.dart';
 import 'package:appresort/app/data/services/ticket_service.dart';
 import 'package:appresort/app/utils/get_storage.dart';
 import 'package:get/get.dart';
@@ -9,7 +10,8 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class TicketController extends GetxController {
   static const _pageSize = 10;
-  final user = GetStorages.i.user;
+  UserModel get user => GetStorages.i.user;
+
   final pagingController = PagingController<int, TicketsModel>(
     firstPageKey: 1,
   );
@@ -32,7 +34,12 @@ class TicketController extends GetxController {
   File _image;
   File get image => _image;
 
+  TicketsModel _ticket;
+  TicketsModel get ticket => _ticket;
+
   ImagePicker _picker = ImagePicker();
+
+  // Metodos
 
   Future<void> getTickets(int pageKey) async {
     final list = await TicketService.tickets(
@@ -72,11 +79,15 @@ class TicketController extends GetxController {
     }
   }
 
+  void selectTicket(TicketsModel ticket) => _ticket = ticket;
+
   void seleccionarCatalogo(String catalogo) {
     catalogoSeleccionado = _catalogoTicket.firstWhere(
       (e) => e.texto == catalogo,
     );
   }
+
+  Future<void> sendMessage() async {}
 
   Future<void> openGallery() async {
     final picture = await _picker.getImage(

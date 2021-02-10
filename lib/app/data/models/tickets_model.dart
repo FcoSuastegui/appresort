@@ -7,26 +7,30 @@ class TicketsModel {
   TicketsModel({
     this.id,
     this.folio,
-    this.descripcion,
+    this.description,
+    this.message,
     this.status,
   });
 
   String id;
   String folio;
-  String descripcion;
+  String message;
+  String description;
   String status;
 
   factory TicketsModel.fromJson(Map<String, dynamic> json) => TicketsModel(
         id: json["id"] ?? '',
         folio: json["folio"] ?? '',
-        descripcion: json["descripcion"] ?? '',
+        description: json["description"] ?? '',
+        message: json["message"] ?? '',
         status: json["status"] ?? '',
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "folio": folio,
-        "descripcion": descripcion,
+        "description": description,
+        "message": message,
         "status": status,
       };
 }

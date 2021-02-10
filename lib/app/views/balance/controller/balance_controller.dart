@@ -36,4 +36,16 @@ class BalanceController extends GetxController {
       pagingController.error = list.message;
     }
   }
+
+  Future<String> getBankStatement() async {
+    String file = '';
+    final response = await BalanceService.bankStatement(
+      idpropietario: int.parse(user.idpropietario),
+      sistema: int.parse(user.sistema),
+    );
+    if (response.status) {
+      file = response.data;
+    }
+    return file;
+  }
 }

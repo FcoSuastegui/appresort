@@ -4,13 +4,11 @@ import 'package:appresort/app/data/conekta/payment_model.dart';
 import 'package:appresort/app/data/services/conekta_service.dart';
 import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/utils/validators_bloc.dart';
-import 'package:appresort/app/views/listar-cargos/controller/listar_cargos_controller.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:get/get.dart';
 
 class PaymentBloc extends FormBloc<String, String> {
   // Controllador que contiene servicio y datos del cargo
-  final ListarCargosController controller = Get.find<ListarCargosController>();
+  //final ListarCargosController controller = Get.find<ListarCargosController>();
 
   // Datos generales
   final nombreCompleto = TextFieldBloc(
@@ -99,8 +97,8 @@ class PaymentBloc extends FormBloc<String, String> {
           "celular": celular.value,
           "correo": correo.value,
           "idpropietario": GetStorages.i.user.idpropietario,
-          "idcargo": controller.cargoSeleccionado.idcargo,
-          "total": controller.total,
+          "idcargo": 1, //controller.cargoSeleccionado.idcargo,
+          "total": 10, //.controller.total,
           "token": token.id
         },
       );

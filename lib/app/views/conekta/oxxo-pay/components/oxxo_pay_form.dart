@@ -68,7 +68,7 @@ class OxxoPayForm extends StatelessWidget {
                   child: Align(
                     alignment: Alignment.bottomRight,
                     child: Text(
-                      "Total a pagar ${oxxo.controller.total.toCurrencyString(
+                      "Total a pagar ${80.toCurrencyString(
                         leadingSymbol: MoneyInputFormatter.DOLLAR_SIGN,
                       )}",
                     ),

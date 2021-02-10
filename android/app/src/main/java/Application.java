@@ -1,4 +1,4 @@
-package com.apleeks.resort.app;
+/* package com.apleeks.resort.app;
 
 import io.flutter.app.FlutterApplication;
 import io.flutter.plugin.common.PluginRegistry;
@@ -21,4 +21,4 @@ public class Application extends FlutterApplication implements PluginRegistrantC
     // GeneratedPluginRegistrant.registerWith(registry);
     FirebaseMessagingPlugin.registerWith(registry.registrarFor("io.flutter.plugins.firebasemessaging.FirebaseMessagingPlugin"));
   }
-}
+} */

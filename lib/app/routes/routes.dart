@@ -3,22 +3,24 @@ import 'package:appresort/app/views/balance/balance_view.dart';
 import 'package:appresort/app/views/balance/binding/balance_binding.dart';
 import 'package:appresort/app/views/conekta/oxxo-pay/oxxo_pay_view.dart';
 import 'package:appresort/app/views/conekta/payment/payment_view.dart';
-import 'package:appresort/app/views/listar-cargos/bindings/listar_cargos_binding.dart';
-import 'package:appresort/app/views/listar-cargos/listar_cargos_view.dart';
 import 'package:appresort/app/views/login/login_view.dart';
 import 'package:appresort/app/views/nav_bar/nav_bar_view.dart';
 import 'package:appresort/app/views/notification/notification_content_view.dart';
 import 'package:appresort/app/views/notification/notification_view.dart';
 import 'package:appresort/app/views/onboarding/bindings/onboarding_binding.dart';
 import 'package:appresort/app/views/onboarding/onboarding_view.dart';
-import 'package:appresort/app/views/password/password_view.dart';
+import 'package:appresort/app/views/account/pages/password/password_view.dart';
 import 'package:appresort/app/views/post/binding/post_binding.dart';
 import 'package:appresort/app/views/post/post_view.dart';
 import 'package:appresort/app/views/regulation/binding/regulation_binding.dart';
 import 'package:appresort/app/views/regulation/regulation_view.dart';
 import 'package:appresort/app/views/services/services_view.dart';
 import 'package:appresort/app/views/tickets/bindings/ticket_binding.dart';
-import 'package:appresort/app/views/tickets/ticket_add_view.dart';
+import 'package:appresort/app/views/tickets/pages/chat/binding/ticket_chat_binding.dart';
+import 'package:appresort/app/views/tickets/pages/ticket_add/ticket_add_view.dart';
+import 'package:appresort/app/views/tickets/pages/chat/ticket_chat_view.dart';
+import 'package:appresort/app/views/tickets/pages/ticket_content/binding/ticket_content_binding.dart';
+import 'package:appresort/app/views/tickets/pages/ticket_content/ticket_content_view.dart';
 import 'package:appresort/app/views/tickets/ticket_view.dart';
 import 'package:get/get.dart';
 
@@ -56,11 +58,6 @@ class Routes {
       binding: BalanceBinding(),
     ),
     GetPage(
-      name: ListarCargosView.routeName,
-      page: () => ListarCargosView(),
-      binding: ListarCargosBinding(),
-    ),
-    GetPage(
       name: OxxoPayView.routeName,
       page: () => OxxoPayView(),
     ),
@@ -85,6 +82,17 @@ class Routes {
     GetPage(
       name: TicketAddView.routeName,
       page: () => TicketAddView(),
+      fullscreenDialog: true,
+    ),
+    GetPage(
+      name: TicketContentView.routeName,
+      page: () => TicketContentView(),
+      binding: TicketContentBinding(),
+    ),
+    GetPage(
+      name: TicketChatView.routeName,
+      page: () => TicketChatView(),
+      binding: TicketChatBinding(),
       fullscreenDialog: true,
     ),
     GetPage(

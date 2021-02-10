@@ -1,4 +1,4 @@
-import 'package:appresort/app/views/password/components/password_form.dart';
+import 'package:appresort/app/views/account/pages/password/components/password_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
 

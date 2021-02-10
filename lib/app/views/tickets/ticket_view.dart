@@ -46,8 +46,11 @@ class TicketView extends GetView<TicketController> {
                 child: ListTileCustom(
                   backgroundicon: Colors.indigo,
                   title: "Folio: ${ticket.folio}",
-                  subtitle: ticket.descripcion,
-                  onPressed: () {},
+                  subtitle: ticket.description,
+                  onPressed: () {
+                    Routes.goToPage('/ticket-content');
+                    controller.selectTicket(ticket);
+                  },
                 ),
               ),
               firstPageErrorIndicatorBuilder: (context) => CardRefresh(

@@ -1,5 +1,4 @@
 import 'package:appresort/app/themes/adapt.dart';
-import 'package:appresort/app/utils/formatters.dart';
 import 'package:appresort/app/utils/helper.dart';
 import 'package:appresort/app/widgets/TextField/input_text_cupertino.dart';
 import 'package:flutter/material.dart';
@@ -55,13 +54,7 @@ class LoginForm extends StatelessWidget {
                         InputTextCupertino(
                           textFieldBloc: login.username,
                           placeholder: 'Usuario',
-                          keyboardType: TextInputType.phone,
-                          inputFormatters: [
-                            MaskedTextInputFormatter(
-                              mask: '### #### ###',
-                              separator: ' ',
-                            )
-                          ],
+                          keyboardType: TextInputType.text,
                         ),
                         InputTextCupertino(
                           textFieldBloc: login.password,

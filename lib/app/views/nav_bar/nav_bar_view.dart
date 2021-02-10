@@ -1,3 +1,4 @@
+import 'package:appresort/app/globals/controller/one_signal_controller.dart';
 import 'package:appresort/app/themes/adapt.dart';
 import 'package:appresort/app/views/nav_bar/components/nav_bar_items.dart';
 import 'package:appresort/app/views/nav_bar/components/nav_bar_pages.dart';
@@ -12,6 +13,7 @@ class NavBarView extends GetView<NavBarController> {
   @override
   Widget build(BuildContext context) {
     Adapt.initContext(context);
+    OneSignalController.i.initPlatformState();
     return Scaffold(
       extendBody: true,
       body: const NavBarPages(),

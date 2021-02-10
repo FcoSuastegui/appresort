@@ -8,72 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeBody extends GetView<HomeController> {
-  HomeBody({Key key}) : super(key: key);
-
-  final List<ActionsModel> actions = [
-    ActionsModel(
-      title: 'regulations',
-      icon: MyIcons.name(
-        name: 'bookmark',
-        size: Adapt.px(80),
-      ),
-      page: '/regulations',
-    ),
-    ActionsModel(
-      backGroundColor: Color(0xFFC7DFFC),
-      title: 'assemblies',
-      icon: MyIcons.name(
-        name: 'gavel',
-        size: Adapt.px(80),
-      ),
-      page: '/assemblies',
-    ),
-    ActionsModel(
-      backGroundColor: Color(0xFFC7DFFC),
-      title: 'balances'.tr,
-      icon: MyIcons.name(
-        name: 'balance_scale',
-        size: Adapt.px(80),
-      ),
-      page: '/balance',
-    ),
-    ActionsModel(
-      backGroundColor: Color(0xFFC7DFFC),
-      title: 'publications',
-      icon: MyIcons.name(
-        name: 'photo_album',
-        size: Adapt.px(80),
-      ),
-      page: '/post',
-    ),
-    ActionsModel(
-      backGroundColor: Color(0xFFC7DFFC),
-      title: 'services',
-      icon: MyIcons.name(
-        name: 'menu_book',
-        size: Adapt.px(80),
-      ),
-      page: '/services',
-    ),
-    ActionsModel(
-      backGroundColor: Color(0xFFC7DFFC),
-      title: 'tickets',
-      icon: MyIcons.name(
-        name: 'support_agent',
-        size: Adapt.px(80),
-      ),
-      page: '/tickets',
-    ),
-    ActionsModel(
-      backGroundColor: Color(0xFFC7DFFC),
-      title: 'polls',
-      icon: MyIcons.name(
-        name: 'live_help',
-        size: Adapt.px(80),
-      ),
-      page: '/polls',
-    ),
-  ];
+  const HomeBody({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -106,8 +41,8 @@ class HomeBody extends GetView<HomeController> {
               alignment: WrapAlignment.start,
               spacing: 20.0,
               runSpacing: 10.0,
-              children: List.generate(actions.length, (index) {
-                final action = actions[index];
+              children: List.generate(getListActions().length, (index) {
+                final action = getListActions()[index];
                 return _CardService(action: action);
               }),
             ),
@@ -119,6 +54,71 @@ class HomeBody extends GetView<HomeController> {
       ),
     );
   }
+
+  List<ActionsModel> getListActions() => [
+        ActionsModel(
+          title: 'regulations',
+          icon: MyIcons.name(
+            name: 'bookmark',
+            size: Adapt.px(80),
+          ),
+          page: '/regulations',
+        ),
+        ActionsModel(
+          backGroundColor: Color(0xFFC7DFFC),
+          title: 'assemblies',
+          icon: MyIcons.name(
+            name: 'gavel',
+            size: Adapt.px(80),
+          ),
+          page: '/assemblies',
+        ),
+        ActionsModel(
+          backGroundColor: Color(0xFFC7DFFC),
+          title: 'balances'.tr,
+          icon: MyIcons.name(
+            name: 'balance_scale',
+            size: Adapt.px(80),
+          ),
+          page: '/balance',
+        ),
+        ActionsModel(
+          backGroundColor: Color(0xFFC7DFFC),
+          title: 'publications',
+          icon: MyIcons.name(
+            name: 'photo_album',
+            size: Adapt.px(80),
+          ),
+          page: '/post',
+        ),
+        ActionsModel(
+          backGroundColor: Color(0xFFC7DFFC),
+          title: 'services',
+          icon: MyIcons.name(
+            name: 'menu_book',
+            size: Adapt.px(80),
+          ),
+          page: '/services',
+        ),
+        ActionsModel(
+          backGroundColor: Color(0xFFC7DFFC),
+          title: 'tickets',
+          icon: MyIcons.name(
+            name: 'support_agent',
+            size: Adapt.px(80),
+          ),
+          page: '/tickets',
+        ),
+        ActionsModel(
+          backGroundColor: Color(0xFFC7DFFC),
+          title: 'polls',
+          icon: MyIcons.name(
+            name: 'live_help',
+            size: Adapt.px(80),
+          ),
+          page: '/polls',
+        ),
+      ];
 }
 
 class _CardService extends StatelessWidget {
@@ -188,6 +188,7 @@ class _CardBalance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final HomeController c = Get.find<HomeController>();
     return Container(
       width: double.infinity,
       height: Adapt.px(200),
@@ -231,6 +232,7 @@ class _CardBalance extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
+                  onTap: () => c.getCharge(),
                   child: Icon(
                     Icons.replay,
                     color: Colors.white,
@@ -246,12 +248,19 @@ class _CardBalance extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "\$ 8, 458.00",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Obx(
+                  () => c.loading
+                      ? CircularProgressIndicator(
+                          backgroundColor: Colors.white,
+                          strokeWidth: 0.5,
+                        )
+                      : Text(
+                          "\$ ${c.total}",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                 ),
               ],
             ),

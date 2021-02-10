@@ -1,12 +1,10 @@
 import 'package:appresort/app/data/services/conekta_service.dart';
 import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/utils/validators_bloc.dart';
-import 'package:appresort/app/views/listar-cargos/controller/listar_cargos_controller.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
-import 'package:get/get.dart';
 
 class OxxoBloc extends FormBloc<String, String> {
-  final ListarCargosController controller = Get.find<ListarCargosController>();
+  //final ListarCargosController controller = Get.find<ListarCargosController>();
 
   // Datos generales
   final nombreCompleto = TextFieldBloc(
@@ -43,9 +41,9 @@ class OxxoBloc extends FormBloc<String, String> {
       "nombreCompleto": nombreCompleto.value,
       "correo": correo.value,
       "celular": celular.value.replaceAll(' ', ''),
-      "idcargo": controller.cargoSeleccionado.idcargo,
+      "idcargo": 1, //controller.cargoSeleccionado.idcargo,
       "idpropietario": GetStorages.i.user.idpropietario,
-      "total": controller.total,
+      "total": 0, //controller.total,
     });
 
     print(response.message);

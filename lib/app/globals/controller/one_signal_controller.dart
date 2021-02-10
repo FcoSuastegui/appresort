@@ -1,13 +1,8 @@
-/* //import OneSignal
 import 'dart:io';
-
-/* import 'package:clubimperial/app/data/services/one_signal_backend.dart';
-import 'package:clubimperial/app/utils/get_storages.dart';
-import 'package:clubimperial/app/views/notifications/controller/notification_controller.dart'; */
-//import 'package:appresort/app/utils/get_storage.dart';
-import 'package:device_info/device_info.dart';
-import 'package:onesignal_flutter/onesignal_flutter.dart';
 import 'dart:async';
+import 'package:device_info/device_info.dart';
+//import OneSignal
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 class OneSignalController {
   OneSignalController._internal();
@@ -25,7 +20,7 @@ class OneSignalController {
     };
 
     await OneSignal.shared.init(
-      "09d2446d-e27a-4a33-b6a6-cf8996e4949c",
+      "cddab3f6-822b-4bd6-82cf-8d27c7d814f3",
       iOSSettings: settings,
     );
 
@@ -34,6 +29,7 @@ class OneSignalController {
     );
 
     await OneSignal.shared.requiresUserPrivacyConsent();
+    await OneSignal.shared.promptUserForPushNotificationPermission();
 
     final status = await OneSignal.shared.getPermissionSubscriptionState();
     final playerId = status.subscriptionStatus.userId;
@@ -94,11 +90,8 @@ class OneSignalController {
   }
 
   Future<void> setUserIdBackend(String playerId) async {
-    print(playerId);
+    print("player : $playerId");
     if (playerId == null) return null;
-    //final device = await getDevice();
-    //final idusuario = GetStorages.i.user.id;
-    //await OneSignalBakend.sendPlayerId(device, playerId, idusuario);
   }
 
   Future<String> getDevice() async {
@@ -116,4 +109,3 @@ class OneSignalController {
     return device;
   }
 }
- */

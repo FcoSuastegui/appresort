@@ -1,9 +1,9 @@
 import 'package:get/get_utils/get_utils.dart';
 
-class ValidatorStringBloc {
-  static final ValidatorStringBloc _validatorStringBloc = new ValidatorStringBloc._internal();
-  factory ValidatorStringBloc() => _validatorStringBloc;
-  ValidatorStringBloc._internal();
+class ValidatorString {
+  static final ValidatorString _validatorString = new ValidatorString._internal();
+  factory ValidatorString() => _validatorString;
+  ValidatorString._internal();
 
   static String required(String textField) =>
       (textField == null || textField.isEmpty) ? 'required'.tr : null;
@@ -14,10 +14,21 @@ class ValidatorStringBloc {
           ? null
           : 'email-format'.tr;
 
-  static String numeroCelular(String celphone) =>
+  static String validateUser(String text) =>
+      RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+              .hasMatch(text)
+          ? null
+          : RegExp(r'^\d{10}$').hasMatch(text)
+              ? null
+              : 'Número o correo no válido';
+
+  static String validateCelPhoneFormate(String celphone) =>
       RegExp(r'^\d{3}\s\d{4}\s\d{3}$').hasMatch(celphone) ? null : 'Número de celular no válido';
 
-  static String staticonlyNumber(String textField) =>
+  static String validateCelPhone(String celphone) =>
+      RegExp(r'^\d{10}$').hasMatch(celphone) ? null : 'Número de celular no válido';
+
+  static String staticOnlyNumber(String textField) =>
       RegExp(r'^[0-9]+$').hasMatch(textField) ? null : 'Sólo número';
 
   static String validateText(String textField) =>

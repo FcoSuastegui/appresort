@@ -1,6 +1,6 @@
 import 'package:appresort/app/themes/adapt.dart';
 import 'package:appresort/app/utils/helper.dart';
-import 'package:appresort/app/views/tickets/bloc/ticket_bloc.dart';
+import 'package:appresort/app/views/tickets/pages/ticket_add/bloc/ticket_bloc.dart';
 import 'package:appresort/app/views/tickets/controller/ticket_controller.dart';
 import 'package:appresort/app/widgets/Alerts/alert_image_picker.dart';
 import 'package:appresort/app/widgets/Alerts/custom_alert.dart';

@@ -1,6 +1,6 @@
 import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/utils/helper.dart';
-import 'package:appresort/app/views/password/bloc/password_bloc.dart';
+import 'package:appresort/app/views/account/pages/password/bloc/password_bloc.dart';
 import 'package:appresort/app/widgets/Alerts/custom_alert.dart';
 import 'package:appresort/app/widgets/Buttons/button_submit.dart';
 import 'package:appresort/app/widgets/Loading/loading.dart';

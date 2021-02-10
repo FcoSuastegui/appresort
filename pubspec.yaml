@@ -43,13 +43,14 @@ dependencies:
   device_info: ^0.4.2
   dropdown_search: ^0.4.3
   esys_flutter_share: ^1.0.2
-  firebase_messaging: ^7.0.3
   flutter_multi_formatter: ^1.1.8
   
   # Paquetes actualizados
   get_storage: ^1.4.0
   custom_navigation_bar: ^0.7.1
   infinite_scroll_pagination: ^2.3.0
+  timeline_tile: ^1.0.0
+  onesignal_flutter: ^2.6.2
 
 dev_dependencies:
   flutter_test:

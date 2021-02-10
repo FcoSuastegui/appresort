@@ -1,5 +1,5 @@
-import 'package:appresort/app/views/tickets/components/ticket_add_form.dart';
 import 'package:appresort/app/views/tickets/controller/ticket_controller.dart';
+import 'package:appresort/app/views/tickets/pages/ticket_add/components/ticket_add_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
