@@ -245,7 +245,7 @@ class _InputTextCupertinoState extends State<InputTextCupertino> {
           style: widget.style ??
               Theme.of(context).textTheme.bodyText1.copyWith(
                     fontSize: 14,
-                    color: Colors.black.withOpacity(0.7),
+                    color: Colors.black.withOpacity(0.5),
                   ),
         ),
         errorText == null || errorText.isEmpty

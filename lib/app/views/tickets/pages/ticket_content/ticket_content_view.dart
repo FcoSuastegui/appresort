@@ -139,9 +139,7 @@ class TicketContentViewState extends State<TicketContentView> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Color(0xFF00C962),
         child: Icon(Icons.chat),
-        onPressed: () {
-          Routes.goToPage('/ticket-chat');
-        },
+        onPressed: c.ticket.status == 'Cerrado' ? () {} : () => Routes.goToPage('/ticket-chat'),
       ),
     );
   }

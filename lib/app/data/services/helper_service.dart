@@ -4,12 +4,12 @@ import 'package:appresort/app/data/models/regulation_model.dart';
 import 'package:appresort/app/data/models/response_model.dart';
 
 class HelperService {
-  static Future<ListPage<RegulationModel>> reglamentos({
+  static Future<ListPage<RegulationModel>> regulations({
     int desarrollo = 0,
     int page = 1,
   }) async {
     final response = await Network.i.post(
-      route: '/app/reglamentos',
+      route: '/app/regulations',
       data: {
         "desarrollo": desarrollo,
         "page": page,

@@ -1,3 +1,4 @@
+import 'package:appresort/app/globals/controller/scroll_bar_controller.dart';
 import 'package:appresort/app/views/home/components/home_body.dart';
 import 'package:appresort/app/views/home/controllers/home_controller.dart';
 import 'package:appresort/app/widgets/Sliver/sliver_scroll_view.dart';
@@ -10,13 +11,17 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder(
+    final ScrollController scroll = Get.find<ScrollBarController>().scroll;
+    return GetBuilder<HomeController>(
       init: HomeController.i,
       builder: (c) => Scaffold(
         extendBody: true,
         body: SafeArea(
           bottom: false,
           child: SliverScrollView(
+            onRefresh: () => c.refresh(),
+            physics: AlwaysScrollableScrollPhysics(),
+            controller: scroll,
             slivers: [
               SliverToBoxAdapter(
                 child: Container(

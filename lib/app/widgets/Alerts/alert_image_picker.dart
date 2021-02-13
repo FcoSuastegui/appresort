@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 class AlertImagePicker extends StatelessWidget {
   final Function onPressCamara, onPressGalery;
-  AlertImagePicker({ @required this.onPressCamara, @required this.onPressGalery});
+  AlertImagePicker({
+    @required this.onPressCamara,
+    @required this.onPressGalery,
+  });
 
   final TextStyle subtitle = TextStyle(fontSize: 12.0, color: Colors.grey);
   final TextStyle label = TextStyle(fontSize: 14.0, color: Colors.grey);
@@ -17,7 +20,10 @@ class AlertImagePicker extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 //Text("Thank You!",style: TextStyle(color: Colors.green),),
-                Text("¿De donde quieres obtener la foto? ",style: label,),
+                Text(
+                  "¿De donde quieres obtener la foto? ",
+                  style: label,
+                ),
                 Divider(),
                 GestureDetector(
                   behavior: HitTestBehavior.translucent,
@@ -29,7 +35,9 @@ class AlertImagePicker extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Icon(Icons.photo_library),
-                        SizedBox(width: 20.0,),
+                        SizedBox(
+                          width: 20.0,
+                        ),
                         Text("Galeria", style: label)
                       ],
                     ),
@@ -46,7 +54,9 @@ class AlertImagePicker extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Icon(Icons.photo_camera),
-                        SizedBox(width: 20.0,),
+                        SizedBox(
+                          width: 20.0,
+                        ),
                         Text("Camara", style: label)
                       ],
                     ),

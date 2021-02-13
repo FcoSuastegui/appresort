@@ -38,14 +38,12 @@ class BalanceController extends GetxController {
   }
 
   Future<String> getBankStatement() async {
-    String file = '';
-    final response = await BalanceService.bankStatement(
-      idpropietario: int.parse(user.idpropietario),
-      sistema: int.parse(user.sistema),
+    String file = await BalanceService.bankStatement(
+      idPropietario: int.parse(user.idpropietario),
+      mes: 12,
+      anio: 2020,
+      type: 1,
     );
-    if (response.status) {
-      file = response.data;
-    }
     return file;
   }
 }

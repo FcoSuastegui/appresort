@@ -13,7 +13,7 @@ class NotificationContentView extends GetView<NotificationController> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBarDefault(
-        title: Text("${controller.notification.titulo}"),
+        title: Text("${controller.notification.title}"),
       ),
       body: Container(
         child: Center(
@@ -26,7 +26,7 @@ class NotificationContentView extends GetView<NotificationController> {
                   children: <Widget>[
                     Container(
                       child: MyIcons.name(
-                        name: controller.notification.icono,
+                        name: controller.notification.icon,
                         size: 100.0,
                         color: AppTheme.kSecondColor,
                       ),
@@ -43,13 +43,13 @@ class NotificationContentView extends GetView<NotificationController> {
                 padding: EdgeInsets.all(20.0),
                 margin: EdgeInsets.only(bottom: 50.0),
                 child: Text(
-                  "${controller.notification.descripcion}",
+                  "${controller.notification.description}",
                   textAlign: TextAlign.center,
                 ),
               ),
-              controller.notification.pagina.isNotEmpty
+              controller.notification.page.isNotEmpty
                   ? RaisedButton(
-                      onPressed: () => print(controller.notification.pagina),
+                      onPressed: () => print(controller.notification.page),
                       child: Container(
                         child: Text('Ir a la página'),
                         padding: EdgeInsets.symmetric(

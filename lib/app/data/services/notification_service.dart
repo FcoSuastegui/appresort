@@ -5,15 +5,15 @@ import 'package:appresort/app/data/models/response_model.dart';
 import 'package:appresort/app/utils/helper.dart';
 
 class NotificationService {
-  static Future<ListPage<NotificationModel>> notifications({
-    int idusuario,
+  static Future<ListPage<NotificationModel>> show({
+    int idUser = 0,
     int sistema,
     int page = 1,
   }) async {
     final response = await Network.i.post(
-      route: '/app/listarNotificaciones',
+      route: '/notification/show',
       data: {
-        'idusuario': idusuario,
+        'id_user': idUser,
         'sistema': sistema,
         'page': page,
       },
@@ -33,20 +33,42 @@ class NotificationService {
     );
   }
 
-  static Future<int> totalNotificaciones({int idusuario}) async {
+  static Future<int> total({int idUser = 0}) async {
     int total = 0;
     final response = await Network.i.post(
-      route: '/app/totalNotificaciones',
-      data: {'idusuario': idusuario},
+      route: '/notification/total',
+      data: {'id_user': idUser},
     );
     total = response.status ? Helper.numeric(response.data['total']) : 0;
     return total;
   }
 
-  static Future<ResponseModel> leerNotification({int idnotification}) async {
+  static Future<ResponseModel> delete({int id = 0}) async {
+    return await Network.i.post(
+      route: '/notification/delete',
+      data: {'id_notification': id},
+    );
+  }
+
+  static Future<ResponseModel> read({int idnotification = 0}) async {
     return Network.i.post(
-      route: '/app/leerNotificacion',
-      data: {'idnotificacion': idnotification},
+      route: '/notification/read',
+      data: {'id_notification': idnotification},
+    );
+  }
+
+  static Future<ResponseModel> playerId({
+    String device = '',
+    String playerId = '',
+    int idUser = 0,
+  }) async {
+    return Network.i.post(
+      route: '/notification/playerId',
+      data: {
+        "player_id": playerId,
+        "device": device,
+        "id_user": idUser,
+      },
     );
   }
 }

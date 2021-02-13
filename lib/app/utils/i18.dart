@@ -37,6 +37,7 @@ class I18 extends Translations {
           'polls': 'Polls',
           'current-balance': 'Current balance',
           'notifications': 'Notifications',
+          'delete': 'Delete',
         },
         'es': {
           'home': 'Inicio',
@@ -72,6 +73,7 @@ class I18 extends Translations {
           'polls': 'Encuestas',
           'current-balance': 'Saldo actual',
           'notifications': 'Notificaciones',
+          'delete': 'Eliminar',
         }
       };
 }

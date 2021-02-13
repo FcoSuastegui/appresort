@@ -1,5 +1,8 @@
 import 'dart:io';
 import 'dart:async';
+import 'package:appresort/app/data/services/notification_service.dart';
+import 'package:appresort/app/utils/get_storage.dart';
+import 'package:appresort/app/views/notification/controller/notification_controller.dart';
 import 'package:device_info/device_info.dart';
 //import OneSignal
 import 'package:onesignal_flutter/onesignal_flutter.dart';
@@ -57,14 +60,13 @@ class OneSignalController {
   }
 
   void setNotificationReceivedHandler(OSNotification notification) {
-    //NotificationController.instance.getNotification();
+    NotificationController.i.refresh();
     print(
       "Received notification: \n${notification.jsonRepresentation().replaceAll("\\n", "\n")}",
     );
   }
 
   void setNotificationOpenedHandler(OSNotificationOpenedResult result) {
-    //NotificationController.instance.getNotification();
     print(
       "Opened notification: \n${result.notification.jsonRepresentation().replaceAll("\\n", "\n")}",
     );
@@ -92,6 +94,13 @@ class OneSignalController {
   Future<void> setUserIdBackend(String playerId) async {
     print("player : $playerId");
     if (playerId == null) return null;
+    final device = await getDevice();
+    final idUser = GetStorages.i.user.id;
+    await NotificationService.playerId(
+      device: device,
+      playerId: playerId,
+      idUser: int.parse(idUser),
+    );
   }
 
   Future<String> getDevice() async {

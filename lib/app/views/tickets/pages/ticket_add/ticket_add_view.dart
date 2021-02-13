@@ -1,5 +1,6 @@
 import 'package:appresort/app/views/tickets/controller/ticket_controller.dart';
 import 'package:appresort/app/views/tickets/pages/ticket_add/components/ticket_add_form.dart';
+import 'package:appresort/app/widgets/UnFocus/un_focus_form.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,7 +22,9 @@ class TicketAddView extends GetView<TicketController> {
             vertical: 10,
             horizontal: 10,
           ),
-          child: TicketAddForm(),
+          child: UnFocusForm(
+            child: TicketAddForm(),
+          ),
         ),
       ),
     );

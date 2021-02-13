@@ -1,5 +1,6 @@
 import 'package:appresort/app/data/models/chat_model.dart';
 import 'package:appresort/app/data/services/ticket_service.dart';
+import 'package:appresort/app/utils/helper.dart';
 import 'package:appresort/app/views/tickets/controller/ticket_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -51,11 +52,12 @@ class TicketChatController extends GetxController {
   }
 
   Future<void> chatAdd(String s) async {
-    await TicketService.ticketChatAdd(
+    final resp = await TicketService.ticketChatAdd(
       idTicket: int.parse(ticket.id),
       idUser: int.parse(user.id),
       message: s,
     );
-    chatController.refresh();
+
+    resp.status ? chatController.refresh() : Helper.error(message: resp.message);
   }
 }

@@ -17,9 +17,12 @@ class Informacion {
   static final footer = Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
-      Text("Powered by", style: TextStyle(color: Colors.grey)),
+      Text(
+        "Powered by",
+        style: TextStyle(color: Colors.grey),
+      ),
       Image.asset(
-        "assets/images/apleeks_01.png",
+        "assets/images/apleeks_logo.png",
         width: 90.0,
         height: 90.0,
       )
@@ -41,7 +44,10 @@ class Informacion {
           ),
           child: Text(
             "Términinos y Condiciones",
-            style: TextStyle(color: AppTheme.kTextColor, decoration: TextDecoration.underline),
+            style: TextStyle(
+              color: AppTheme.kTextColor,
+              decoration: TextDecoration.underline,
+            ),
           ),
         )
       ],
@@ -61,8 +67,5 @@ class Informacion {
       ),
     ),
     width: double.infinity,
-    decoration: BoxDecoration(
-      gradient: AppTheme.kPrimaryGradientColor,
-    ),
   );
 }

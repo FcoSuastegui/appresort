@@ -1,6 +1,7 @@
 import 'package:appresort/app/data/models/notification_model.dart';
 import 'package:appresort/app/data/services/notification_service.dart';
 import 'package:appresort/app/utils/get_storage.dart';
+import 'package:appresort/app/utils/helper.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -37,8 +38,8 @@ class NotificationController extends GetxController {
   }
 
   Future<void> getNotification(int pageKey) async {
-    final list = await NotificationService.notifications(
-      idusuario: int.parse(GetStorages.i.user.id),
+    final list = await NotificationService.show(
+      idUser: int.parse(GetStorages.i.user.id),
       sistema: int.parse(GetStorages.i.user.sistema),
       page: pageKey,
     );
@@ -57,11 +58,30 @@ class NotificationController extends GetxController {
   }
 
   Future<void> countNotification() async {
-    final total = await NotificationService.totalNotificaciones(
-      idusuario: int.parse(GetStorages.i.user.id),
+    final total = await NotificationService.total(
+      idUser: int.parse(GetStorages.i.user.id),
     );
     _counter(total);
   }
 
-  void selectNotification(NotificationModel notification) => _notification = notification;
+  Future<void> refresh() async {
+    countNotification();
+    pagingController.refresh();
+  }
+
+  Future<void> select(NotificationModel notification) async {
+    _notification = notification;
+    await NotificationService.read(
+      idnotification: _notification.id,
+    );
+    refresh();
+  }
+
+  Future<void> delete(int id) async {
+    final response = await NotificationService.delete(id: id);
+    response.status
+        ? Helper.success(message: response.message)
+        : Helper.error(message: response.message);
+    refresh();
+  }
 }

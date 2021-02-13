@@ -45,38 +45,40 @@ class MessageItem extends StatelessWidget {
             SizedBox(
               width: 10,
             ),
-            Column(
-              crossAxisAlignment:
-                  message.sender ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-              children: [
-                if (!message.sender) getUsernameView(),
-                Container(
-                  constraints: BoxConstraints(
-                    maxWidth: 300,
-                  ),
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 10,
-                  ),
-                  decoration: BoxDecoration(
-                    color: message.sender ? Color(0xFF2BA873) : Colors.grey.withOpacity(0.1),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(30),
-                      topRight: Radius.circular(30),
-                      topLeft: Radius.circular(message.sender ? 30 : 0),
-                      bottomRight: Radius.circular(!message.sender ? 30 : 0),
+            Expanded(
+              child: Column(
+                crossAxisAlignment:
+                    message.sender ? CrossAxisAlignment.end : CrossAxisAlignment.start,
+                children: [
+                  if (!message.sender) getUsernameView(),
+                  Container(
+                    constraints: BoxConstraints(
+                      maxWidth: 300,
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20,
+                      vertical: 10,
+                    ),
+                    decoration: BoxDecoration(
+                      color: message.sender ? Color(0xFF2BA873) : Colors.grey.withOpacity(0.1),
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(30),
+                        topRight: Radius.circular(30),
+                        topLeft: Radius.circular(message.sender ? 30 : 0),
+                        bottomRight: Radius.circular(!message.sender ? 30 : 0),
+                      ),
+                    ),
+                    child: Text(
+                      message.message,
+                      style: GoogleFonts.quicksand(
+                        color: message.sender ? Colors.white : Colors.black45,
+                      ),
                     ),
                   ),
-                  child: Text(
-                    message.message,
-                    style: GoogleFonts.quicksand(
-                      color: message.sender ? Colors.white : Colors.black45,
-                    ),
-                  ),
-                ),
-                if (message.sender) getUsernameView(),
-                SizedBox(height: 20),
-              ],
+                  if (message.sender) getUsernameView(),
+                  SizedBox(height: 20),
+                ],
+              ),
             ),
           ],
         ),

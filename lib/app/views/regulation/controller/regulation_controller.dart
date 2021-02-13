@@ -20,7 +20,7 @@ class RegulationController extends GetxController {
   }
 
   Future<void> getRegulations(int pageKey) async {
-    final list = await HelperService.reglamentos(
+    final list = await HelperService.regulations(
       desarrollo: int.parse(GetStorages.i.user.iddesarrollo),
       page: pageKey,
     );
