@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:intl/intl.dart';
 
 class Helper {
   static final Helper _instancia = Helper._internal();
@@ -61,6 +62,16 @@ class Helper {
         colorText: Colors.white,
       );
     }
+  }
+
+  static String moneyFormat(dynamic money) {
+    final formatCurrency = NumberFormat.simpleCurrency();
+    return formatCurrency.format(money);
+  }
+
+  static String dateTimeFormat() {
+    DateTime now = DateTime.now();
+    return DateFormat('yyyy-MM-dd – kk:mm').format(now);
   }
 
   static int numeric(String s) => _isNumeric(s) ? int.parse(s) : s;

@@ -1,20 +1,67 @@
 import 'package:appresort/app/data/domain/network.dart';
-import 'package:appresort/app/data/models/balance_model.dart';
+import 'package:appresort/app/data/models/balance_saldos_model.dart';
+import 'package:appresort/app/data/models/charges_model.dart';
+import 'package:appresort/app/data/models/last_transactions.dart';
 import 'package:appresort/app/data/models/list_page.dart';
-import 'package:appresort/app/data/models/response_model.dart';
 
 class BalanceService {
-  static Future<ListPage<BalanceModel>> balance(int idpropietario) async {
+  static Future<ListPage<BalanceSaldoModel>> balance(int idpropietario) async {
     final response = await Network.i.post(
-      route: '/app/saldos',
-      data: {"idpropietario": idpropietario},
+      route: '/app/balanceReport',
+      data: {"id_propietario": idpropietario},
     );
 
-    final List<BalanceModel> list = List<BalanceModel>();
+    final List<BalanceSaldoModel> list = List<BalanceSaldoModel>();
     String message;
-    response.status ? list.add(BalanceModel.fromJson(response.data)) : message = response.message;
+    response.status
+        ? list.add(BalanceSaldoModel.fromJson(response.data))
+        : message = response.message;
 
-    return ListPage<BalanceModel>(
+    return ListPage<BalanceSaldoModel>(
+      itemList: list,
+      totalCount: list.length,
+      message: message,
+    );
+  }
+
+  static Future<ListPage<LastTransations>> lastTransactions(int idpropietario) async {
+    final response = await Network.i.post(
+      route: '/app/lastTransactions',
+      data: {"id_propietario": idpropietario},
+    );
+
+    final List<LastTransations> list = List<LastTransations>();
+    String message;
+    response.status
+        ? response.data.forEach((e) => list.add(LastTransations.fromJson(e)))
+        : message = response.message;
+
+    return ListPage<LastTransations>(
+      itemList: list,
+      totalCount: list.length,
+      message: message,
+    );
+  }
+
+  static Future<ListPage<ChargesModel>> getCharges({
+    int idpropietario = 0,
+    int page = 1,
+  }) async {
+    final response = await Network.i.post(
+      route: '/app/balanceCharges',
+      data: {
+        "id_propietario": idpropietario,
+        "page": page,
+      },
+    );
+
+    final List<ChargesModel> list = List<ChargesModel>();
+    String message;
+    response.status
+        ? response.data.forEach((e) => list.add(ChargesModel.fromJson(e)))
+        : message = response.message;
+
+    return ListPage<ChargesModel>(
       itemList: list,
       totalCount: list.length,
       message: message,
@@ -61,12 +108,12 @@ class BalanceService {
 
   // processos desactualizados del servidor
 
-  static Future<ResponseModel> getCharges(int idpropietario) async {
+  /* static Future<ResponseModel> getCharges(int idpropietario) async {
     return Network.i.post(
       route: '/app/saldosCargos',
       data: {"idpropietario": idpropietario},
     );
-  }
+  } */
 /* 
   static Future<ResponseModel> bankStatement({int idpropietario, int sistema}) async {
     return Network.i.post(

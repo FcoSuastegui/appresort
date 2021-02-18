@@ -40,6 +40,10 @@ class MyIcons {
       'payment': Icon(Icons.payment, color: color, size: size),
       'download_sharp': Icon(Icons.download_sharp, color: color, size: size),
       'work': Icon(Icons.work, color: color, size: size),
+      'receipt': Icon(Icons.receipt, color: color, size: size),
+      'receipt_long': Icon(Icons.receipt_long, color: color, size: size),
+      'trending_up': Icon(Icons.trending_up, color: color, size: size),
+      'trending_down': Icon(Icons.trending_down, color: color, size: size),
     };
     return names[name] ?? Icon(Icons.home, color: color, size: size);
   }

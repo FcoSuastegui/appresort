@@ -43,7 +43,7 @@ class Informacion {
             barrierDismissible: false,
           ),
           child: Text(
-            "Términinos y Condiciones",
+            "Términos y Condiciones",
             style: TextStyle(
               color: AppTheme.kTextColor,
               decoration: TextDecoration.underline,

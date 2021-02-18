@@ -51,6 +51,8 @@ dependencies:
   infinite_scroll_pagination: ^2.3.0
   timeline_tile: ^1.0.0
   onesignal_flutter: ^2.6.2
+  dotted_border: ^1.0.7
+  timelines: ^0.0.2+1
 
 dev_dependencies:
   flutter_test:
@@ -73,7 +75,8 @@ flutter:
     - assets/slides/slide_3.png
     - assets/images/apleeks_logo.png
     - assets/images/imagen_no_disponible.png
-    - assets/images/oxxopay_brand.png
+    - assets/images/oxxo_pay.png
+    - assets/images/credit_card.png
     - assets/images/resort_banner.png
     - assets/images/resort_logo.png
     - assets/images/no_informacion.png

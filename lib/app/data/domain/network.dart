@@ -12,7 +12,7 @@ class Network {
   Dio _dio = Dio(
     BaseOptions(
       baseUrl: GetStorages.i.api,
-      connectTimeout: 50000,
+      connectTimeout: 5000,
       receiveTimeout: 3000,
       headers: _setHeaders,
     ),

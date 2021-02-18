@@ -30,6 +30,8 @@ class InputTextCupertino extends StatefulWidget {
   final EdgeInsetsGeometry padding;
   final TextStyle placeholderStyle, style;
   final String placeholder;
+  final int maxLength;
+  final bool maxLengthEnforced;
 
   const InputTextCupertino({
     Key key,
@@ -69,6 +71,8 @@ class InputTextCupertino extends StatefulWidget {
     this.style,
     this.placeholder,
     this.suffix,
+    this.maxLength,
+    this.maxLengthEnforced = false,
   }) : super(key: key);
 
   @override
@@ -220,6 +224,8 @@ class _InputTextCupertinoState extends State<InputTextCupertino> {
           placeholder: widget.placeholder,
           obscureText: _obscureText,
           controller: _controller,
+          maxLength: widget.maxLength,
+          maxLengthEnforced: widget.maxLengthEnforced,
           clearButtonMode: widget.clearButtonMode,
           suffix: widget.suffix ?? _builderSuffix(state),
           padding: EdgeInsets.symmetric(

@@ -1,4 +1,5 @@
 import 'package:appresort/app/globals/bindings/global_binding.dart';
+import 'package:appresort/app/globals/controller/router_observer.dart';
 import 'package:appresort/app/shared/logger/logger_utils.dart';
 import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/routes/routes.dart';
@@ -24,6 +25,7 @@ class App extends StatelessWidget {
         theme: AppThemeData.lightTheme,
         locale: Locale('es'),
         initialBinding: GlobalBinding(),
+        navigatorObservers: [MyRouteObserver()],
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,

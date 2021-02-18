@@ -19,6 +19,10 @@ class NotificationController extends GetxController {
   RxInt _counter = 0.obs;
   int get counter => _counter.value;
 
+  RxString _date = ''.obs;
+  String get date => _date.value;
+  set date(String v) => _date.value = v;
+
   NotificationModel _notification;
   NotificationModel get notification => _notification;
 

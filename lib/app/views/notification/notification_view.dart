@@ -68,7 +68,7 @@ class NotificationView extends GetView<NotificationController> {
                 ),
               ),
               separatorBuilder: (context, index) => SizedBox(
-                height: Adapt.px(10),
+                height: Adapt.px(20),
               ),
             ),
           ],

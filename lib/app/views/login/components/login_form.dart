@@ -1,3 +1,4 @@
+import 'package:appresort/app/globals/controller/one_signal_controller.dart';
 import 'package:appresort/app/themes/adapt.dart';
 import 'package:appresort/app/utils/helper.dart';
 import 'package:appresort/app/widgets/TextField/input_text_cupertino.dart';
@@ -26,6 +27,7 @@ class LoginForm extends StatelessWidget {
               LoadingDialog.hide(context);
               login.close();
               Get.offAllNamed(GetStorages.i.page);
+              OneSignalController.i.initPlatformState();
             },
             onFailure: (context, state) async {
               LoadingDialog.hide(context);
