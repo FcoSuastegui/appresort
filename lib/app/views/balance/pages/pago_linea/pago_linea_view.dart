@@ -1,9 +1,9 @@
 import 'package:appresort/app/data/models/charges_model.dart';
-import 'package:appresort/app/routes/routes.dart';
 import 'package:appresort/app/themes/adapt.dart';
 import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/utils/helper.dart';
 import 'package:appresort/app/views/balance/pages/pago_linea/controller/pago_linea_controller.dart';
+import 'package:appresort/app/views/payments/payments_view.dart';
 import 'package:appresort/app/widgets/Cards/card_refresh.dart';
 import 'package:appresort/app/widgets/Sliver/sliver_scroll_view.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +35,7 @@ class PagoLineaView extends GetView<PagoLineaController> {
                 title: Text("Hubo un error al cargar la información"),
               ),
               noItemsFoundIndicatorBuilder: (context) => CardRefresh(
-                title: Text("No hay informcación disponibles"),
+                title: Text("No hay cargos disponibles"),
               ),
             ),
             separatorBuilder: (context, index) => SizedBox(
@@ -170,7 +170,7 @@ class CardCharge extends StatelessWidget {
                 children: [
                   Container(
                     child: Text(
-                      "Total a abonar",
+                      "Total a pagar",
                       style: TextStyle(
                         fontSize: Adapt.px(25),
                         color: Colors.black.withOpacity(0.6),
@@ -196,11 +196,15 @@ class CardCharge extends StatelessWidget {
                 FlatButton(
                   color: AppTheme.kPrimaryColor,
                   onPressed: () {
-                    Get.find<PagoLineaController>().select(charge);
-                    Routes.goToPage('/payments');
+                    Get.to(
+                      PaymentsView(
+                        charge: charge,
+                      ),
+                      fullscreenDialog: true,
+                    );
                   },
                   child: const Text(
-                    'Abonar',
+                    'Pagar',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),

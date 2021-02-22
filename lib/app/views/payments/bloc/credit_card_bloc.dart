@@ -1,5 +1,4 @@
-import 'dart:async';
-
+import 'package:appresort/app/data/services/conekta_service.dart';
 import 'package:appresort/app/utils/validator_string.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,7 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 
 class CreditCardBloc extends FormBloc<String, String> {
   final double total;
+  final int charge, unidad, concepto, propietario;
   final PageController pageViewController;
   String message = '';
 
@@ -47,7 +47,14 @@ class CreditCardBloc extends FormBloc<String, String> {
     ],
   );
 
-  CreditCardBloc({@required this.pageViewController, @required this.total}) {
+  CreditCardBloc({
+    @required this.unidad,
+    @required this.concepto,
+    @required this.pageViewController,
+    @required this.total,
+    @required this.charge,
+    @required this.propietario,
+  }) {
     addFieldBlocs(
       step: 0,
       fieldBlocs: [email, name, phone],
@@ -79,16 +86,37 @@ class CreditCardBloc extends FormBloc<String, String> {
       );
       emitSuccess();
     } else if (state.currentStep == 1) {
-      await Future.delayed(const Duration(seconds: 1));
-      pageViewController.nextPage(
-        duration: Duration(milliseconds: 500),
-        curve: Curves.ease,
-      );
-      emitSuccess();
-      message = "El pago aun no se ha procesado, se le notificara cuando se haya realizado el pago";
+      final expire = expired.value.split('/');
+
+      final response = await ConektaService.creditCard({
+        "name": name.value,
+        "number": cardNumber.value,
+        "month": expire[0],
+        "year": expire[1],
+        "cvv": cvv.value,
+        "id_propietario": propietario,
+        "id_charge": charge,
+        "id_unidad": unidad,
+        "id_concepto": concepto,
+        "total": total,
+        "email": email.value,
+        "phone": phone.value,
+      });
+
+      if (response.status) {
+        pageViewController.nextPage(
+          duration: Duration(milliseconds: 500),
+          curve: Curves.ease,
+        );
+        emitSuccess();
+        message =
+            "El pago aun no se ha procesado, se le notificara cuando se haya realizado el pago";
+      } else {
+        print(response.error);
+        emitFailure(failureResponse: response.message);
+      }
     } else {
-      await Future.delayed(const Duration(seconds: 1));
-      emitSuccess(canSubmitAgain: true);
+      emitSuccess();
     }
   }
 

@@ -1,7 +1,7 @@
 import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/utils/formatters.dart';
 import 'package:appresort/app/utils/helper.dart';
-import 'package:appresort/app/views/balance/pages/payments/bloc/credit_card_bloc.dart';
+import 'package:appresort/app/views/payments/bloc/oxxo_bloc.dart';
 import 'package:appresort/app/widgets/Loading/loading.dart';
 import 'package:appresort/app/widgets/TextField/input_text_cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,38 +10,52 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
-class CreditCardPayment extends StatelessWidget {
+class OxxoPayment extends StatelessWidget {
   final double total;
-  const CreditCardPayment({Key key, this.total})
-      : assert(total != null),
+
+  final int charge, unidad, concepto, propietario;
+
+  const OxxoPayment({
+    Key key,
+    @required this.total,
+    @required this.charge,
+    @required this.unidad,
+    @required this.concepto,
+    @required this.propietario,
+  })  : assert(total != null),
+        assert(charge != null),
         super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final PageController _pageViewController = PageController(initialPage: 0);
     return BlocProvider(
-      create: (context) => CreditCardBloc(
+      create: (context) => OxxoBloc(
         total: total,
+        charge: charge,
+        unidad: unidad,
+        concepto: concepto,
+        propietario: propietario,
         pageViewController: _pageViewController,
       ),
       child: Builder(
         builder: (context) {
-          final credit = BlocProvider.of<CreditCardBloc>(context);
-          return FormBlocListener<CreditCardBloc, String, String>(
+          final oxxo = BlocProvider.of<OxxoBloc>(context);
+          return FormBlocListener<OxxoBloc, String, String>(
             onSubmitting: (context, state) => LoadingDialog.show(context),
             onSuccess: (context, state) {
               LoadingDialog.hide(context);
               if (state.stepCompleted == state.lastStep) {
                 Get.back();
-                credit.close();
+                oxxo.close();
               }
             },
             onFailure: (context, state) async {
               LoadingDialog.hide(context);
               Helper.error(message: state.failureResponse);
             },
-            child: Scaffold(
-              body: _CreditCard(credit: credit),
+            child: _OxxoViewer(
+              oxxo: oxxo,
             ),
           );
         },
@@ -50,35 +64,35 @@ class CreditCardPayment extends StatelessWidget {
   }
 }
 
-class _CreditCard extends StatefulWidget {
-  final CreditCardBloc credit;
+class _OxxoViewer extends StatefulWidget {
+  final OxxoBloc oxxo;
 
-  _CreditCard({Key key, @required this.credit}) : super(key: key);
+  _OxxoViewer({Key key, @required this.oxxo}) : super(key: key);
 
   @override
-  __CreditCardState createState() => __CreditCardState();
+  __OxxoViewerState createState() => __OxxoViewerState();
 }
 
-class __CreditCardState extends State<_CreditCard> {
-  CreditCardBloc credit;
+class __OxxoViewerState extends State<_OxxoViewer> {
+  OxxoBloc oxxo;
+
+  final deliverySteps = [
+    'Datos personal',
+    'Éxito',
+  ];
 
   @override
   void initState() {
-    credit = widget.credit;
+    oxxo = widget.oxxo;
     super.initState();
   }
 
   @override
   void dispose() {
-    credit.close();
+    oxxo.close();
     super.dispose();
   }
 
-  final deliverySteps = [
-    'Titular',
-    'Tarjeta',
-    'Exito',
-  ];
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -86,7 +100,7 @@ class __CreditCardState extends State<_CreditCard> {
       children: <Widget>[
         Expanded(
           child: StreamBuilder(
-              stream: credit,
+              stream: oxxo,
               builder: (context, snapshot) {
                 return Container(
                   margin: const EdgeInsets.all(8),
@@ -102,13 +116,13 @@ class __CreditCardState extends State<_CreditCard> {
                       );
                       _DeliveryStatus status;
                       LineStyle afterLineStyle;
-                      if (index < credit.state.currentStep) {
+                      if (index < oxxo.state.currentStep) {
                         status = _DeliveryStatus.done;
                         indicatorSize = 30;
-                      } else if (credit.state.isLastStep) {
+                      } else if (oxxo.state.isLastStep) {
                         status = _DeliveryStatus.done;
                         indicatorSize = 30;
-                      } else if (index > credit.state.currentStep) {
+                      } else if (index > oxxo.state.currentStep) {
                         status = _DeliveryStatus.todo;
                         indicatorSize = 30;
                         beforeLineStyle = const LineStyle(color: Color(0xFF747888));
@@ -121,7 +135,7 @@ class __CreditCardState extends State<_CreditCard> {
                       return TimelineTile(
                         axis: TimelineAxis.horizontal,
                         alignment: TimelineAlign.manual,
-                        lineXY: 0.4,
+                        lineXY: 0.3,
                         isFirst: index == 0,
                         isLast: index == deliverySteps.length - 1,
                         beforeLineStyle: beforeLineStyle,
@@ -133,7 +147,7 @@ class __CreditCardState extends State<_CreditCard> {
                         ),
                         endChild: _EndChildDelivery(
                           text: step,
-                          current: index == credit.state.currentStep,
+                          current: index == oxxo.state.currentStep,
                         ),
                       );
                     },
@@ -142,14 +156,14 @@ class __CreditCardState extends State<_CreditCard> {
               }),
         ),
         Expanded(
-          flex: 5,
+          flex: 3,
           child: PageView(
             physics: NeverScrollableScrollPhysics(),
-            controller: credit.pageViewController,
+            controller: oxxo.pageViewController,
             onPageChanged: (int i) {},
             children: [
               _StepperContent(
-                controller: credit.pageViewController,
+                controller: oxxo.pageViewController,
                 content: Container(
                   margin: EdgeInsets.symmetric(
                     horizontal: 20,
@@ -157,17 +171,17 @@ class __CreditCardState extends State<_CreditCard> {
                   child: Column(
                     children: [
                       InputTextCupertino(
-                        textFieldBloc: credit.name,
+                        textFieldBloc: oxxo.name,
                         placeholder: 'Nombre completo',
                         keyboardType: TextInputType.text,
                       ),
                       InputTextCupertino(
-                        textFieldBloc: credit.email,
+                        textFieldBloc: oxxo.email,
                         placeholder: 'Correo eletrónico',
                         keyboardType: TextInputType.emailAddress,
                       ),
                       InputTextCupertino(
-                        textFieldBloc: credit.phone,
+                        textFieldBloc: oxxo.phone,
                         placeholder: 'Número de celular',
                         keyboardType: TextInputType.phone,
                         inputFormatters: [
@@ -177,70 +191,10 @@ class __CreditCardState extends State<_CreditCard> {
                     ],
                   ),
                 ),
-                bloc: credit,
+                bloc: oxxo,
               ),
               _StepperContent(
-                controller: credit.pageViewController,
-                content: Container(
-                  margin: EdgeInsets.symmetric(
-                    horizontal: 20,
-                  ),
-                  child: Column(
-                    children: [
-                      InputTextCupertino(
-                        textFieldBloc: credit.cardNumber,
-                        placeholder: 'Número de tarjeta',
-                        keyboardType: TextInputType.phone,
-                        maxLength: 19,
-                        maxLengthEnforced: true,
-                        inputFormatters: [
-                          MaskedTextInputFormatter(
-                            mask: 'xxxx xxxx xxxx xxxx',
-                            separator: ' ',
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            child: InputTextCupertino(
-                              textFieldBloc: credit.expired,
-                              placeholder: 'Fecha de expiración',
-                              keyboardType: TextInputType.phone,
-                              maxLength: 5,
-                              maxLengthEnforced: true,
-                              inputFormatters: [
-                                MaskedTextInputFormatter(
-                                  mask: 'xx/xx',
-                                  separator: '/',
-                                )
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Expanded(
-                            child: InputTextCupertino(
-                              textFieldBloc: credit.cvv,
-                              placeholder: 'cvv',
-                              keyboardType: TextInputType.phone,
-                              maxLength: 3,
-                              maxLengthEnforced: true,
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                bloc: credit,
-              ),
-              _StepperContent(
-                controller: credit.pageViewController,
+                controller: oxxo.pageViewController,
                 content: Container(
                   margin: EdgeInsets.symmetric(
                     horizontal: 20,
@@ -250,7 +204,7 @@ class __CreditCardState extends State<_CreditCard> {
                     children: [
                       CircleAvatar(
                         backgroundColor: Color(0xFF2ACA8E),
-                        radius: 30,
+                        radius: 40,
                         child: Icon(
                           Icons.check,
                           color: Colors.white,
@@ -276,12 +230,12 @@ class __CreditCardState extends State<_CreditCard> {
                         height: 20,
                       ),
                       StreamBuilder(
-                        stream: credit,
+                        stream: oxxo,
                         builder: (context, snapshot) {
                           return Center(
                             child: Container(
                                 child: Text(
-                              credit.message,
+                              oxxo.message,
                               textAlign: TextAlign.center,
                             )),
                           );
@@ -290,7 +244,7 @@ class __CreditCardState extends State<_CreditCard> {
                     ],
                   ),
                 ),
-                bloc: credit,
+                bloc: oxxo,
               )
             ],
           ),
@@ -305,7 +259,7 @@ enum _DeliveryStatus { done, doing, todo }
 class _StepperContent extends StatelessWidget {
   final Widget content;
   final PageController controller;
-  final CreditCardBloc bloc;
+  final OxxoBloc bloc;
 
   const _StepperContent({
     Key key,
@@ -316,7 +270,6 @@ class _StepperContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(bloc.state.isLastStep);
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -352,7 +305,7 @@ class _StepperContent extends StatelessWidget {
                   color: AppTheme.kPrimaryColor,
                   onPressed: bloc.submit,
                   child: Text(
-                    bloc.state.currentStep > 0 && bloc.state.currentStep == (3 - 1)
+                    bloc.state.currentStep > 0 && bloc.state.currentStep == (2 - 1)
                         ? "Terminar"
                         : "Siguiente",
                     style: TextStyle(color: Colors.white),

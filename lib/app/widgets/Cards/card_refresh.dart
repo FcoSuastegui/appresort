@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 class CardRefresh extends StatelessWidget {
   final Widget title;
   final Widget content;
-
   final double margin;
 
   const CardRefresh({

@@ -3,7 +3,6 @@ import 'package:appresort/app/views/balance/balance_view.dart';
 import 'package:appresort/app/views/balance/binding/balance_binding.dart';
 import 'package:appresort/app/views/balance/pages/pago_linea/binding/pago_linea_binding.dart';
 import 'package:appresort/app/views/balance/pages/pago_linea/pago_linea_view.dart';
-import 'package:appresort/app/views/balance/pages/payments/payments_view.dart';
 import 'package:appresort/app/views/login/login_view.dart';
 import 'package:appresort/app/views/nav_bar/nav_bar_view.dart';
 import 'package:appresort/app/views/notification/notification_content_view.dart';
@@ -62,11 +61,6 @@ class Routes {
       name: PagoLineaView.routeName,
       page: () => PagoLineaView(),
       binding: PagoLineaBinding(),
-    ),
-    GetPage(
-      name: PaymentsView.routeName,
-      page: () => PaymentsView(),
-      fullscreenDialog: true,
     ),
     GetPage(
       name: PassWordView.routeName,

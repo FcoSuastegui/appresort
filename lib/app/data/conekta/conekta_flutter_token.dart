@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:appresort/app/data/conekta/conekta_model.dart';
 import 'package:appresort/app/data/conekta/payment_model.dart';
-import 'package:appresort/app/data/services/helper_service.dart';
+import 'package:appresort/app/data/services/conekta_service.dart';
+
 import 'package:device_info/device_info.dart';
 import 'package:http/http.dart' as http;
 import 'dart:io' show Platform;
@@ -26,13 +27,7 @@ class ConektaFlutterTokenizer {
     return Base64Encoder().convert(utf16KeyBytes);
   }
 
-  Future<String> _getPublicKey() async {
-    final response = await HelperService.publicKey();
-    if (response.status) {
-      return response.data;
-    }
-    return "";
-  }
+  Future<String> _getPublicKey() async => await ConektaService.conektaKey();
 
   Future<String> _getDeviceId() async {
     DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();

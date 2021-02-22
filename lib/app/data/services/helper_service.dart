@@ -1,7 +1,6 @@
 import 'package:appresort/app/data/domain/network.dart';
 import 'package:appresort/app/data/models/list_page.dart';
 import 'package:appresort/app/data/models/regulation_model.dart';
-import 'package:appresort/app/data/models/response_model.dart';
 
 class HelperService {
   static Future<ListPage<RegulationModel>> regulations({
@@ -25,12 +24,6 @@ class HelperService {
       itemList: list,
       totalCount: list.length,
       message: message,
-    );
-  }
-
-  static Future<ResponseModel> publicKey() async {
-    return Network.i.post(
-      route: '/app/conektaKey',
     );
   }
 }

@@ -1,22 +1,28 @@
+import 'package:appresort/app/data/models/charges_model.dart';
 import 'package:appresort/app/themes/app_theme.dart';
+import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/utils/helper.dart';
-import 'package:appresort/app/views/balance/pages/pago_linea/controller/pago_linea_controller.dart';
-import 'package:appresort/app/views/balance/pages/payments/components/oxxo_pay.dart';
-import 'package:appresort/app/views/balance/pages/payments/components/credit_card_pay.dart';
+import 'package:appresort/app/views/payments/components/oxxo_pay.dart';
+import 'package:appresort/app/views/payments/components/credit_card_pay.dart';
 import 'package:appresort/app/widgets/UnFocus/un_focus_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 
 class PaymentsView extends StatefulWidget {
   static final String routeName = '/payments';
-  const PaymentsView({Key key}) : super(key: key);
+  final ChargesModel charge;
+  const PaymentsView({
+    Key key,
+    @required this.charge,
+  }) : super(key: key);
 
   @override
   _PaymentsViewState createState() => _PaymentsViewState();
 }
 
 class _PaymentsViewState extends State<PaymentsView> with SingleTickerProviderStateMixin {
+  final user = GetStorages.i.user;
+
   TabController _tabController;
   final List<Tab> myTabs = <Tab>[
     Tab(
@@ -54,12 +60,11 @@ class _PaymentsViewState extends State<PaymentsView> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    final c = Get.find<PagoLineaController>().charge;
-
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: UnFocusForm(
         child: Scaffold(
+          resizeToAvoidBottomPadding: true,
           appBar: AppBar(
             leading: IconButton(
               color: Colors.white,
@@ -83,7 +88,7 @@ class _PaymentsViewState extends State<PaymentsView> with SingleTickerProviderSt
                   children: [
                     Container(
                       child: Text(
-                        c.concepto,
+                        widget.charge.concepto ?? '',
                         style: TextStyle(
                           fontSize: 28,
                           color: Colors.white,
@@ -95,7 +100,7 @@ class _PaymentsViewState extends State<PaymentsView> with SingleTickerProviderSt
                     ),
                     Container(
                       child: Text(
-                        Helper.moneyFormat(c.total),
+                        Helper.moneyFormat(widget.charge.total ?? 0),
                         style: TextStyle(
                           fontSize: 30,
                           color: Colors.white,
@@ -108,7 +113,7 @@ class _PaymentsViewState extends State<PaymentsView> with SingleTickerProviderSt
                     ),
                     Container(
                       child: Text(
-                        c.fechaCargo,
+                        widget.charge.fechaCargo ?? DateTime.now().toString(),
                         style: TextStyle(
                           fontSize: 23,
                           color: Colors.white,
@@ -135,8 +140,20 @@ class _PaymentsViewState extends State<PaymentsView> with SingleTickerProviderSt
                   physics: NeverScrollableScrollPhysics(),
                   controller: _tabController,
                   children: [
-                    CreditCardPayment(total: c.total.toDouble()),
-                    OxxoPayment(total: c.total.toDouble()),
+                    CreditCardPayment(
+                      total: widget.charge.total,
+                      charge: int.parse(widget.charge.id),
+                      unidad: int.parse(widget.charge.idUnidad),
+                      concepto: int.parse(widget.charge.idTipoConcepto),
+                      propietario: int.parse(user.idpropietario),
+                    ),
+                    OxxoPayment(
+                      total: widget.charge.total,
+                      charge: int.parse(widget.charge.id),
+                      unidad: int.parse(widget.charge.idUnidad),
+                      concepto: int.parse(widget.charge.idTipoConcepto),
+                      propietario: int.parse(user.idpropietario),
+                    ),
                   ],
                 ),
               ),

@@ -1,3 +1,4 @@
+import 'package:appresort/app/routes/routes.dart';
 import 'package:appresort/app/themes/adapt.dart';
 import 'package:appresort/app/utils/my_icons.dart';
 import 'package:appresort/app/widgets/ListTile/list_tile_custom.dart';
@@ -31,6 +32,7 @@ class ServicesView extends StatelessWidget {
                 children: [
                   ListTileCustom(
                     title: 'Pago en línea',
+                    onPressed: () => Routes.goToPage("/pago-linea"),
                     icon: MyIcons.name(
                       name: 'payment',
                       color: Colors.white,

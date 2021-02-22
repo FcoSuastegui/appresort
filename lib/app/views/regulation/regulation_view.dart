@@ -1,9 +1,9 @@
 import 'package:appresort/app/data/models/regulation_model.dart';
 import 'package:appresort/app/themes/adapt.dart';
 import 'package:appresort/app/views/regulation/controller/regulation_controller.dart';
-import 'package:appresort/app/views/regulation/regulation_content.dart';
 import 'package:appresort/app/widgets/Cards/card_refresh.dart';
 import 'package:appresort/app/widgets/ListTile/list_tile_custom.dart';
+import 'package:appresort/app/widgets/PdfViewer/pdf_viewer.dart';
 import 'package:appresort/app/widgets/Sliver/sliver_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -38,10 +38,12 @@ class RegulationView extends GetView<RegulationController> {
                   backgroundicon: Colors.indigo,
                   title: regulation.nombre,
                   onPressed: () => Get.to(
-                      RegulationContent(
-                        path: regulation.ruta,
-                      ),
-                      fullscreenDialog: true),
+                    PdfViewer(
+                      path: regulation.ruta,
+                      title: regulation.nombre,
+                    ),
+                    fullscreenDialog: true,
+                  ),
                 ),
               ),
               firstPageErrorIndicatorBuilder: (context) => CardRefresh(
