@@ -1,5 +1,6 @@
 import 'package:appresort/app/data/domain/network.dart';
 import 'package:appresort/app/data/models/balance_saldos_model.dart';
+import 'package:appresort/app/data/models/balance_total_model.dart';
 import 'package:appresort/app/data/models/charges_model.dart';
 import 'package:appresort/app/data/models/last_transactions.dart';
 import 'package:appresort/app/data/models/list_page.dart';
@@ -68,9 +69,7 @@ class BalanceService {
     );
   }
 
-  static Future<double> total(int idPropietario) async {
-    double total = 0.0;
-
+  static Future<BalanceTotalModels> total(int idPropietario) async {
     final response = await Network.i.post(
       route: '/app/balanceTotal',
       data: {
@@ -78,9 +77,9 @@ class BalanceService {
       },
     );
 
-    total = response.status ? double.parse(response.data['total']) : 0.0;
-
-    return total;
+    return response.status
+        ? BalanceTotalModels.fromJson(response.data)
+        : BalanceTotalModels.fromJson({});
   }
 
   static Future<String> bankStatement({
@@ -88,37 +87,19 @@ class BalanceService {
     int type = 1,
     int mes = 1,
     int anio = 2020,
+    int lastDay = 10,
   }) async {
-    String file = '';
-
     final response = await Network.i.post(
       route: '/app/descargarEstadoDeCuenta',
       data: {
         'id_propietario': idPropietario,
-        'type': 1,
-        'mes': 12,
-        'anio': 2020,
+        'tipo': type,
+        'mes': mes,
+        'anio': anio,
+        'diasEdo': lastDay
       },
     );
 
-    file = response.status ? response.data['file'] : '';
-
-    return file;
+    return response.status ? response.data['file'] ?? '' : '';
   }
-
-  // processos desactualizados del servidor
-
-  /* static Future<ResponseModel> getCharges(int idpropietario) async {
-    return Network.i.post(
-      route: '/app/saldosCargos',
-      data: {"idpropietario": idpropietario},
-    );
-  } */
-/* 
-  static Future<ResponseModel> bankStatement({int idpropietario, int sistema}) async {
-    return Network.i.post(
-      route: '/app/saldospdf',
-      data: {"idpropietario": idpropietario, "sistema": sistema},
-    );
-  } */
 }

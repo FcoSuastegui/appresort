@@ -1,6 +1,7 @@
 import 'package:appresort/app/data/models/actions_model.dart';
 import 'package:appresort/app/themes/adapt.dart';
 import 'package:appresort/app/themes/app_theme.dart';
+import 'package:appresort/app/utils/helper.dart';
 import 'package:appresort/app/utils/my_icons.dart';
 import 'package:appresort/app/views/home/controllers/home_controller.dart';
 import 'package:appresort/app/widgets/Cards/card_action.dart';
@@ -66,12 +67,12 @@ class HomeBody extends GetView<HomeController> {
         ),
         ActionsModel(
           backGroundColor: Color(0xFFC7DFFC),
-          title: 'assemblies',
+          title: 'publications',
           icon: MyIcons.name(
-            name: 'gavel',
+            name: 'photo_album',
             size: Adapt.px(80),
           ),
-          page: '/assemblies',
+          page: '/post',
         ),
         ActionsModel(
           backGroundColor: Color(0xFFC7DFFC),
@@ -84,12 +85,12 @@ class HomeBody extends GetView<HomeController> {
         ),
         ActionsModel(
           backGroundColor: Color(0xFFC7DFFC),
-          title: 'publications',
+          title: 'assemblies',
           icon: MyIcons.name(
-            name: 'photo_album',
+            name: 'gavel',
             size: Adapt.px(80),
           ),
-          page: '/post',
+          page: '/assemblies',
         ),
         ActionsModel(
           backGroundColor: Color(0xFFC7DFFC),
@@ -157,19 +158,93 @@ class _CardBalance extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(
-              vertical: Adapt.px(10),
+              vertical: Adapt.px(20),
               horizontal: Adapt.px(30),
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "current-balance".tr,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                Obx(
+                  () => c.loading
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.symmetric(
+                                vertical: 20,
+                              ),
+                              child: Center(
+                                child: CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                                ),
+                              ),
+                            )
+                          ],
+                        )
+                      : Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "current-balance".tr,
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: Adapt.px(35),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: Adapt.px(20),
+                                    ),
+                                    Text(
+                                      Helper.moneyFormat(c.totales.total),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: Adapt.px(30),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: Adapt.px(30),
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Fondo actual",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: Adapt.px(35),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: Adapt.px(20),
+                                    ),
+                                    Text(
+                                      Helper.moneyFormat(c.totales.fondo),
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: Adapt.px(30),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                 ),
                 GestureDetector(
                   onTap: () => c.getCharge(),
@@ -177,30 +252,6 @@ class _CardBalance extends StatelessWidget {
                     Icons.replay,
                     color: Colors.white,
                   ),
-                )
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Adapt.px(30),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Obx(
-                  () => c.loading
-                      ? CircularProgressIndicator(
-                          backgroundColor: Colors.white,
-                          strokeWidth: 0.5,
-                        )
-                      : Text(
-                          "\$ ${c.total}",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
                 ),
               ],
             ),

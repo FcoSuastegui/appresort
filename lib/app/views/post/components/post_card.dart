@@ -117,7 +117,7 @@ class PostItem extends StatelessWidget {
                               child: Container(
                                 margin: EdgeInsets.only(left: 10.0),
                                 child: Icon(
-                                  Icons.bookmark_border,
+                                  Icons.share,
                                   color: Colors.black26,
                                 ),
                               ),

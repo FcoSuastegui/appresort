@@ -20,15 +20,19 @@ class CardRefresh extends StatelessWidget {
         vertical: Adapt.px(margin),
       ),
       child: Center(
-        child: content ??
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                title ?? SizedBox.shrink(),
-                Text("Tire para refrescar"),
-                Icon(Icons.arrow_downward),
-              ],
-            ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            title ?? SizedBox.shrink(),
+            content ??
+                Column(
+                  children: [
+                    Text("Tire para refrescar"),
+                    Icon(Icons.arrow_downward),
+                  ],
+                ),
+          ],
+        ),
       ),
     );
   }

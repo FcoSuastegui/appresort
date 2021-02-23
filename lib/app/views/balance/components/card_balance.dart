@@ -3,13 +3,8 @@ import 'package:appresort/app/themes/adapt.dart';
 import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/utils/helper.dart';
 import 'package:appresort/app/utils/my_icons.dart';
-import 'package:appresort/app/views/balance/controller/balance_controller.dart';
-import 'package:appresort/app/widgets/Fields/drop_search_field.dart';
-import 'package:appresort/app/widgets/Loading/loading.dart';
-import 'package:appresort/app/widgets/PdfViewer/pdf_viewer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CardBalance extends StatelessWidget {
   final BalanceSaldoModel balance;
@@ -20,7 +15,6 @@ class CardBalance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = Get.find<BalanceController>();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -160,83 +154,6 @@ class CardBalance extends StatelessWidget {
             ),
           ],
         ),
-      ],
-    );
-  }
-}
-
-class ApleeksModal extends StatelessWidget {
-  const ApleeksModal({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoAlertDialog(
-      title: Center(
-        child: Text(
-          "Estado de cuenta",
-          style: TextStyle(
-            color: Colors.black.withOpacity(0.6),
-            fontWeight: FontWeight.bold,
-            fontSize: Adapt.px(35),
-          ),
-        ),
-      ),
-      content: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.1,
-              width: double.infinity,
-              child: Material(
-                child: DropSearchField(
-                  showClearButton: false,
-                  label: " Seleccione una servicio",
-                  items: [
-                    '2000',
-                    '2001',
-                    '2002',
-                    '2003',
-                    '2004',
-                    '2005',
-                    '2006',
-                    '2007',
-                    '2008',
-                    '2009',
-                    '2010',
-                    '2011',
-                    '2012',
-                    '2013',
-                    '2014',
-                    '2015',
-                    '2016',
-                    '2017',
-                    '2018',
-                    '2019',
-                    '2020',
-                    '2021',
-                  ],
-                  onChanged: (String v) {},
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      actions: <Widget>[
-        CupertinoDialogAction(
-          isDefaultAction: true,
-          child: Text(
-            'Aceptar',
-          ),
-          onPressed: () {},
-        ),
-        CupertinoDialogAction(
-          child: Text(
-            'Cerrar',
-          ),
-          onPressed: () => Navigator.pop(context),
-        )
       ],
     );
   }

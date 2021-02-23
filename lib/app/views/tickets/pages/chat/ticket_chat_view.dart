@@ -54,7 +54,7 @@ class TicketChatView extends GetView<TicketChatController> {
                         noItemsFoundIndicatorBuilder: (context) => CardRefresh(
                           content: Column(
                             children: [
-                              Text("No hay chat disponibles"),
+                              Text("No hay comentarios disponibles"),
                               Text("Tire para refrescar"),
                               Icon(Icons.arrow_upward),
                             ],

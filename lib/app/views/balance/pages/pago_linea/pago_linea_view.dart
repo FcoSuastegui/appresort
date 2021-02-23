@@ -35,7 +35,7 @@ class PagoLineaView extends GetView<PagoLineaController> {
                 title: Text("Hubo un error al cargar la información"),
               ),
               noItemsFoundIndicatorBuilder: (context) => CardRefresh(
-                title: Text("No hay cargos disponibles"),
+                title: Text("No hay cargos pendientes"),
               ),
             ),
             separatorBuilder: (context, index) => SizedBox(

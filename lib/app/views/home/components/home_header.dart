@@ -52,13 +52,13 @@ class HomeHeader extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () => Routes.goToPage('/notifications'),
-                    behavior: HitTestBehavior.translucent,
+                    behavior: HitTestBehavior.opaque,
                     child: Badge(
                       badgeContent: Obx(
                         () => Text(
-                          "${n.counter}",
+                          n.counter >= 10 ? "9++" : "${n.counter}",
                           style: TextStyle(
-                            fontSize: Adapt.px(13),
+                            fontSize: Adapt.px(18),
                             color: Colors.white,
                           ),
                         ),

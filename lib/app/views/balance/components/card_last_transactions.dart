@@ -34,7 +34,7 @@ class CardLastTransactions extends StatelessWidget {
             children: [
               Container(
                 child: Text(
-                  "Unidad",
+                  "Departamento",
                   style: TextStyle(
                     color: Colors.black.withOpacity(0.8),
                     fontSize: Adapt.px(27),

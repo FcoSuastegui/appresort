@@ -5,12 +5,28 @@ import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/routes/routes.dart';
 import 'package:appresort/app/themes/app_theme_data.dart';
 import 'package:appresort/app/utils/i18.dart';
+import 'package:appresort/app/widgets/version/version.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
+  @override
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+  @override
+  void initState() {
+    NewVersion(
+      context: context,
+      iOSId: 'app.resort.apleeks.com',
+      androidId: 'com.apleeks.resort.app',
+    ).showAlertIfNecessary();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     AppThemeData.init(context);

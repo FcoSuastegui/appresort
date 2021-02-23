@@ -6,6 +6,7 @@ import 'package:appresort/app/utils/my_icons.dart';
 import 'package:appresort/app/views/balance/components/card_balance.dart';
 import 'package:appresort/app/views/balance/components/card_last_transactions.dart';
 import 'package:appresort/app/views/balance/controller/balance_controller.dart';
+import 'package:appresort/app/views/balance/pages/estado_cuenta/estado_cuenta_view.dart';
 import 'package:appresort/app/widgets/Cards/card_refresh.dart';
 import 'package:appresort/app/widgets/Sliver/sliver_scroll_view.dart';
 import 'package:flutter/material.dart';
@@ -59,20 +60,7 @@ class BalanceView extends GetView<BalanceController> {
                   Expanded(
                     flex: 2,
                     child: GestureDetector(
-                      onTap: () async {
-                        Get.dialog(
-                          ApleeksModal(),
-                          barrierDismissible: false,
-                          barrierColor: Colors.transparent.withOpacity(0.3),
-                        );
-                        /* LoadingDialog.show(context);
-                    String file = await c.getBankStatement();
-                    LoadingDialog.hide(context);
-                    Get.to(
-                      PdfViewer(path: file, title: 'Estado de cuenta'),
-                      fullscreenDialog: true,
-                    ); */
-                      },
+                      onTap: () => Get.to(EstadoCuentaView()),
                       child: Container(
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -87,7 +75,7 @@ class BalanceView extends GetView<BalanceController> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            MyIcons.name(name: "download_sharp"),
+                            MyIcons.name(name: "assignment"),
                             SizedBox(
                               width: 5,
                             ),
@@ -97,6 +85,8 @@ class BalanceView extends GetView<BalanceController> {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                   fontSize: Adapt.px(25),
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black.withOpacity(0.7),
                                 ),
                               ),
                             )
@@ -134,6 +124,8 @@ class BalanceView extends GetView<BalanceController> {
                               'Pago en línea',
                               style: TextStyle(
                                 fontSize: Adapt.px(25),
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black.withOpacity(0.7),
                               ),
                             )
                           ],
@@ -152,7 +144,7 @@ class BalanceView extends GetView<BalanceController> {
             SliverToBoxAdapter(
               child: Container(
                 child: Text(
-                  "Ultimos 10 movimientos".toUpperCase(),
+                  "Movimientos de los últimos 10 días".toUpperCase(),
                   style: TextStyle(
                     color: Colors.black.withOpacity(0.4),
                     fontWeight: FontWeight.bold,

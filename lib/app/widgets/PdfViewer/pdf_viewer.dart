@@ -36,7 +36,8 @@ class _PdfViewerState extends State<PdfViewer> {
         title: Text(
           widget.title ?? 'Titulo disponible',
           style: TextStyle(
-            color: Colors.black.withOpacity(0.7),
+            color: Colors.black.withOpacity(0.5),
+            fontSize: 18,
           ),
         ),
       ),

@@ -50,6 +50,7 @@ dependencies:
   # Paquete One Signal
   onesignal_flutter: ^2.6.2
   timelines: ^0.0.2+1
+  package_info: ^0.4.3
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +77,7 @@ flutter:
     - assets/images/credit_card.png
     - assets/images/resort_banner.png
     - assets/images/resort_logo.png
+    - assets/images/google-play-logo.png
     - assets/images/no_informacion.png
     - assets/documents/terminos-condiciones.pdf
 

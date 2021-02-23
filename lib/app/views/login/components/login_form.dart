@@ -56,12 +56,13 @@ class LoginForm extends StatelessWidget {
                         InputTextCupertino(
                           textFieldBloc: login.username,
                           placeholder: 'Usuario',
-                          keyboardType: TextInputType.text,
+                          keyboardType: TextInputType.emailAddress,
                         ),
                         InputTextCupertino(
                           textFieldBloc: login.password,
                           placeholder: 'Contraseña',
                           suffixButton: SuffixButton.obscureText,
+                          keyboardType: TextInputType.emailAddress,
                         ),
                       ],
                     ),

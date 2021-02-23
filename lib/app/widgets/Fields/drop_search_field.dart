@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DropSearchField extends StatelessWidget {
-  final String errorText, label;
+  final String errorText, label, selectedItem;
   final bool showSelectedItem, showClearButton;
   final List<String> items;
+  final double height;
+  final EdgeInsetsGeometry padding;
   final ValueChanged<String> onChanged, popupItemDisabled;
 
-  DropSearchField({
+  const DropSearchField({
     Key key,
     @required this.label,
     @required this.items,
@@ -17,19 +19,21 @@ class DropSearchField extends StatelessWidget {
     this.showClearButton = true,
     this.onChanged,
     this.popupItemDisabled,
+    this.height = 70,
+    this.padding,
+    this.selectedItem,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
+      height: height,
       padding: EdgeInsets.symmetric(
         horizontal: 10,
-        vertical: 10,
       ),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(8.0),
       ),
       child: DropdownSearch<String>(
         dropdownSearchDecoration: InputDecoration(
@@ -53,6 +57,7 @@ class DropSearchField extends StatelessWidget {
         showSelectedItem: showSelectedItem,
         items: items,
         label: label,
+        selectedItem: selectedItem,
         showClearButton: showClearButton,
         onChanged: onChanged,
         popupItemDisabled: popupItemDisabled,
