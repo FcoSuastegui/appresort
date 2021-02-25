@@ -1,10 +1,3 @@
-import 'dart:convert';
-
-BalanceSaldoModel balanceSaldoModelFromJson(String str) =>
-    BalanceSaldoModel.fromJson(json.decode(str));
-
-String balanceSaldoModelToJson(BalanceSaldoModel data) => json.encode(data.toJson());
-
 class BalanceSaldoModel {
   BalanceSaldoModel({
     this.total,
@@ -12,12 +5,12 @@ class BalanceSaldoModel {
     this.fondos,
   });
 
-  int total;
+  double total;
   List<Saldo> saldos;
   List<Fondo> fondos;
 
   factory BalanceSaldoModel.fromJson(Map<String, dynamic> json) => BalanceSaldoModel(
-        total: json["total"] ?? 0,
+        total: double.parse(json["total"]) ?? "0.0",
         saldos: json["saldos"] != null
             ? List<Saldo>.from(json["saldos"].map((x) => Saldo.fromJson(x)))
             : List<Saldo>(),
