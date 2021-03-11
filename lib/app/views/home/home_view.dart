@@ -13,7 +13,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final ScrollController scroll = Get.find<ScrollBarController>().scroll;
     return GetBuilder<HomeController>(
-      init: HomeController.i,
+      init: HomeController(),
       builder: (c) => Scaffold(
         extendBody: true,
         body: SafeArea(

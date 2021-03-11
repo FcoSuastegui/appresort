@@ -156,7 +156,7 @@ class EstadoCuentaBloc extends FormBloc<String, String> {
     final formatter = new DateFormat("yyyy");
     int formattedDate = int.parse(formatter.format(now));
 
-    for (int i = formattedDate; i >= 2015; i--) {
+    for (int i = formattedDate; i >= 2019; i--) {
       list.add(i.toString());
     }
     return list;

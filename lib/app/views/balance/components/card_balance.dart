@@ -23,7 +23,7 @@ class CardBalance extends StatelessWidget {
             Container(
               padding: EdgeInsets.all(10.0),
               margin: EdgeInsets.symmetric(
-                vertical: 15,
+                vertical: 20,
                 horizontal: 1,
               ),
               decoration: BoxDecoration(
@@ -61,7 +61,7 @@ class CardBalance extends StatelessWidget {
                     ),
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 30,
                   ),
                   Container(
                     child: Text(
@@ -87,7 +87,9 @@ class CardBalance extends StatelessWidget {
                               return Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("º ${saldo.concepto}"),
+                                  Expanded(
+                                    child: Text("º ${saldo.concepto}"),
+                                  ),
                                   Text(
                                     "\$ ${saldo.saldo}",
                                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -122,7 +124,9 @@ class CardBalance extends StatelessWidget {
                               return Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text("º ${fondo.fondo}"),
+                                  Expanded(
+                                    child: Text("º ${fondo.fondo}"),
+                                  ),
                                   Text(
                                     "\$ ${fondo.saldo}",
                                     style: TextStyle(fontWeight: FontWeight.bold),
@@ -139,17 +143,12 @@ class CardBalance extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              height: Adapt.px(120),
-              width: Adapt.px(150),
-              child: CircleAvatar(
-                backgroundColor: AppTheme.kPrimaryColor,
-                child: Center(
-                  child: MyIcons.name(
-                    name: 'balance_scale',
-                    color: Colors.white,
-                  ),
-                ),
+            CircleAvatar(
+              radius: Adapt.px(60),
+              backgroundColor: AppTheme.kPrimaryColor,
+              child: MyIcons.name(
+                name: 'balance_scale',
+                color: Colors.white,
               ),
             ),
           ],
