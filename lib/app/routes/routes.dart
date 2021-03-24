@@ -1,4 +1,6 @@
 import 'package:appresort/app/utils/helper.dart';
+import 'package:appresort/app/views/assemblie/assemblie_view.dart';
+import 'package:appresort/app/views/assemblie/binding/assemblie_binding.dart';
 import 'package:appresort/app/views/balance/balance_view.dart';
 import 'package:appresort/app/views/balance/binding/balance_binding.dart';
 import 'package:appresort/app/views/balance/pages/pago_linea/binding/pago_linea_binding.dart';
@@ -51,6 +53,11 @@ class Routes {
       name: RegulationView.routeName,
       page: () => RegulationView(),
       binding: RegulationBinding(),
+    ),
+    GetPage(
+      name: AssemblieView.routeName,
+      page: () => AssemblieView(),
+      binding: AssemblieBinding(),
     ),
     GetPage(
       name: BalanceView.routeName,
