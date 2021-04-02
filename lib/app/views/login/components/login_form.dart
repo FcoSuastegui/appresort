@@ -1,7 +1,7 @@
 import 'package:appresort/app/globals/controller/one_signal_controller.dart';
 import 'package:appresort/app/themes/adapt.dart';
 import 'package:appresort/app/utils/helper.dart';
-import 'package:appresort/app/widgets/TextField/input_text_cupertino.dart';
+import 'package:appresort/app/widgets/FormField/input_text_cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -11,7 +11,7 @@ import 'package:appresort/app/views/login/bloc/login_bloc.dart';
 import 'package:appresort/app/widgets/Animation/fade_animation.dart';
 import 'package:appresort/app/widgets/Buttons/button_submit.dart';
 import 'package:appresort/app/widgets/Informacion/informacion.dart';
-import 'package:appresort/app/widgets/Loading/loading.dart';
+import 'package:appresort/app/widgets/Loading/loading_apleeks.dart';
 
 class LoginForm extends StatelessWidget {
   @override
@@ -22,15 +22,15 @@ class LoginForm extends StatelessWidget {
         builder: (context) {
           final login = BlocProvider.of<LoginBloc>(context);
           return FormBlocListener<LoginBloc, String, String>(
-            onSubmitting: (context, state) => LoadingDialog.show(context),
+            onSubmitting: (context, state) => LoadingApleeks.show(context),
             onSuccess: (context, state) {
-              LoadingDialog.hide(context);
+              LoadingApleeks.hide(context);
               login.close();
               Get.offAllNamed(GetStorages.i.page);
               OneSignalController.i.initPlatformState();
             },
             onFailure: (context, state) async {
-              LoadingDialog.hide(context);
+              LoadingApleeks.hide(context);
               Helper.error(message: state.failureResponse);
             },
             child: Column(

@@ -3,8 +3,8 @@ import 'package:appresort/app/utils/helper.dart';
 import 'package:appresort/app/views/account/pages/password/bloc/password_bloc.dart';
 import 'package:appresort/app/widgets/Alerts/custom_alert.dart';
 import 'package:appresort/app/widgets/Buttons/button_submit.dart';
-import 'package:appresort/app/widgets/Loading/loading.dart';
-import 'package:appresort/app/widgets/TextField/input_text_cupertino.dart';
+import 'package:appresort/app/widgets/Loading/loading_apleeks.dart';
+import 'package:appresort/app/widgets/FormField/input_text_cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:get/get.dart';
@@ -20,9 +20,9 @@ class PasswordForm extends StatelessWidget {
         builder: (context) {
           final change = BlocProvider.of<PasswordBloc>(context);
           return FormBlocListener<PasswordBloc, String, String>(
-            onSubmitting: (context, state) => LoadingDialog.show(context),
+            onSubmitting: (context, state) => LoadingApleeks.show(context),
             onSuccess: (context, state) async {
-              LoadingDialog.hide(context);
+              LoadingApleeks.hide(context);
               change.close();
               await GetStorages.i.clear();
               await Get.dialog(
@@ -34,7 +34,7 @@ class PasswordForm extends StatelessWidget {
               );
             },
             onFailure: (context, state) async {
-              LoadingDialog.hide(context);
+              LoadingApleeks.hide(context);
               Helper.error(message: state.failureResponse);
             },
             child: Column(

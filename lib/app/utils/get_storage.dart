@@ -16,7 +16,7 @@ class GetStorages {
   // Setter y getters de datos
 
   set server(String valor) => _storage.write('server', valor);
-  String get server => _storage.read('server') ?? 'https://imperial.appresort.com';
+  String get server => _storage.read('server') ?? 'http://qa.appresort.com';
 
   set api(String valor) => _storage.write('api', valor);
   String get api => _storage.read('api') ?? '$server/server/api';

@@ -31,7 +31,7 @@ class AccountHeader extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      GetStorages.i.user.fullname,
+                      GetStorages.i.user.idpropietario,
                       style: TextStyle(fontSize: 15.0),
                     ),
                     ListTile(

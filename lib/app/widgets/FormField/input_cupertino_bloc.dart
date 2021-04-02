@@ -5,7 +5,7 @@ import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 // ignore: implementation_imports
 import 'package:flutter_form_bloc/src/utils/utils.dart';
 
-class InputTextCupertino extends StatefulWidget {
+class InputCupertinoBloc extends StatefulWidget {
   final TextFieldBloc<Object> textFieldBloc;
   final FocusNode focusNode;
   final ValueChanged<String> onChanged;
@@ -32,8 +32,10 @@ class InputTextCupertino extends StatefulWidget {
   final String placeholder;
   final int maxLength;
   final bool maxLengthEnforced;
+  final Color inputColor;
+  final Widget label;
 
-  const InputTextCupertino({
+  const InputCupertinoBloc({
     Key key,
     @required this.textFieldBloc,
     this.focusNode,
@@ -73,13 +75,15 @@ class InputTextCupertino extends StatefulWidget {
     this.suffix,
     this.maxLength,
     this.maxLengthEnforced = false,
+    this.inputColor,
+    this.label,
   }) : super(key: key);
 
   @override
-  _InputTextCupertinoState createState() => _InputTextCupertinoState();
+  _InputCupertinoBlocState createState() => _InputCupertinoBlocState();
 }
 
-class _InputTextCupertinoState extends State<InputTextCupertino> {
+class _InputCupertinoBlocState extends State<InputCupertinoBloc> {
   TextEditingController _controller;
   bool _obscureText;
   VoidCallback _controllerListener;
@@ -213,9 +217,15 @@ class _InputTextCupertinoState extends State<InputTextCupertino> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        widget.label ?? SizedBox.shrink(),
+        widget.label != null
+            ? const SizedBox(
+                height: 10,
+              )
+            : SizedBox.shrink(),
         CupertinoTextField(
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: widget.inputColor ?? Colors.white,
             borderRadius: BorderRadius.circular(6),
             border: Border.all(
               color: Colors.black.withOpacity(0.1),

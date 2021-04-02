@@ -16,6 +16,7 @@ import 'package:appresort/app/views/post/binding/post_binding.dart';
 import 'package:appresort/app/views/post/post_view.dart';
 import 'package:appresort/app/views/regulation/binding/regulation_binding.dart';
 import 'package:appresort/app/views/regulation/regulation_view.dart';
+import 'package:appresort/app/views/reservation/reservation_view.dart';
 import 'package:appresort/app/views/services/services_view.dart';
 import 'package:appresort/app/views/tickets/bindings/ticket_binding.dart';
 import 'package:appresort/app/views/tickets/pages/chat/binding/ticket_chat_binding.dart';
@@ -107,6 +108,11 @@ class Routes {
     GetPage(
       name: NotificationContentView.routeName,
       page: () => NotificationContentView(),
+      fullscreenDialog: true,
+    ),
+    GetPage(
+      name: ReservationView.routeName,
+      page: () => ReservationView(),
       fullscreenDialog: true,
     ),
   ];

@@ -2,8 +2,8 @@ import 'package:appresort/app/themes/app_theme.dart';
 import 'package:appresort/app/utils/formatters.dart';
 import 'package:appresort/app/utils/helper.dart';
 import 'package:appresort/app/views/payments/bloc/oxxo_bloc.dart';
-import 'package:appresort/app/widgets/Loading/loading.dart';
-import 'package:appresort/app/widgets/TextField/input_text_cupertino.dart';
+import 'package:appresort/app/widgets/Loading/loading_apleeks.dart';
+import 'package:appresort/app/widgets/FormField/input_text_cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
 import 'package:get/get.dart';
@@ -42,16 +42,16 @@ class OxxoPayment extends StatelessWidget {
         builder: (context) {
           final oxxo = BlocProvider.of<OxxoBloc>(context);
           return FormBlocListener<OxxoBloc, String, String>(
-            onSubmitting: (context, state) => LoadingDialog.show(context),
+            onSubmitting: (context, state) => LoadingApleeks.show(context),
             onSuccess: (context, state) {
-              LoadingDialog.hide(context);
+              LoadingApleeks.hide(context);
               if (state.stepCompleted == state.lastStep) {
                 Get.back();
                 oxxo.close();
               }
             },
             onFailure: (context, state) async {
-              LoadingDialog.hide(context);
+              LoadingApleeks.hide(context);
               Helper.error(message: state.failureResponse);
             },
             child: _OxxoViewer(

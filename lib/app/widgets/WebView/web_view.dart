@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:appresort/app/widgets/Loading/loading.dart';
+import 'package:appresort/app/widgets/Loading/loading_apleeks.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -43,13 +43,13 @@ class WebViewApleeksContent extends StatelessWidget {
                     return NavigationDecision.navigate;
                   },
                   onPageStarted: (String url) {
-                    LoadingDialog.show(context);
+                    LoadingApleeks.show(context);
                     print('Page started loading: $url');
 
                     //controller.loading = true;
                   },
                   onPageFinished: (String url) {
-                    LoadingDialog.hide(context);
+                    LoadingApleeks.hide(context);
                     print('Page finished loading: $url');
                     //controller.loading = false;
                   },

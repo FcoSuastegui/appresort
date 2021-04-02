@@ -6,6 +6,19 @@ import 'package:appresort/app/widgets/Sliver/sliver_scroll_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+final List<Map<String, dynamic>> services = [
+  {
+    "title": "Pago en línea",
+    "icon": "payment",
+    "page": "/pago-linea",
+  },
+  {
+    "title": "Reservaciones de áreas comunes",
+    "icon": "event",
+    "page": "/reservation",
+  }
+];
+
 class ServicesView extends StatelessWidget {
   static final String routeName = '/services';
   const ServicesView({Key key}) : super(key: key);
@@ -26,19 +39,25 @@ class ServicesView extends StatelessWidget {
                 vertical: Adapt.px(20),
                 horizontal: Adapt.px(20),
               ),
-              child: ListView(
-                padding: EdgeInsets.only(top: 0.0),
-                shrinkWrap: true,
-                children: [
-                  ListTileCustom(
-                    title: 'Pago en línea',
-                    onPressed: () => Routes.goToPage("/pago-linea"),
+              child: ListView.separated(
+                itemCount: services.length,
+                itemBuilder: (context, index) {
+                  final item = services[index];
+                  return ListTileCustom(
+                    title: item['title'],
+                    onPressed: () => Routes.goToPage(item['page']),
                     icon: MyIcons.name(
-                      name: 'payment',
+                      name: item['icon'],
                       color: Colors.white,
                     ),
-                  ),
-                ],
+                  );
+                },
+                shrinkWrap: true,
+                separatorBuilder: (context, index) {
+                  return const SizedBox(
+                    height: 10,
+                  );
+                },
               ),
             ),
           ),

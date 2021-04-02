@@ -2,7 +2,7 @@ import 'package:appresort/app/utils/get_storage.dart';
 import 'package:appresort/app/utils/helper.dart';
 import 'package:appresort/app/views/balance/pages/estado_cuenta/bloc/estado_cuenta_bloc.dart';
 import 'package:appresort/app/widgets/Buttons/button_submit.dart';
-import 'package:appresort/app/widgets/Loading/loading.dart';
+import 'package:appresort/app/widgets/Loading/loading_apleeks.dart';
 import 'package:appresort/app/widgets/PdfViewer/pdf_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_bloc/flutter_form_bloc.dart';
@@ -32,9 +32,9 @@ class EstadoCuentaView extends StatelessWidget {
               // ignore: close_sinks
               final cuenta = BlocProvider.of<EstadoCuentaBloc>(context);
               return FormBlocListener<EstadoCuentaBloc, String, String>(
-                onSubmitting: (context, state) => LoadingDialog.show(context),
+                onSubmitting: (context, state) => LoadingApleeks.show(context),
                 onSuccess: (context, state) async {
-                  LoadingDialog.hide(context);
+                  LoadingApleeks.hide(context);
                   Get.to(
                     PdfViewer(
                       path: state.successResponse,
@@ -44,7 +44,7 @@ class EstadoCuentaView extends StatelessWidget {
                   );
                 },
                 onFailure: (context, state) async {
-                  LoadingDialog.hide(context);
+                  LoadingApleeks.hide(context);
                   Helper.error(message: state.failureResponse);
                 },
                 child: Column(

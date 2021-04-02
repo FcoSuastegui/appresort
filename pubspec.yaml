@@ -52,6 +52,10 @@ dependencies:
   timelines: ^0.0.2+1
   package_info: ^0.4.3
 
+  syncfusion_flutter_calendar: ^18.4.49
+  modal_bottom_sheet: ^1.0.0+1
+  rxdart: ^0.24.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
